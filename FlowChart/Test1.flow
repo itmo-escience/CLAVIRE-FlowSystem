@@ -1,0 +1,39 @@
+﻿require file1, file2;
+
+flow
+{
+	step Step1 after Step3 as Semp.FirstStep
+	(
+		InFile = file file1,
+		InString = "string",
+		InNumber = 15
+	);
+
+	step Step2 as Semp.SecondStep
+	(
+		InFile = Step1.Files["input.txt"]		
+	);
+	
+	step Step2a as Semp.SecondStep
+	(
+		InFile = Step1.Files["input.txt"]		
+	);
+	
+	step Step2b as Semp.SecondStep
+	(
+		InFile = Step1.Files["input.txt"]		
+	);
+	step Step2c as Semp.SecondStep
+	(
+		InFile = Step1.Files["input.txt"]		
+	);
+	step Step2d as Semp.SecondStep
+	(
+		InFile = Step1.Files["input.txt"]		
+	);
+
+	step Step3 after Step2, Step1, Step2a, Step2b, Step2c, Step2d as Semp.ThirdStep
+	(
+		InFile = file file2
+	);
+}

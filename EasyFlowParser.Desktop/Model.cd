@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Easis.Wfs.EasyFlow.Model.BlockBase" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAABAggAACAAAAoEAAAAAAAAAQBA=</HashCode>
+      <FileName>Model\BlockBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Easis.Wfs.EasyFlow.Model.Flow" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAAAAAEACAABAAAAQAAAAAAAAEAAABAAAABA=</HashCode>
+      <FileName>Model\Flow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Easis.Wfs.EasyFlow.Model.ForBlock" Collapsed="true">
+    <Position X="10" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Model\ForBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Easis.Wfs.EasyFlow.Model.IfBlock" Collapsed="true">
+    <Position X="6" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Model\IfBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Easis.Wfs.EasyFlow.Model.ScriptModel" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAABAAAAAAAAIAAAAAEAAAAAAAABA=</HashCode>
+      <FileName>Model\ScriptModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Easis.Wfs.EasyFlow.Model.StepBlock" Collapsed="true">
+    <Position X="8" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEBAAAAAQAAAQAAAAQEAAAAAgAABA=</HashCode>
+      <FileName>Model\StepBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Easis.Wfs.EasyFlow.Model.ParsedObject" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEQAAgAACAAAAAAAAAAAAAAAAAAEAAAAAAAABA=</HashCode>
+      <FileName>Model\Common\ParsedObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Easis.Wfs.EasyFlow.Model.Expression" Collapsed="true">
+    <Position X="12" Y="4.25" Width="1.5" />
+    <InheritanceLine Type="Easis.Wfs.EasyFlow.Model.ParsedObject" ManuallyRouted="true">
+      <Path>
+        <Point X="10" Y="1.062" />
+        <Point X="10" Y="2.103" />
+        <Point X="12.75" Y="2.103" />
+        <Point X="12.75" Y="4.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Expressions\Expression.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Easis.Wfs.EasyFlow.Model.ValueBase" Collapsed="true">
+    <Position X="14" Y="4.25" Width="1.5" />
+    <InheritanceLine Type="Easis.Wfs.EasyFlow.Model.ParsedObject" ManuallyRouted="true">
+      <Path>
+        <Point X="10" Y="1.062" />
+        <Point X="10" Y="2.103" />
+        <Point X="14.75" Y="2.103" />
+        <Point X="14.75" Y="4.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ABAAAMQAIAIAAgAEgAAAAAAQAAAAAIAIEAAgAAAAABA=</HashCode>
+      <FileName>Model\Expressions\ValueBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Easis.Wfs.EasyFlow.Model.CompoundName&lt;TPart&gt;" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgEAAAAAAAABIEggEAAIAAAAAAAICUAQIAAABACBE=</HashCode>
+      <FileName>Model\Common\CompoundName.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Easis.Wfs.EasyFlow.Model.IParsedObject" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEQAAgAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Common\IParsedObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Easis.Wfs.EasyFlow.Model.IEvaluatable" Collapsed="true">
+    <Position X="6" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Expressions\IEvaluatable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Easis.Wfs.EasyFlow.Model.IEvaluationContext" Collapsed="true">
+    <Position X="8" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Expressions\IEvaluationContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Easis.Wfs.EasyFlow.Model.DataType" Collapsed="true">
+    <Position X="14" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAgQAAAAAAEAAAGAAAAAAAAAAAAACI=</HashCode>
+      <FileName>Model\Expressions\DataType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

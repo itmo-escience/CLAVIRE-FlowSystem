@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ec36d702-8a80-43f6-9917-71151c5ce80a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.4.1/Monitoring/MonitoringFacade.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MonitoringFacade.xsd" MetadataType="Schema" ID="a14d9371-09c8-4c75-bd5b-5094b6030ee3" SourceId="1" SourceUrl="http://192.168.4.1/Monitoring/MonitoringFacade.svc?xsd=xsd3" />
+    <MetadataFile FileName="MonitoringFacade.disco" MetadataType="Disco" ID="38842fab-0e7e-4327-8046-f758cf4b09f6" SourceId="1" SourceUrl="http://192.168.4.1/Monitoring/MonitoringFacade.svc?disco" />
+    <MetadataFile FileName="MonitoringFacade1.xsd" MetadataType="Schema" ID="27c204fc-4260-4650-9018-4ff307b26e88" SourceId="1" SourceUrl="http://192.168.4.1/Monitoring/MonitoringFacade.svc?xsd=xsd2" />
+    <MetadataFile FileName="MonitoringFacade.wsdl" MetadataType="Wsdl" ID="a7d3398a-8642-4805-b694-93322724838e" SourceId="1" SourceUrl="http://192.168.4.1/Monitoring/MonitoringFacade.svc?wsdl" />
+    <MetadataFile FileName="MonitoringFacade2.xsd" MetadataType="Schema" ID="53a86a9c-3d2a-4eb3-9471-cfa8ed41b3c6" SourceId="1" SourceUrl="http://192.168.4.1/Monitoring/MonitoringFacade.svc?xsd=xsd1" />
+    <MetadataFile FileName="MonitoringFacade3.xsd" MetadataType="Schema" ID="0441ddd9-94f8-4175-89f2-4cefdde70f05" SourceId="1" SourceUrl="http://192.168.4.1/Monitoring/MonitoringFacade.svc?xsd=xsd4" />
+    <MetadataFile FileName="MonitoringFacade4.xsd" MetadataType="Schema" ID="f3d9ac82-84e5-47d0-9959-c0412cc5fcf3" SourceId="1" SourceUrl="http://192.168.4.1/Monitoring/MonitoringFacade.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

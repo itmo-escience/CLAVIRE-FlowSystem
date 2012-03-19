@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://localhost/PES/SequenceService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://localhost/PES/SequenceService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/PES/SequenceService">
+      <s:import />
+      <s:element name="SequenceEstimate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sequenceRunXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SequenceEstimateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="SequenceEstimateResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SequenceRun">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sequenceRunXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SequenceRunResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Debug">
+        <s:complexType />
+      </s:element>
+      <s:element name="DebugResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SequenceAbort">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceId" type="s:unsignedLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SequenceAbortResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SequenceGetInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceId" type="s:unsignedLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SequenceGetInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="SequenceGetInfoResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SequenceGetInfoInXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceId" type="s:unsignedLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SequenceGetInfoInXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SequenceGetInfoInXmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLog">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLogInHtml">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLogInHtmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLogInHtmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TaskComplete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TaskId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TaskCompleteResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified">
+      <s:element name="SequenceEstimateResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="time">
+              <s:complexType>
+                <s:attribute name="stamp" type="s:dateTime" use="required" />
+                <s:attribute name="elapsed" type="s:unsignedLong" use="required" />
+                <s:attribute name="wasted" type="s:unsignedLong" use="required" />
+                <s:attribute name="estimatedMin" type="s:unsignedLong" use="required" />
+                <s:attribute name="estimatedMax" type="s:unsignedLong" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="step">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="time">
+                    <s:complexType>
+                      <s:attribute name="elapsed" type="s:unsignedLong" use="required" />
+                      <s:attribute name="estimatedMin" type="s:unsignedLong" use="required" />
+                      <s:attribute name="estimatedMax" type="s:unsignedLong" use="required" />
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="cluster">
+                    <s:complexType>
+                      <s:attribute name="name" type="s:string" />
+                      <s:attribute name="app" type="s:string" />
+                      <s:attribute name="nodeCount" type="s:unsignedInt" />
+                      <s:attribute name="coreCount" type="s:unsignedInt" />
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="in">
+                    <s:complexType>
+                      <s:attribute name="internalId" type="s:unsignedLong" use="required" />
+                      <s:attribute name="storageId" type="s:string" />
+                      <s:attribute name="slotName" type="s:string" />
+                      <s:attribute name="type" type="s:string" />
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="out">
+                    <s:complexType>
+                      <s:attribute name="internalId" type="s:unsignedLong" use="required" />
+                      <s:attribute name="storageId" type="s:string" />
+                      <s:attribute name="slotName" type="s:string" />
+                      <s:attribute name="fileName" type="s:string" />
+                      <s:attribute name="fileSize" type="s:long" use="required" />
+                      <s:attribute name="type" type="s:string" />
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+                <s:attribute name="taskId" type="s:string" />
+                <s:attribute name="order" type="s:unsignedInt" use="required" />
+                <s:attribute name="result" type="stepResult" use="required" />
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="id" type="s:unsignedLong" use="required" />
+          <s:attribute name="result" type="stepResult" use="required" />
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="stepResult">
+        <s:restriction base="s:string">
+          <s:enumeration value="completed" />
+          <s:enumeration value="failed" />
+          <s:enumeration value="notStarted" />
+          <s:enumeration value="started" />
+          <s:enumeration value="aborted" />
+          <s:enumeration value="timeLimitExceeded" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SequenceGetInfoResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="time">
+              <s:complexType>
+                <s:attribute name="stamp" type="s:dateTime" use="required" />
+                <s:attribute name="elapsed" type="s:unsignedLong" use="required" />
+                <s:attribute name="wasted" type="s:unsignedLong" use="required" />
+                <s:attribute name="estimatedMin" type="s:unsignedLong" use="required" />
+                <s:attribute name="estimatedMax" type="s:unsignedLong" use="required" />
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="step">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="time">
+                    <s:complexType>
+                      <s:attribute name="elapsed" type="s:unsignedLong" use="required" />
+                      <s:attribute name="estimatedMin" type="s:unsignedLong" use="required" />
+                      <s:attribute name="estimatedMax" type="s:unsignedLong" use="required" />
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" name="cluster">
+                    <s:complexType>
+                      <s:attribute name="name" type="s:string" />
+                      <s:attribute name="app" type="s:string" />
+                      <s:attribute name="nodeCount" type="s:unsignedInt" />
+                      <s:attribute name="coreCount" type="s:unsignedInt" />
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="in">
+                    <s:complexType>
+                      <s:attribute name="internalId" type="s:unsignedLong" use="required" />
+                      <s:attribute name="storageId" type="s:string" />
+                      <s:attribute name="slotName" type="s:string" />
+                      <s:attribute name="type" type="s:string" />
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="out">
+                    <s:complexType>
+                      <s:attribute name="internalId" type="s:unsignedLong" use="required" />
+                      <s:attribute name="storageId" type="s:string" />
+                      <s:attribute name="slotName" type="s:string" />
+                      <s:attribute name="fileName" type="s:string" />
+                      <s:attribute name="fileSize" type="s:long" use="required" />
+                      <s:attribute name="type" type="s:string" />
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+                <s:attribute name="taskId" type="s:string" />
+                <s:attribute name="order" type="s:unsignedInt" use="required" />
+                <s:attribute name="result" type="stepResult" use="required" />
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="id" type="s:unsignedLong" use="required" />
+          <s:attribute name="result" type="stepResult" use="required" />
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SequenceEstimateSoapIn">
+    <wsdl:part name="parameters" element="tns:SequenceEstimate" />
+  </wsdl:message>
+  <wsdl:message name="SequenceEstimateSoapOut">
+    <wsdl:part name="parameters" element="tns:SequenceEstimateResponse" />
+  </wsdl:message>
+  <wsdl:message name="SequenceRunSoapIn">
+    <wsdl:part name="parameters" element="tns:SequenceRun" />
+  </wsdl:message>
+  <wsdl:message name="SequenceRunSoapOut">
+    <wsdl:part name="parameters" element="tns:SequenceRunResponse" />
+  </wsdl:message>
+  <wsdl:message name="DebugSoapIn">
+    <wsdl:part name="parameters" element="tns:Debug" />
+  </wsdl:message>
+  <wsdl:message name="DebugSoapOut">
+    <wsdl:part name="parameters" element="tns:DebugResponse" />
+  </wsdl:message>
+  <wsdl:message name="SequenceAbortSoapIn">
+    <wsdl:part name="parameters" element="tns:SequenceAbort" />
+  </wsdl:message>
+  <wsdl:message name="SequenceAbortSoapOut">
+    <wsdl:part name="parameters" element="tns:SequenceAbortResponse" />
+  </wsdl:message>
+  <wsdl:message name="SequenceGetInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:SequenceGetInfo" />
+  </wsdl:message>
+  <wsdl:message name="SequenceGetInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:SequenceGetInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SequenceGetInfoInXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:SequenceGetInfoInXml" />
+  </wsdl:message>
+  <wsdl:message name="SequenceGetInfoInXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:SequenceGetInfoInXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLogSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLog" />
+  </wsdl:message>
+  <wsdl:message name="GetLogSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLogInHtmlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLogInHtml" />
+  </wsdl:message>
+  <wsdl:message name="GetLogInHtmlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLogInHtmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="TaskCompleteSoapIn">
+    <wsdl:part name="parameters" element="tns:TaskComplete" />
+  </wsdl:message>
+  <wsdl:message name="TaskCompleteSoapOut">
+    <wsdl:part name="parameters" element="tns:TaskCompleteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SequenceServiceSoap">
+    <wsdl:operation name="SequenceEstimate">
+      <wsdl:input message="tns:SequenceEstimateSoapIn" />
+      <wsdl:output message="tns:SequenceEstimateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SequenceRun">
+      <wsdl:input message="tns:SequenceRunSoapIn" />
+      <wsdl:output message="tns:SequenceRunSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Debug">
+      <wsdl:input message="tns:DebugSoapIn" />
+      <wsdl:output message="tns:DebugSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SequenceAbort">
+      <wsdl:input message="tns:SequenceAbortSoapIn" />
+      <wsdl:output message="tns:SequenceAbortSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SequenceGetInfo">
+      <wsdl:input message="tns:SequenceGetInfoSoapIn" />
+      <wsdl:output message="tns:SequenceGetInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SequenceGetInfoInXml">
+      <wsdl:input message="tns:SequenceGetInfoInXmlSoapIn" />
+      <wsdl:output message="tns:SequenceGetInfoInXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLog">
+      <wsdl:input message="tns:GetLogSoapIn" />
+      <wsdl:output message="tns:GetLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLogInHtml">
+      <wsdl:input message="tns:GetLogInHtmlSoapIn" />
+      <wsdl:output message="tns:GetLogInHtmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TaskComplete">
+      <wsdl:input message="tns:TaskCompleteSoapIn" />
+      <wsdl:output message="tns:TaskCompleteSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SequenceServiceSoap" type="tns:SequenceServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SequenceEstimate">
+      <soap:operation soapAction="http://localhost/PES/SequenceService/SequenceEstimate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequenceRun">
+      <soap:operation soapAction="http://localhost/PES/SequenceService/SequenceRun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Debug">
+      <soap:operation soapAction="http://localhost/PES/SequenceService/Debug" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequenceAbort">
+      <soap:operation soapAction="http://localhost/PES/SequenceService/SequenceAbort" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequenceGetInfo">
+      <soap:operation soapAction="http://localhost/PES/SequenceService/SequenceGetInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequenceGetInfoInXml">
+      <soap:operation soapAction="http://localhost/PES/SequenceService/SequenceGetInfoInXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLog">
+      <soap:operation soapAction="http://localhost/PES/SequenceService/GetLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogInHtml">
+      <soap:operation soapAction="http://localhost/PES/SequenceService/GetLogInHtml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TaskComplete">
+      <soap:operation soapAction="http://localhost/PES/SequenceService/TaskComplete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SequenceServiceSoap12" type="tns:SequenceServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SequenceEstimate">
+      <soap12:operation soapAction="http://localhost/PES/SequenceService/SequenceEstimate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequenceRun">
+      <soap12:operation soapAction="http://localhost/PES/SequenceService/SequenceRun" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Debug">
+      <soap12:operation soapAction="http://localhost/PES/SequenceService/Debug" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequenceAbort">
+      <soap12:operation soapAction="http://localhost/PES/SequenceService/SequenceAbort" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequenceGetInfo">
+      <soap12:operation soapAction="http://localhost/PES/SequenceService/SequenceGetInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequenceGetInfoInXml">
+      <soap12:operation soapAction="http://localhost/PES/SequenceService/SequenceGetInfoInXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLog">
+      <soap12:operation soapAction="http://localhost/PES/SequenceService/GetLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogInHtml">
+      <soap12:operation soapAction="http://localhost/PES/SequenceService/GetLogInHtml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TaskComplete">
+      <soap12:operation soapAction="http://localhost/PES/SequenceService/TaskComplete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SequenceService">
+    <wsdl:port name="SequenceServiceSoap" binding="tns:SequenceServiceSoap">
+      <soap:address location="http://srv08/Services/PES/SequenceService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SequenceServiceSoap12" binding="tns:SequenceServiceSoap12">
+      <soap12:address location="http://srv08/Services/PES/SequenceService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

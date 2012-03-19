@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e8d32cba-0cf7-4fb2-90ea-8995420f2c2a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.4.1/ResourceBase/ResourceBaseService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ResourceBaseService.disco" MetadataType="Disco" ID="1b531dff-ce45-456c-9dbb-8c1af79204fb" SourceId="1" SourceUrl="http://192.168.4.1/ResourceBase/ResourceBaseService.svc?disco" />
+    <MetadataFile FileName="ResourceBaseService.xsd" MetadataType="Schema" ID="753dff16-81a5-441d-a6f4-70e686a7a913" SourceId="1" SourceUrl="http://192.168.4.1/ResourceBase/ResourceBaseService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ResourceBaseService1.xsd" MetadataType="Schema" ID="d1b186d5-6564-4df9-93eb-a899dab74a4a" SourceId="1" SourceUrl="http://192.168.4.1/ResourceBase/ResourceBaseService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ResourceBaseService.wsdl" MetadataType="Wsdl" ID="76249184-2cb3-463c-a25d-f8363ec71343" SourceId="1" SourceUrl="http://192.168.4.1/ResourceBase/ResourceBaseService.svc?wsdl" />
+    <MetadataFile FileName="ResourceBaseService2.xsd" MetadataType="Schema" ID="f730f3a0-4172-465d-b1fa-fd40c7898969" SourceId="1" SourceUrl="http://192.168.4.1/ResourceBase/ResourceBaseService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ResourceBaseService3.xsd" MetadataType="Schema" ID="9338a61b-715a-422e-95dd-00c322ae1653" SourceId="1" SourceUrl="http://192.168.4.1/ResourceBase/ResourceBaseService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

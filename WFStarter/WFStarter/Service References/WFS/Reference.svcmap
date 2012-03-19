@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cc063ec6-74d0-4df3-b245-fc9a4b08d3a7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://srv08:81/FlowSystemService/FlowSystemService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FlowSystemService.xsd" MetadataType="Schema" ID="6d734554-f07f-4a57-a207-08106435f2da" SourceId="1" SourceUrl="http://srv08:81/FlowSystemService/FlowSystemService.svc?xsd=xsd2" />
+    <MetadataFile FileName="FlowSystemService.wsdl" MetadataType="Wsdl" ID="470b1038-46a8-49e2-82fd-31dcc4e9e176" SourceId="1" SourceUrl="http://srv08:81/FlowSystemService/FlowSystemService.svc?wsdl" />
+    <MetadataFile FileName="FlowSystemService1.xsd" MetadataType="Schema" ID="e899a84a-6e3a-42f7-8f17-8463716adc85" SourceId="1" SourceUrl="http://srv08:81/FlowSystemService/FlowSystemService.svc?xsd=xsd1" />
+    <MetadataFile FileName="FlowSystemService.disco" MetadataType="Disco" ID="b67c4fbc-4810-4c7d-85c0-8b5ad2b16efa" SourceId="1" SourceUrl="http://srv08:81/FlowSystemService/FlowSystemService.svc?disco" />
+    <MetadataFile FileName="FlowSystemService2.xsd" MetadataType="Schema" ID="ed8cc10e-a627-44d4-a480-ccfdd1a9238f" SourceId="1" SourceUrl="http://srv08:81/FlowSystemService/FlowSystemService.svc?xsd=xsd3" />
+    <MetadataFile FileName="FlowSystemService3.xsd" MetadataType="Schema" ID="8afd30f0-8cad-495b-bd50-582d58148201" SourceId="1" SourceUrl="http://srv08:81/FlowSystemService/FlowSystemService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

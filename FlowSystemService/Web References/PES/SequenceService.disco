@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://srv08/Services/PES/SequenceService.asmx?wsdl" docRef="http://srv08/Services/PES/SequenceService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://srv08/Services/PES/SequenceService.asmx" xmlns:q1="http://localhost/PES/SequenceService" binding="q1:SequenceServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://srv08/Services/PES/SequenceService.asmx" xmlns:q2="http://localhost/PES/SequenceService" binding="q2:SequenceServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

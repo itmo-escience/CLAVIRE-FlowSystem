@@ -1,0 +1,12 @@
+﻿require file1;
+
+flow{
+
+step Step1 as SEMP.zindo{
+
+	A = 3;
+
+	run(xyz_molecule = file1)
+
+}
+}

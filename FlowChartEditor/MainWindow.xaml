@@ -1,0 +1,39 @@
+﻿<Window x:Class="FlowChartEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="536">
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="Open" Executed="OpenExecuted"></CommandBinding>
+        <CommandBinding Command="Refresh" Executed="UpdateExected"></CommandBinding>
+    </Window.CommandBindings>
+        
+    
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem  Header="File">
+                <MenuItem  Header="Open" Command="Open"/>
+                <MenuItem  Header="Update chart" Command="Refresh"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Name="grid1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="100*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="codeTextBox" FontFamily="Consolas" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
+            <GridSplitter Grid.Column="1" Width="4" VerticalAlignment="Stretch" ResizeBehavior="PreviousAndNext"/>
+            <Image Name="chartImage" Grid.Column="2" Stretch="Uniform" />
+            <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="4" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext"/>
+            <TextBox Name="logTextBox" Grid.Row="2" Grid.ColumnSpan="3" FontFamily="Consolas" VerticalScrollBarVisibility="Auto" IsReadOnly="True" />
+        </Grid>
+    </DockPanel>
+</Window>

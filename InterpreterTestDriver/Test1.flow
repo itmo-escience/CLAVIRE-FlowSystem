@@ -1,0 +1,10 @@
+﻿require file1, file2;
+
+flow  
+{  	
+	step Step1 as SEMP.zindo(xyz_molecule = file1);
+
+	step Step2 after Step1 as SEMP.zindo (xyz_molecule = Step1.Result.outs["f.out"]);
+
+	step Step3 after Step2, Step1 as SEMP.zindo ( xyz_molecule = file2 ); 	
+}

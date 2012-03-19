@@ -1,0 +1,9 @@
+﻿~step A runs P()
+
+~step CuncurrentLaunch runs SXDOPPD //ggg
+(
+	a <- A.out
+)
+post code ruby
+	lambda {|ctx| afasd}
+code end

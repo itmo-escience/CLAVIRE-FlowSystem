@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2B297C68-03A2-4BBB-A741-A29E85C9C32A}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EasyFlowParser.Silverlight</RootNamespace>
+    <AssemblyName>EasyFlow.Silverlight</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Libs\Silverlight\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Libs\Silverlight\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Libs\Silverlight\EasyFlow.Silverlight.XML</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <DocumentationFile>..\..\Libs\Silverlight\EasyFlow.Silverlight.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <DocumentationFile>..\..\Libs\Silverlight\EasyFlow.Silverlight.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime.Silverlight">
+      <HintPath>..\..\Libs\Silverlight\Antlr3.Runtime.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="Easis.Common.Silverlight">
+      <HintPath>..\..\Libs\Silverlight\Easis.Common.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="NLog.Silverlight">
+      <HintPath>..\..\Libs\Silverlight\NLog.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="SilverlightCompat">
+      <HintPath>..\..\Libs\Silverlight\SilverlightCompat.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\EasyFlowParser.Desktop\Exceptions\EasyFlowException.cs">
+      <Link>Exceptions\EasyFlowException.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Exceptions\ParserException.cs">
+      <Link>Exceptions\ParserException.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\BlockBase.cs">
+      <Link>Model\BlockBase.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\CodeSection.cs">
+      <Link>Model\CodeSection.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Collections\BlockCollection.cs">
+      <Link>Model\Collections\BlockCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Collections\ExpressionCollection.cs">
+      <Link>Model\Collections\ExpressionCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Collections\FileRequirementCollection.cs">
+      <Link>Model\Collections\FileRequirementCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Collections\NamedParameterCollection.cs">
+      <Link>Model\Collections\NamedParameterCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Collections\ScopeCollection.cs">
+      <Link>Model\Collections\ScopeCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Common\CompoundName.cs">
+      <Link>Model\Common\CompoundName.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Common\IParsedObject.cs">
+      <Link>Model\Common\IParsedObject.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Common\ParsedCollection.cs">
+      <Link>Model\Common\ParsedCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Common\ParsedObject.cs">
+      <Link>Model\Common\ParsedObject.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Common\ParsedOwnedCollection.cs">
+      <Link>Model\Common\ParsedOwnedCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Common\TextPosition.cs">
+      <Link>Model\Common\TextPosition.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Common\TextRange.cs">
+      <Link>Model\Common\TextRange.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\CompoundVarIdentifier.cs">
+      <Link>Model\CompoundVarIdentifier.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\ArithmeticOperatorExpression.cs">
+      <Link>Model\Expressions\ArithmeticOperatorExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\BinaryOpeartorExpression.cs">
+      <Link>Model\Expressions\BinaryOpeartorExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\BoolValue.cs">
+      <Link>Model\Expressions\BoolValue.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\CompoundIdentitfierExpression.cs">
+      <Link>Model\Expressions\CompoundIdentitfierExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\ConstHolder.cs">
+      <Link>Model\Expressions\ConstHolder.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\ConstValue.cs">
+      <Link>Model\Expressions\ConstValue.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\DataType.cs">
+      <Link>Model\Expressions\DataType.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\DoubleValue.cs">
+      <Link>Model\Expressions\DoubleValue.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\Expression.cs">
+      <Link>Model\Expressions\Expression.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\ExpressionExtensions.cs">
+      <Link>Model\Expressions\ExpressionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\FileValue.cs">
+      <Link>Model\Expressions\FileValue.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\HashValue.cs">
+      <Link>Model\Expressions\HashValue.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\IEvaluatable.cs">
+      <Link>Model\Expressions\IEvaluatable.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\IEvaluationContext.cs">
+      <Link>Model\Expressions\IEvaluationContext.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\IntValue.cs">
+      <Link>Model\Expressions\IntValue.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\IValueGetter.cs">
+      <Link>Model\Expressions\IValueGetter.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\IValueGetterEcx.cs">
+      <Link>Model\Expressions\IValueGetterEcx.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\IValueSetter.cs">
+      <Link>Model\Expressions\IValueSetter.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\IValueSetterEcx.cs">
+      <Link>Model\Expressions\IValueSetterEcx.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\ListValue.cs">
+      <Link>Model\Expressions\ListValue.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\LiteralExpression.cs">
+      <Link>Model\Expressions\LiteralExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\PlusOperatorExpression.cs">
+      <Link>Model\Expressions\PlusOperatorExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\StringValue.cs">
+      <Link>Model\Expressions\StringValue.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\StructureValue.cs">
+      <Link>Model\Expressions\StructureValue.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\UndefinedValue.cs">
+      <Link>Model\Expressions\UndefinedValue.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Expressions\ValueBase.cs">
+      <Link>Model\Expressions\ValueBase.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\FileDescriptor.cs">
+      <Link>Model\FileDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\FileRequirement.cs">
+      <Link>Model\FileRequirement.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Flow.cs">
+      <Link>Model\Flow.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\ForBlock.cs">
+      <Link>Model\ForBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Identifier.cs">
+      <Link>Model\Identifier.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\IdentifierTable.cs">
+      <Link>Model\IdentifierTable.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\IfBlock.cs">
+      <Link>Model\IfBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Indexer.cs">
+      <Link>Model\Indexer.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\NamedParameter.cs">
+      <Link>Model\NamedParameter.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\RunObjectName.cs">
+      <Link>Model\RunObjectName.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\RunParameters.cs">
+      <Link>Model\RunParameters.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Scope.cs">
+      <Link>Model\Scope.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\ScopeType.cs">
+      <Link>Model\ScopeType.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\ScriptModel.cs">
+      <Link>Model\ScriptModel.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\SimpleVarIdentifier.cs">
+      <Link>Model\SimpleVarIdentifier.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\StepBlock.cs">
+      <Link>Model\StepBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\StringCompoundName.cs">
+      <Link>Model\StringCompoundName.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Transformation.cs">
+      <Link>Model\Transformation.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\Trigger.cs">
+      <Link>Model\Trigger.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\TriggerActionDef.cs">
+      <Link>Model\TriggerActionDef.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\TriggerEventDef.cs">
+      <Link>Model\TriggerEventDef.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Model\TriggerEventExpression.cs">
+      <Link>Model\TriggerEventExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Parsing\ANTLR\EasyFlowLexer.cs">
+      <Link>Parsing\ANTLR\EasyFlowLexer.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Parsing\ANTLR\EasyFlowParser.cs">
+      <Link>Parsing\ANTLR\EasyFlowParser.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Parsing\EasyFlowLexer.cs">
+      <Link>Parsing\EasyFlowLexer.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Parsing\EasyFlowParser.cs">
+      <Link>Parsing\EasyFlowParser.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Parsing\EasyFlowParserHelper.cs">
+      <Link>Parsing\EasyFlowParserHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Parsing\ParserContext.cs">
+      <Link>Parsing\ParserContext.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Parsing\ParseResult.cs">
+      <Link>Parsing\ParseResult.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Parsing\ParserMessage.cs">
+      <Link>Parsing\ParserMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Parsing\ParserMessageCollection.cs">
+      <Link>Parsing\ParserMessageCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Parsing\ParserSettings.cs">
+      <Link>Parsing\ParserSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Parsing\ScriptParser.cs">
+      <Link>Parsing\ScriptParser.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Utils\CollectionIndexedProperty.cs">
+      <Link>Utils\CollectionIndexedProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Utils\DictionaryIndexedProperty.cs">
+      <Link>Utils\DictionaryIndexedProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Utils\DynamicallyIndexedProperty.cs">
+      <Link>Utils\DynamicallyIndexedProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Utils\IndexedProperty.cs">
+      <Link>Utils\IndexedProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Utils\IPropertyChangedNotifiable.cs">
+      <Link>Utils\IPropertyChangedNotifiable.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Utils\IPropertyChangingNotifiable.cs">
+      <Link>Utils\IPropertyChangingNotifiable.cs</Link>
+    </Compile>
+    <Compile Include="..\EasyFlowParser.Desktop\Utils\ListIndexedProperty.cs">
+      <Link>Utils\ListIndexedProperty.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\EasyFlowParser.Desktop\Model.cd">
+      <Link>Model.cd</Link>
+    </None>
+    <None Include="..\EasyFlowParser.Desktop\Parsing\ANTLR\.project">
+      <Link>Parsing\ANTLR\.project</Link>
+    </None>
+    <None Include="..\EasyFlowParser.Desktop\Parsing\ANTLR\EasyFlow.g">
+      <Link>Parsing\ANTLR\EasyFlow.g</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+      <UserProperties ProjectLinkReference="6a61b835-2584-4386-b305-2a5da87ad6d6" ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

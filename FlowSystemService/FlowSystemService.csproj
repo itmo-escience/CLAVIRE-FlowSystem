@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C44972A4-01A1-4896-9931-E088BF557340}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Easis.Wfs.FlowSystemService</RootNamespace>
+    <AssemblyName>FlowSystemService</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\FlowSystemService.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>bin\FlowSystemService.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="clrzmq">
+      <HintPath>..\..\Libs\clrzmq.dll</HintPath>
+    </Reference>
+    <Reference Include="clrzmq-ext">
+      <HintPath>..\..\Libs\clrzmq-ext.dll</HintPath>
+    </Reference>
+    <Reference Include="Eventing">
+      <HintPath>..\..\Libs\Eventing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson, Version=1.4.4369.36872, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\x64\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Net35">
+      <HintPath>..\..\Libs\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FlowSystemService.svc" />
+    <Content Include="packages.config" />
+    <None Include="Properties\DataSources\Easis.Common.DataContracts.JobDescription.datasource" />
+    <None Include="Properties\DataSources\Easis.Common.DataContracts.ResourceDescription.datasource" />
+    <None Include="Properties\DataSources\Eventing.Subscription.datasource" />
+    <None Include="Properties\DataSources\Eventing.SubscriptionId.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\EventingService\EventingBrokerService.wsdl" />
+    <None Include="Service References\EventingService\EventingBrokerService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventingService\EventingBrokerService1.wsdl" />
+    <None Include="Service References\EventingService\EventingBrokerService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventingService\EventingBrokerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExecutionService\Easis.Wfs.FlowSystemService.ExecutionService.BriefTaskInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExecutionService\Easis.Wfs.FlowSystemService.ExecutionService.Task.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExecutionService\ExecutionBrokerService.wsdl" />
+    <None Include="Service References\ExecutionService\ExecutionBrokerService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExecutionService\ExecutionBrokerService1.wsdl" />
+    <None Include="Service References\ExecutionService\ExecutionBrokerService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExecutionService\ExecutionBrokerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExecutionService\ExecutionBrokerService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonitoringFacade\MonitoringFacade.wsdl" />
+    <None Include="Service References\MonitoringFacade\MonitoringFacade.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonitoringFacade\MonitoringFacade1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonitoringFacade\MonitoringFacade2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonitoringFacade\MonitoringFacade3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonitoringFacade\MonitoringFacade4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ResourceBaseService\Easis.Wfs.FlowSystemService.ResourceBaseService.Resource.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ResourceBaseService\Easis.Wfs.FlowSystemService.ResourceBaseService.ResourceNode.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ResourceBaseService\ResourceBaseService.wsdl" />
+    <None Include="Service References\ResourceBaseService\ResourceBaseService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ResourceBaseService\ResourceBaseService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ResourceBaseService\ResourceBaseService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ResourceBaseService\ResourceBaseService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StorageService\Easis.Wfs.FlowSystemService.StorageService.DataEntry.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\StorageService\StorageService1.wsdl" />
+    <None Include="Service References\StorageService\StorageService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StorageService\StorageService51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StorageService\StorageService52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StorageService\StorageService53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StorageService\StorageService54.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\PES\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\PES\SequenceEstimateResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PES\SequenceGetInfoResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PES\SequenceService.disco" />
+    <None Include="Service References\EventingService\EventingBrokerService.disco" />
+    <None Include="Service References\EventingService\configuration91.svcinfo" />
+    <None Include="Service References\EventingService\configuration.svcinfo" />
+    <None Include="Service References\EventingService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\MonitoringFacade\configuration91.svcinfo" />
+    <None Include="Service References\MonitoringFacade\configuration.svcinfo" />
+    <None Include="Service References\MonitoringFacade\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ExecutionService\configuration91.svcinfo" />
+    <None Include="Service References\ExecutionService\configuration.svcinfo" />
+    <None Include="Service References\ExecutionService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\StorageService\configuration91.svcinfo" />
+    <None Include="Service References\StorageService\configuration.svcinfo" />
+    <None Include="Service References\StorageService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\StorageService\StorageService1.disco" />
+    <None Include="Service References\MonitoringFacade\MonitoringFacade.disco" />
+    <None Include="Service References\ExecutionService\ExecutionBrokerService.disco" />
+    <None Include="Service References\ResourceBaseService\ResourceBaseService.disco" />
+    <None Include="Service References\ResourceBaseService\configuration91.svcinfo" />
+    <None Include="Service References\ResourceBaseService\configuration.svcinfo" />
+    <None Include="Service References\ResourceBaseService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="libzmq.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <None Include="Web References\PES\SequenceService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataContextExtractor.cs" />
+    <Compile Include="EventConverterBase.cs" />
+    <Compile Include="ExtEventListener.cs" />
+    <Compile Include="FlowSystemService.svc.cs">
+      <DependentUpon>FlowSystemService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="GuidGenerator.cs" />
+    <Compile Include="IFlowSystemService.cs" />
+    <Compile Include="InfrastructureLevel\Execution\DryExecutionStepStarter.cs" />
+    <Compile Include="InfrastructureLevel\Execution\ExecutionEventConverter.cs" />
+    <Compile Include="InfrastructureLevel\Execution\ExecutionStepStarter.cs" />
+    <Compile Include="InfrastructureLevel\LongRunning\DryRunLongRunningController.cs" />
+    <Compile Include="InfrastructureLevel\LongRunning\ZMQLongRunningController.cs" />
+    <Compile Include="InfrastructureLevel\Storage\DruRunStorage.cs" />
+    <Compile Include="InfrastructureLevel\Storage\FedorDataServiceClient.cs" />
+    <Compile Include="InfrastructureLevel\Storage\FedorStorage.cs" />
+    <Compile Include="InfrastructureLevel\Storage\StreamHelper.cs" />
+    <Compile Include="Service References\EventingService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ExecutionService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MonitoringFacade\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ResourceBaseService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\StorageService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\IIdGenerator.cs" />
+    <Compile Include="Job.cs" />
+    <Compile Include="JobExecutor.cs" />
+    <Compile Include="JobResult.cs" />
+    <Compile Include="InfrastructureLevel\IdAccordanceDict.cs" />
+    <Compile Include="InfrastructureLevel\Pes\PESEventConverter.cs" />
+    <Compile Include="InfrastructureLevel\Pes\PesStepStarter.cs" />
+    <Compile Include="InfrastructureLevel\WFStateUpdateEvent.cs" />
+    <Compile Include="InfrastructureLevel\XSD\SequenceRun.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleIdGenerator.cs" />
+    <Compile Include="Utils\Pair.cs" />
+    <Compile Include="Web References\PES\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLog.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="InfrastructureLevel\XSD\SequenceRun.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://srv08/Services/PES/SequenceService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PES\</RelPath>
+      <UpdateFromURL>http://srv08/Services/PES/SequenceService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>FlowSystemService_PES_SequenceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\EventingService\" />
+    <WCFMetadataStorage Include="Service References\ExecutionService\" />
+    <WCFMetadataStorage Include="Service References\MonitoringFacade\" />
+    <WCFMetadataStorage Include="Service References\ResourceBaseService\" />
+    <WCFMetadataStorage Include="Service References\StorageService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\DataContracts\DataContracts.csproj">
+      <Project>{21EBFA07-8242-41DE-9A5D-C4583344BB3B}</Project>
+      <Name>DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common.Desktop\Common.Desktop.csproj">
+      <Project>{FD2D188C-6EFB-48BA-8F8B-E0E4A9CD5F0C}</Project>
+      <Name>Common.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EasyFlowParser.Desktop\EasyFlowParser.Desktop.csproj">
+      <Project>{6A61B835-2584-4386-B305-2A5DA87AD6D6}</Project>
+      <Name>EasyFlowParser.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interpreter\Interpreter.csproj">
+      <Project>{086B15B9-DE2E-4A70-AF51-F33ACFF94CDA}</Project>
+      <Name>Interpreter</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+          <EnableWcfTestClientForSVCDefaultValue>True</EnableWcfTestClientForSVCDefaultValue>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <WebProjectOutputDir>$(OutDir)</WebProjectOutputDir>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

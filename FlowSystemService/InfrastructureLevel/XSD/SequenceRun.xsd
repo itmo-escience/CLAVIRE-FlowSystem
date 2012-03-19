@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.example.org/scenario" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.example.org/scenario">
+
+	<xsd:element name="sequenceRun" type="sequenceRunType"></xsd:element>
+
+	<xsd:complexType name="sequenceRunType">
+		<xsd:sequence>
+			<xsd:element name="step" minOccurs="1"
+    			maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="app" type="withNameType"
+    						maxOccurs="1" minOccurs="1">
+						</xsd:element>
+						<xsd:element name="method" type="withNameType"
+    						maxOccurs="1" minOccurs="0">
+						</xsd:element>
+						<xsd:element name="param" maxOccurs="unbounded"
+    						minOccurs="0">
+							<xsd:complexType>
+								<xsd:attribute name="name"
+    								type="xsd:string" use="required">
+								</xsd:attribute>
+								<xsd:attribute name="value"
+    								type="xsd:string" use="optional">
+								</xsd:attribute>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="in" type="inOutType"
+    						maxOccurs="unbounded" minOccurs="1">
+						</xsd:element>
+						<xsd:element name="out" type="inOutType"
+    						maxOccurs="unbounded" minOccurs="0">
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="order" type="xsd:unsignedLong" use="required">
+					</xsd:attribute>
+					<xsd:attribute name="mode" type="stepModeType" use="optional" default="Auto">
+					</xsd:attribute>
+					<xsd:attribute name="type"
+    					type="stepType" use="required">
+					</xsd:attribute>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:unsignedLong" use="required"></xsd:attribute>
+		<xsd:attribute name="timeLimit" type="xsd:unsignedLong" use="optional"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:simpleType name="stepModeType">
+		<!-- Restricting the values to a set of value using 'enumeration' -->
+		<xsd:restriction base = "xsd:string">
+			<xsd:enumeration value = "Auto"/>
+			<xsd:enumeration value = "Manual"/>			
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="stepType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="exec" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="withNameType">
+		<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="inOutType">
+		<xsd:attribute name="internalId" type="xsd:unsignedLong" use="required"></xsd:attribute>
+		<xsd:attribute name="storageId" type="xsd:string" use="optional"></xsd:attribute>
+		<xsd:attribute name="slotName" type="xsd:string" use="required"></xsd:attribute>
+		<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+	</xsd:complexType>
+</xsd:schema>

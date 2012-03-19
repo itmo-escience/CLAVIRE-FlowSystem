@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1E620619-BFBA-4C34-AA70-1898491B9418}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Common.Silverlight</RootNamespace>
+    <AssemblyName>Easis.Common.Silverlight</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Libs\Silverlight\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Libs\Silverlight\Easis.Common.Silverlight.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <DocumentationFile>..\..\Libs\Silverlight\Easis.Common.Silverlight.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <DocumentationFile>..\..\Libs\Silverlight\Easis.Common.Silverlight.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Common.Desktop\Collections\IOwnedCollection.cs">
+      <Link>Collections\IOwnedCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\Collections\ListCollection.cs">
+      <Link>Collections\ListCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\Collections\OwnedCollection.cs">
+      <Link>Collections\OwnedCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\Collections\SyncronizedBlockingQueue.cs">
+      <Link>Collections\SyncronizedBlockingQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\Collections\SyncronizedQueue.cs">
+      <Link>Collections\SyncronizedQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\Exceptions\InvalidFormatException.cs">
+      <Link>Exceptions\InvalidFormatException.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\Exceptions\KeyAlreadyExistsException.cs">
+      <Link>Exceptions\KeyAlreadyExistsException.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\Exceptions\ObjectNotFoundException.cs">
+      <Link>Exceptions\ObjectNotFoundException.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\ExtensionMethods.cs">
+      <Link>ExtensionMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\HashCode.cs">
+      <Link>HashCode.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\IdGenerators\GuidOidGenerator.cs">
+      <Link>IdGenerators\GuidOidGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\IdGenerators\IdGeneratorBase.cs">
+      <Link>IdGenerators\IdGeneratorBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\IdGenerators\IIdGenerator.cs">
+      <Link>IdGenerators\IIdGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\IdGenerators\IOidGenerator.cs">
+      <Link>IdGenerators\IOidGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\IdGenerators\LongIdGenerator.cs">
+      <Link>IdGenerators\LongIdGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\IdGenerators\LongOidGenerator.cs">
+      <Link>IdGenerators\LongOidGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\IdGenerators\OidGeneratorBase.cs">
+      <Link>IdGenerators\OidGeneratorBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\IdGenerators\StatelessOidGenerator.cs">
+      <Link>IdGenerators\StatelessOidGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\Common.Desktop\Pair.cs">
+      <Link>Pair.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+      <UserProperties ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" ProjectLinkReference="fd2d188c-6efb-48ba-8f8b-e0e4a9cd5f0c" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

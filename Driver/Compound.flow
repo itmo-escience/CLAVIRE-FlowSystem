@@ -1,0 +1,19 @@
+﻿require file1, file2;
+
+flow
+{	
+	step Step1 as Semp.zindo
+	(
+		InFile = file1
+	);
+	
+	step Step2 as Semp.zindo
+	(
+		xyz_molecule = Step1.result.zindo_output_file
+	);
+	
+	step Step3 after Step2, Step1 as Semp.zindo
+	(
+		InFile = file2
+	);
+}

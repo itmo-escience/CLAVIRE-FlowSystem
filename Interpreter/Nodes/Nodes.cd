@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Easis.Wfs.Interpreting.NodeBase">
+    <Position X="2.5" Y="0.5" Width="2.25" />
+    <Members>
+      <Field Name="_actionTriggers" Hidden="true" />
+      <Field Name="_block" Hidden="true" />
+      <Field Name="_children" Hidden="true" />
+      <Field Name="_eventsPauseBuffer" Hidden="true" />
+      <Field Name="_log" Hidden="true" />
+      <Field Name="_newSubscriptions" Hidden="true" />
+      <Field Name="_parents" Hidden="true" />
+      <Field Name="_state" Hidden="true" />
+      <Field Name="_stateBeforePause" Hidden="true" />
+      <Field Name="_syncRoot" Hidden="true" />
+      <Field Name="ACTION_HANDLE_ERROR" Hidden="true" />
+      <Field Name="ACTION_PAUSE" Hidden="true" />
+      <Field Name="ACTION_RESUME" Hidden="true" />
+      <Field Name="ACTION_START" Hidden="true" />
+      <Field Name="ACTION_STOP" Hidden="true" />
+      <Method Name="AddControllingDependency" Hidden="true" />
+      <Method Name="AddDependencyTrigger" Hidden="true" />
+      <Method Name="AddErrorHandlingDependency" Hidden="true" />
+      <Method Name="AddNodeChild" Hidden="true" />
+      <Method Name="AddNodeParent" Hidden="true" />
+      <Method Name="AddStartFinishDependency" Hidden="true" />
+      <Method Name="AssimilateEvent" Hidden="true" />
+      <Method Name="AssimilateEventToActions" Hidden="true" />
+      <Method Name="AssimilatePausedEvents" Hidden="true" />
+      <Method Name="CheckSubscriptions" Hidden="true" />
+      <Method Name="DependsOnNodeIndexes" Hidden="true" />
+      <Field Name="descriptionCache" Hidden="true" />
+      <Method Name="NodeBase" Hidden="true" />
+      <Method Name="SetParentChildConnection" Hidden="true" />
+      <Field Name="STATE_ERROR" Hidden="true" />
+      <Field Name="STATE_FINISHED" Hidden="true" />
+      <Field Name="STATE_INITIALIZE" Hidden="true" />
+      <Field Name="STATE_PAUSED" Hidden="true" />
+      <Field Name="STATE_STARTED" Hidden="true" />
+      <Field Name="STATE_STOPPED" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Class Name="Easis.Wfs.Interpreting.NodeBase.EventState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Nodes\NodeBase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Easis.Wfs.Interpreting.NodeBase.EventStateTable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Nodes\NodeBase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Easis.Wfs.Interpreting.NodeBase.Subscription" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Nodes\NodeBase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAhzIEAEUgAAycaEIBAECAIAEAEKSAFAIAEoBsgJSAU=</HashCode>
+      <FileName>Nodes\NodeBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Easis.Wfs.Interpreting.StepNode">
+    <Position X="5.25" Y="3.25" Width="1.75" />
+    <Members>
+      <Field Name="_info" Hidden="true" />
+      <Field Name="_params" Hidden="true" />
+      <Field Name="_results" Hidden="true" />
+      <Field Name="ACTION_SET_RUN_INFO" Hidden="true" />
+      <Field Name="ACTION_SET_RUN_RESULTS" Hidden="true" />
+      <Field Name="block" Hidden="true" />
+      <Field Name="RUN_RESULT_VARIABLE_NAME" Hidden="true" />
+      <Field Name="STATE_POST_SECTION" Hidden="true" />
+      <Field Name="STATE_PRE_SECTION" Hidden="true" />
+      <Field Name="STATE_RUN_FINISH" Hidden="true" />
+      <Field Name="STATE_RUN_START" Hidden="true" />
+      <Field Name="STATE_WAIT_RESULTS" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AABAAADAAgAAAgIEAAAAAAwAAAAAABQQAEAiAApUDAQ=</HashCode>
+      <FileName>Nodes\StepNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Easis.Wfs.Interpreting.Nodes.SweepStepNode">
+    <Position X="7.25" Y="3.75" Width="1.5" />
+    <Members>
+      <Field Name="ACTION_SWEEP_FINISH" Hidden="true" />
+      <Field Name="STATE_SWEEPING" Hidden="true" />
+      <Field Name="STATE_SWEEPING_FINISHED" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAQAAAAAAAAAAAAAAAAAAAAAAAAgEAEY=</HashCode>
+      <FileName>Nodes\SweepStepNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Easis.Wfs.Interpreting.FlowSourceNode">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAACAQ=</HashCode>
+      <FileName>Nodes\FlowSourceNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Easis.Wfs.Interpreting.FlowSinkNode">
+    <Position X="7.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAIEAAAAAAAAAAAAAAAAAAAAAAAACAQ=</HashCode>
+      <FileName>Nodes\FlowSinkNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

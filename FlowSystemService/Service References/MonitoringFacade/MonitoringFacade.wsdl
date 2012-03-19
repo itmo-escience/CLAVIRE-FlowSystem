@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MonitoringFacade" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.4.1/Monitoring/MonitoringFacade.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.4.1/Monitoring/MonitoringFacade.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.4.1/Monitoring/MonitoringFacade.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts" />
+      <xsd:import schemaLocation="http://192.168.4.1/Monitoring/MonitoringFacade.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://192.168.4.1/Monitoring/MonitoringFacade.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/MongoDB.Bson" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMonitoringService_GetActualDataInJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActualDataInJson" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_GetActualDataInJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActualDataInJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_GetJobInfoInJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobInfoInJson" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_GetJobInfoInJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobInfoInJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_GetResourcesInfoInJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetResourcesInfoInJson" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_GetResourcesInfoInJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResourcesInfoInJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_GetResourcesInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetResourcesInfo" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_GetResourcesInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResourcesInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_GetJobInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobInfo" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_GetJobInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_PutJobResultInBson_InputMessage">
+    <wsdl:part name="parameters" element="tns:PutJobResultInBson" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_PutJobResultInBson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PutJobResultInBsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_PutJobResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:PutJobResult" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_PutJobResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PutJobResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_GetHistoryInJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistoryInJson" />
+  </wsdl:message>
+  <wsdl:message name="IMonitoringService_GetHistoryInJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistoryInJsonResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMonitoringService">
+    <wsdl:operation name="GetActualDataInJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitoringService/GetActualDataInJson" message="tns:IMonitoringService_GetActualDataInJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitoringService/GetActualDataInJsonResponse" message="tns:IMonitoringService_GetActualDataInJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobInfoInJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitoringService/GetJobInfoInJson" message="tns:IMonitoringService_GetJobInfoInJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitoringService/GetJobInfoInJsonResponse" message="tns:IMonitoringService_GetJobInfoInJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResourcesInfoInJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitoringService/GetResourcesInfoInJson" message="tns:IMonitoringService_GetResourcesInfoInJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitoringService/GetResourcesInfoInJsonResponse" message="tns:IMonitoringService_GetResourcesInfoInJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResourcesInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitoringService/GetResourcesInfo" message="tns:IMonitoringService_GetResourcesInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitoringService/GetResourcesInfoResponse" message="tns:IMonitoringService_GetResourcesInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitoringService/GetJobInfo" message="tns:IMonitoringService_GetJobInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitoringService/GetJobInfoResponse" message="tns:IMonitoringService_GetJobInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PutJobResultInBson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitoringService/PutJobResultInBson" message="tns:IMonitoringService_PutJobResultInBson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitoringService/PutJobResultInBsonResponse" message="tns:IMonitoringService_PutJobResultInBson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PutJobResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitoringService/PutJobResult" message="tns:IMonitoringService_PutJobResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitoringService/PutJobResultResponse" message="tns:IMonitoringService_PutJobResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoryInJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMonitoringService/GetHistoryInJson" message="tns:IMonitoringService_GetHistoryInJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMonitoringService/GetHistoryInJsonResponse" message="tns:IMonitoringService_GetHistoryInJson_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IMonitoringService" type="tns:IMonitoringService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetActualDataInJson">
+      <soap:operation soapAction="http://tempuri.org/IMonitoringService/GetActualDataInJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobInfoInJson">
+      <soap:operation soapAction="http://tempuri.org/IMonitoringService/GetJobInfoInJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResourcesInfoInJson">
+      <soap:operation soapAction="http://tempuri.org/IMonitoringService/GetResourcesInfoInJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResourcesInfo">
+      <soap:operation soapAction="http://tempuri.org/IMonitoringService/GetResourcesInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobInfo">
+      <soap:operation soapAction="http://tempuri.org/IMonitoringService/GetJobInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutJobResultInBson">
+      <soap:operation soapAction="http://tempuri.org/IMonitoringService/PutJobResultInBson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutJobResult">
+      <soap:operation soapAction="http://tempuri.org/IMonitoringService/PutJobResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoryInJson">
+      <soap:operation soapAction="http://tempuri.org/IMonitoringService/GetHistoryInJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MonitoringFacade">
+    <wsdl:port name="BasicHttpBinding_IMonitoringService" binding="tns:BasicHttpBinding_IMonitoringService">
+      <soap:address location="http://192.168.4.1/Monitoring/MonitoringFacade.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
