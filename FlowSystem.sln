@@ -19,19 +19,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{4ECD9A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Silverlight", "Common.Silverlight\Common.Silverlight.csproj", "{1E620619-BFBA-4C34-AA70-1898491B9418}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContracts", "..\Common\DataContracts\DataContracts.csproj", "{21EBFA07-8242-41DE-9A5D-C4583344BB3B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyFlowParser.Desktop", "EasyFlowParser.Desktop\EasyFlowParser.Desktop.csproj", "{6A61B835-2584-4386-B305-2A5DA87AD6D6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EasyFlowParser", "EasyFlowParser", "{65694811-8351-4C09-9674-FBB8459D38D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyFlowParser.Silverlight", "EasyFlowParser.Silverlight\EasyFlowParser.Silverlight.csproj", "{2B297C68-03A2-4BBB-A741-A29E85C9C32A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContracts", "DataContracts\DataContracts.csproj", "{21EBFA07-8242-41DE-9A5D-C4583344BB3B}"
+EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = FlowSystem.vsmdi
 	EndGlobalSection
@@ -154,20 +150,6 @@ Global
 		{1E620619-BFBA-4C34-AA70-1898491B9418}.Release|x64.ActiveCfg = Release|x64
 		{1E620619-BFBA-4C34-AA70-1898491B9418}.Release|x64.Build.0 = Release|x64
 		{1E620619-BFBA-4C34-AA70-1898491B9418}.Release|x86.ActiveCfg = Release|Any CPU
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|Mixed Platforms.Build.0 = Debug|x64
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|x64.ActiveCfg = Debug|x64
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|x64.Build.0 = Debug|x64
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|x64.ActiveCfg = Release|x64
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|x64.Build.0 = Release|x64
-		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|x86.ActiveCfg = Release|Any CPU
 		{6A61B835-2584-4386-B305-2A5DA87AD6D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6A61B835-2584-4386-B305-2A5DA87AD6D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A61B835-2584-4386-B305-2A5DA87AD6D6}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
@@ -200,6 +182,22 @@ Global
 		{2B297C68-03A2-4BBB-A741-A29E85C9C32A}.Release|x64.Build.0 = Release|x64
 		{2B297C68-03A2-4BBB-A741-A29E85C9C32A}.Release|x86.ActiveCfg = Release|x86
 		{2B297C68-03A2-4BBB-A741-A29E85C9C32A}.Release|x86.Build.0 = Release|x86
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|x64.ActiveCfg = Debug|x64
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|x64.Build.0 = Debug|x64
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|x86.ActiveCfg = Debug|x86
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Debug|x86.Build.0 = Debug|x86
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|Mixed Platforms.Build.0 = Release|x64
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|x64.ActiveCfg = Release|x64
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|x64.Build.0 = Release|x64
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|x86.ActiveCfg = Release|x86
+		{21EBFA07-8242-41DE-9A5D-C4583344BB3B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -209,5 +207,9 @@ Global
 		{1E620619-BFBA-4C34-AA70-1898491B9418} = {4ECD9AF7-85A8-470F-A967-D34DDE64869F}
 		{6A61B835-2584-4386-B305-2A5DA87AD6D6} = {65694811-8351-4C09-9674-FBB8459D38D4}
 		{2B297C68-03A2-4BBB-A741-A29E85C9C32A} = {65694811-8351-4C09-9674-FBB8459D38D4}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal

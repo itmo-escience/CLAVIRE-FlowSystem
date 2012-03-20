@@ -90,13 +90,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Eventing">
-      <HintPath>..\..\Libs\Eventing.dll</HintPath>
-    </Reference>
-    <Reference Include="Interpreter">
-      <HintPath>..\Interpreter\bin\Debug\Interpreter.dll</HintPath>
+      <HintPath>..\Libs\Eventing.dll</HintPath>
     </Reference>
     <Reference Include="NLog">
-      <HintPath>..\..\Libs\NLog.dll</HintPath>
+      <HintPath>..\Libs\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -115,6 +112,10 @@
     <ProjectReference Include="..\FlowSystemService\FlowSystemService.csproj">
       <Project>{C44972A4-01A1-4896-9931-E088BF557340}</Project>
       <Name>FlowSystemService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interpreter\Interpreter.csproj">
+      <Project>{086B15B9-DE2E-4A70-AF51-F33ACFF94CDA}</Project>
+      <Name>Interpreter</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

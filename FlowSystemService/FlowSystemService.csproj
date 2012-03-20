@@ -51,25 +51,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="clrzmq">
-      <HintPath>..\..\Libs\clrzmq.dll</HintPath>
+      <HintPath>..\Libs\clrzmq.dll</HintPath>
     </Reference>
     <Reference Include="clrzmq-ext">
-      <HintPath>..\..\Libs\clrzmq-ext.dll</HintPath>
+      <HintPath>..\Libs\clrzmq-ext.dll</HintPath>
     </Reference>
     <Reference Include="Eventing">
-      <HintPath>..\..\Libs\Eventing.dll</HintPath>
+      <HintPath>..\Libs\Eventing.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MongoDB.Bson, Version=1.4.4369.36872, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\x64\MongoDB.Bson.dll</HintPath>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\Libs\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json.Net35">
-      <HintPath>..\..\Libs\Newtonsoft.Json.Net35.dll</HintPath>
+      <HintPath>..\Libs\Newtonsoft.Json.Net35.dll</HintPath>
     </Reference>
-    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\NLog.dll</HintPath>
+    <Reference Include="NLog">
+      <HintPath>..\Libs\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -351,13 +349,13 @@
     <WCFMetadataStorage Include="Service References\StorageService\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\DataContracts\DataContracts.csproj">
-      <Project>{21EBFA07-8242-41DE-9A5D-C4583344BB3B}</Project>
-      <Name>DataContracts</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Common.Desktop\Common.Desktop.csproj">
       <Project>{FD2D188C-6EFB-48BA-8F8B-E0E4A9CD5F0C}</Project>
       <Name>Common.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataContracts\DataContracts.csproj">
+      <Project>{21EBFA07-8242-41DE-9A5D-C4583344BB3B}</Project>
+      <Name>DataContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\EasyFlowParser.Desktop\EasyFlowParser.Desktop.csproj">
       <Project>{6A61B835-2584-4386-B305-2A5DA87AD6D6}</Project>

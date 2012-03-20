@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SilverlightCompat</name>
+    </assembly>
+    <members>
+        <member name="T:System.ICloneable">
+            <summary>
+             Interface for classes allowing cloning.
+            </summary>
+        </member>
+        <member name="M:System.ICloneable.Clone">
+            <summary>
+            Returns clone object of the current object.
+            </summary>
+            <returns>Object clone.</returns>
+        </member>
+        <member name="T:System.Collections.Hashtable">
+            <summary>
+            Hashtable class based on Dictionary of objects.
+            </summary>
+        </member>
+        <member name="M:System.Collections.Hashtable.#ctor">
+            <summary>
+            Initializes a new instance of Hashtable.
+            </summary>
+        </member>
+        <member name="M:System.Collections.Hashtable.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of Hashtable.
+            </summary>
+            <param name="capacity">Initial capacity.</param>
+        </member>
+        <member name="P:System.Collections.Hashtable.IsReadOnly">
+            <summary>
+            Gets whether the hashtable is ReadOnly.
+            </summary>
+        </member>
+        <member name="P:System.Collections.Hashtable.IsSynchronized">
+            <summary>
+            Gets whether the hashtable is synchronized.
+            </summary>
+        </member>
+        <member name="P:System.Collections.Hashtable.IsFixedSize">
+            <summary>
+            Gets whether the hashtable has fixed size.
+            </summary>
+        </member>
+        <member name="P:System.Collections.Hashtable.SyncRoot">
+            <summary>
+            Gets syncroot for the hashtable.
+            </summary>
+        </member>
+        <member name="T:System.Collections.ArrayList">
+            <summary>
+             ArrayList class based on list of objects.
+            </summary>
+        </member>
+        <member name="M:System.Collections.ArrayList.#ctor(System.Int32)">
+            <summary>
+             Initializes a new instance of ArrayList.
+            </summary>
+            <param name="capacity">Initial capacity.</param>
+        </member>
+        <member name="M:System.Collections.ArrayList.#ctor">
+            <summary>
+            Initializes a new instance of ArrayList.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.Serialization.NonSerializedAttribute">
+            <summary>
+             Attribute for non-serialized fields.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.Serialization.SerializableAttribute">
+            <summary>
+            Serializable attribute.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.Serialization.SerializationInfo">
+            <summary>
+            Serialization info class.
+            </summary>
+        </member>
+    </members>
+</doc>

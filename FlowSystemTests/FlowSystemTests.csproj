@@ -67,15 +67,13 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eventing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\Eventing.dll</HintPath>
+    <Reference Include="Eventing">
+      <HintPath>..\Libs\Eventing.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\NLog.dll</HintPath>
+    <Reference Include="NLog">
+      <HintPath>..\Libs\NLog.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -117,7 +115,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\DataContracts\DataContracts.csproj">
+    <ProjectReference Include="..\DataContracts\DataContracts.csproj">
       <Project>{21EBFA07-8242-41DE-9A5D-C4583344BB3B}</Project>
       <Name>DataContracts</Name>
     </ProjectReference>
