@@ -30,7 +30,7 @@ namespace FlowSystemTests.FlowSystemService
             string script = @"
 $log.Trace('try it')
 S = ''
-S = ""#{step1.Keys.Count}""
+S = ""#{step1.keys.Count}""
 {'int' => 6, 'str' => S, 'list' => [4,5], 'hash' => {5 => 7}}
 ";
 
