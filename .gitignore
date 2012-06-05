@@ -9,3 +9,5 @@ DataContracts/Properties/.svn/*
 *.suo
 FlowSystemService/bin/*
 */bin/*
+
+*.user

@@ -69,10 +69,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MongoDB.Bson">
-      <HintPath>..\..\Libs\x64\MongoDB.Bson.dll</HintPath>
+      <HintPath>..\Libs\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>..\..\Libs\x64\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\Libs\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
