@@ -19,11 +19,13 @@ namespace Easis.Wfs.FlowSystemService.Utils
         public F First
         {
             get { return _first; }
+            set { _first = value; }
         }
 
         public S Second
         {
             get { return _second; }
+            set { _second = value; }
         }
 
         //public override bool Equals(object obj)

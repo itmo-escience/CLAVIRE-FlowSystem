@@ -128,6 +128,23 @@ namespace Easis.Wfs.Interpreting.Utils
             return base.Dequeue();
         }
 
+        /// <summary>
+        /// throws TimeoutException
+        /// </summary>
+        /// <param name="timeout"></param>
+        /// <returns></returns>
+        public T Dequeue(TimeSpan timeout)
+        {
+            if (_sem.Wait(timeout))
+            {
+                return base.Dequeue();
+            }
+            else
+            {
+                throw new TimeoutException();
+            }
+        }
+
         public override void EnqueueAll(IList<T> ItemsToQueue)
         {
             base.EnqueueAll(ItemsToQueue);

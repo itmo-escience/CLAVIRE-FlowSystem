@@ -8,5 +8,8 @@
     <Setting Name="StorageUri" Type="System.String" Scope="Application">
       <Value Profile="(Default)">http://192.168.1.16:4510/HttpService</Value>
     </Setting>
+    <Setting Name="ThreadWaitEventTimeout" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">00:00:03</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

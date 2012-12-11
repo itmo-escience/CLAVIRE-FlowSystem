@@ -41,5 +41,14 @@ namespace Easis.Wfs.FlowSystemService.Properties {
                 return ((string)(this["StorageUri"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:03")]
+        public global::System.TimeSpan ThreadWaitEventTimeout {
+            get {
+                return ((global::System.TimeSpan)(this["ThreadWaitEventTimeout"]));
+            }
+        }
     }
 }

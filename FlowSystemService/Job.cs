@@ -24,7 +24,7 @@ namespace Easis.Wfs.FlowSystemService
     /// Задание на исполнение WF. Содержит информацию о WF. Несет функциональность по подготовке к запуску, исполнению WF. Использует компонент разбора скрипта EasyFlow.
     /// Поддерживает многопоточный доступ.
     /// </summary>
-    public sealed class Job : IControllable, IController //IJsonMonitorable
+    public sealed class Job : IControllable, IController, IThreadConnectable //IJsonMonitorable
     {
         static readonly Logger _log = LogManager.GetCurrentClassLogger();
         /// <summary>
@@ -162,9 +162,10 @@ namespace Easis.Wfs.FlowSystemService
                 // Формируем FlowExecutionProperties
 
                 //_flowExecutionProperties = dataContextExtractor.CreateExecutionContext(JobRequest.FlowExecutionProperties);
-                
+
                 _flowExecutionProperties = dataContextExtractor.CreateExecutionContext(JobRequest.ExecutionProperties);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 _log.Error("[thread: {0}]  Error while parsing FlowExecutionContext", Thread.CurrentThread.ManagedThreadId);
                 VerboseErrorComment = String.Format("Invalid exec context: '{0}'", JobRequest.FlowExecutionProperties);
@@ -217,7 +218,7 @@ namespace Easis.Wfs.FlowSystemService
             DeclarativeInterpreter declarativeInterpreter = new DeclarativeInterpreter(gc);
             stepStarter.SetEventConsumer(declarativeInterpreter);
             stepStarter.IsDry = true;
-            
+
             // Соединяем точку входа для событий с eventConsumer задания
             lock (_syncExt) _eventConsumer = declarativeInterpreter;
 
@@ -265,7 +266,7 @@ namespace Easis.Wfs.FlowSystemService
                     State = JobState.Error;
                 }
                 else
-                    State = JobState.Finished;
+                    State = JobState.DryRunFinished;
             }
             catch (Exception ex)
             {
@@ -289,10 +290,6 @@ namespace Easis.Wfs.FlowSystemService
         /// </summary>
         protected void ExecuteJob()
         {
-            _log.Trace("Dry run started");
-            DryRun();
-            _log.Trace("Dry run finished");
-
             // Создаем контекст
             IGlobalContext gc = new GlobalContext
                                     {
@@ -318,7 +315,9 @@ namespace Easis.Wfs.FlowSystemService
             {
                 _timestampStarted = DateTime.Now;
                 // Синхронный вызов, запускающий долгое исполнение WF
-                declarativeInterpreter.ExecuteFlow(_wfId, _parseResult.ScriptModel.MainFlow, _flowDataContext, _flowExecutionProperties);
+                declarativeInterpreter.ExecuteFlow(_wfId, _parseResult.ScriptModel.MainFlow, _flowDataContext,
+                                                   _flowExecutionProperties);
+
 
                 // TODO: think where will be results collection
                 // Collect results
@@ -328,7 +327,7 @@ namespace Easis.Wfs.FlowSystemService
                 _log.Info("[thread: {0}]  Interpretion of WF#{1} finished. Interpreter state: {2}", Thread.CurrentThread.ManagedThreadId, this.WfId, declarativeInterpreter.State);
 
                 // Решаем, выставлять ошибку или успех
-                if(declarativeInterpreter.State == DeclarativeInterpreter.InterpreterState.error)
+                if (declarativeInterpreter.State == DeclarativeInterpreter.InterpreterState.error)
                 {
                     _log.Trace("Changing job state to Error");
                     ErrorUserComment = declarativeInterpreter.GetErrorUserComment();
@@ -409,7 +408,26 @@ namespace Easis.Wfs.FlowSystemService
                     case JobState.Validated:
                         try
                         {
+                            DryRun();
+                        }
+                        catch (Exception e)
+                        {
+                            _log.ErrorException(String.Format("[thread: {0}]  Error while dryrunning job", Thread.CurrentThread.ManagedThreadId), e);
+                            ErrorUserComment = "Runtime error";
+                            ErrorException = e;
+                            State = JobState.Error;
+                            _timestampFinished = DateTime.Now;
+                            return;
+                        }
+                        break;
+                    case JobState.DryRunFinished:
+                        try
+                        {
                             ExecuteJob();
+                        }
+                        catch (ThreadDisconnectedException tde)
+                        {
+                            throw tde;
                         }
                         catch (Exception e)
                         {
@@ -551,11 +569,11 @@ namespace Easis.Wfs.FlowSystemService
 
                 if (_jobState == JobState.Error)
                 {
-                    if(ErrorUserComment != null)
+                    if (ErrorUserComment != null)
                         ret.ErrorComment = ErrorUserComment.Sanitize();
-                    if(VerboseErrorComment != null)
+                    if (VerboseErrorComment != null)
                         ret.VerboseErrorComment = VerboseErrorComment.Sanitize();
-                    if(ErrorException != null)
+                    if (ErrorException != null)
                         ret.ErrorException = ErrorException.ToString().Sanitize();
                 }
 
@@ -713,5 +731,13 @@ namespace Easis.Wfs.FlowSystemService
         }
         #endregion
 
+        #region Threading
+        private bool IsVirgin = true;
+
+        public void ThreadReConnect()
+        {
+            IsVirgin = false;
+        }
+        #endregion
     }
 }

@@ -17,7 +17,7 @@ namespace Easis.Wfs.Interpreting
     /// Интерпретатор декларативного кода. Отвечает за исполение одного WF на абстрактной инфраструктуре. Механизм работы построен согласно событийной модели.
     /// Поддерживает многопоточный доступ.
     /// </summary>
-    public class DeclarativeInterpreter : IEventConsumer, IInternalEventGenerator, IControllable, IController //IJsonMonitorable
+    public class DeclarativeInterpreter : IEventConsumer, IInternalEventGenerator, IControllable, IController, IThreadConnectable //IJsonMonitorable
     {
         static readonly Logger _log = LogManager.GetCurrentClassLogger();
 
@@ -62,6 +62,7 @@ namespace Easis.Wfs.Interpreting
         }
 
         private InterpreterState _state = InterpreterState.active;
+
         public InterpreterState State
         {
             get { lock (_syncRoot) return _state; }
@@ -199,11 +200,11 @@ namespace Easis.Wfs.Interpreting
             foreach (var f in _flowDataContext.InputFiles)
             {
                 // magic data context
-                var strs = f.Value.Split(new char[] {'|'});
+                var strs = f.Value.Split(new char[] { '|' });
 
                 FileDescriptor fileDescriptor = Context.FileRegistry.CreateFileDescriptor();
                 fileDescriptor.Type = FileDescriptor.FileType.Required;
-                
+
                 // for compatibility with old starters without | 
                 if (strs.Length < 2)
                     fileDescriptor.FileIdentifier = strs[0];
@@ -239,11 +240,11 @@ namespace Easis.Wfs.Interpreting
 
                         // Формируем контекст
                         ICodeInterpreter codeInterpreter = new ImperativeInterpreter(GlobalDataScope,
-                                                                                     ((StepBlock) block).Name);
-                        
+                                                                                     ((StepBlock)block).Name);
+
                         // looking for sweeping
                         bool isSweeper = false;
-                        foreach (var parameter in ((StepBlock) block).RunParameters.Parameters)
+                        foreach (var parameter in ((StepBlock)block).RunParameters.Parameters)
                         {
                             if (parameter.IsSweepParam)
                             {
@@ -253,23 +254,24 @@ namespace Easis.Wfs.Interpreting
                         }
 
                         StepNode stepNode = null;
-                        
-                        if(((StepBlock)block).IsLongRunning)
+
+                        if (((StepBlock)block).IsLongRunning)
                         {
                             ILongRunningStepNodeContext snc = Context.CreateLongRunningStepNodeContext(WfId, codeInterpreter, this, _flowGraph);
                             snc.ExecutionContext = _flowExecutionProperties;
                             stepNode = new LongRunningStepNode((StepBlock)block, snc);
                         }
-                        else {
+                        else
+                        {
                             IStepNodeContext snc = Context.CreateStepNodeContext(WfId, codeInterpreter, this, _flowGraph);
                             snc.ExecutionContext = _flowExecutionProperties;
                             if (isSweeper)
                             {
-                                stepNode = new SweepStepNode((StepBlock) block, snc);
+                                stepNode = new SweepStepNode((StepBlock)block, snc);
                             }
                             else
                             {
-                                stepNode = new StepNode((StepBlock) block, snc);
+                                stepNode = new StepNode((StepBlock)block, snc);
                             }
                         }
 
@@ -291,9 +293,10 @@ namespace Easis.Wfs.Interpreting
                                    block.GetType().ToString());
                         throw new ArgumentOutOfRangeException(String.Format("Unknown block type {0}", block.GetType()));
                     }
-                }else
+                }
+                else
                 {
-                    _log.Trace("Ignoring disabled block {0} with type {1}",block.Id, block.GetType().Name);
+                    _log.Trace("Ignoring disabled block {0} with type {1}", block.Id, block.GetType().Name);
                 }
             }
 
@@ -301,8 +304,48 @@ namespace Easis.Wfs.Interpreting
 
         }
 
+        #region thread_swithing
+
+        private bool _isThreadConnected = true;
+
+        public bool IsThreadConnected
+        {
+            get { return _isThreadConnected; }
+            set { _isThreadConnected = value; }
+        }
+
+        // thread swithing
+        protected void ThreadDisconnect()
+        {
+            _log.Trace("WF:{0} Thread disconnected", WfId);
+            IsThreadConnected = false;
+        }
+
+        // thread swithing
+        /// <summary>
+        /// throws ThreadDisconnectedException
+        /// </summary>
+        /// <returns>finished or delayed</returns>
+        public void ThreadReConnect()
+        {
+            _log.Trace("WF:{0} Thread connected", WfId);
+            IsThreadConnected = true;
+
+            // throws ThreadDisconnectedException
+            EventLoop();
+
+            _log.Info("Cleaning ");
+            CollectGarbage();
+            //                _flow.Blocks.Remove(sourceBlock);
+            //                _flow.Blocks.Remove(sinkBlock);
+        }
+
+        #endregion
+
         /// <summary>
         /// Цикл обработки событий. В цикле извлекается новое событие из очереди и передается в FlowGraph через вызов Notify.
+        /// throws ThreadDisconnectedException
+        /// <returns>Was loop finished by time (false) or by finishing of process (true)</returns>
         /// </summary>
         protected void EventLoop()
         {
@@ -316,7 +359,16 @@ namespace Easis.Wfs.Interpreting
                 else
                 {
                     // blocking
-                    FlowEvent flowEvent = _eventBus.Dequeue();
+                    FlowEvent flowEvent = null;
+                    // thread swithing
+                    try
+                    {
+                        flowEvent = _eventBus.Dequeue(new TimeSpan);
+                    }
+                    catch (TimeoutException)
+                    {
+                        throw new ThreadDisconnectedException();
+                    }
 
                     // control logic is here
                     if (flowEvent.Name.StartsWith("control_"))
@@ -397,6 +449,7 @@ namespace Easis.Wfs.Interpreting
         /// <summary>
         /// Исполнение WF. Основной метод, содержит всю логику подготовки и исполнения WF.
         /// Синхронный метод: поток блокируется до завершения WF.
+        /// throws ThreadDisconnectedException
         /// </summary>
         /// <param name="wfId">Идентификатор WF</param>
         /// <param name="flow">Внутреннее представление скрипта WF</param>
@@ -489,12 +542,8 @@ namespace Easis.Wfs.Interpreting
             // 7. eventloop
             _log.Info("Starting event loop");
 
-            EventLoop();
-
-            _log.Info("Cleaning ");
-            CollectGarbage();
-            _flow.Blocks.Remove(sourceBlock);
-            _flow.Blocks.Remove(sinkBlock);
+            // thread switching ability on
+            ThreadReConnect();
         }
 
         #endregion

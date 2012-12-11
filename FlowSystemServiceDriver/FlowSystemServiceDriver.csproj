@@ -103,6 +103,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tracer">
+      <HintPath>..\..\..\Incubator\Incubator\clavire-mon\tracinglib.wcf\TracingLib\Tracer\bin\x64\Debug\Tracer.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />

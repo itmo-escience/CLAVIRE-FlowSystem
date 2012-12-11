@@ -10,9 +10,29 @@
     <RecentFiles>
       <File id="21EBFA07-8242-41DE-9A5D-C4583344BB3B/f:JobRequest.cs" caret="0" fromTop="0" />
       <File id="6A61B835-2584-4386-B305-2A5DA87AD6D6/d:Model/d:Expressions/f:BinaryOpeartorExpression.cs" caret="320" fromTop="8" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/f:ILongRunningController.cs" caret="58" fromTop="2" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/f:ILongRunningController.cs" caret="21" fromTop="0" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Context/f:ILongRunningStepNodeContext.cs" caret="47" fromTop="0" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:StepRunDescriptor.cs" caret="48" fromTop="0" />
+      <File id="21EBFA07-8242-41DE-9A5D-C4583344BB3B/f:JobDescription.cs" caret="0" fromTop="0" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:FlowSinkNode.cs" caret="502" fromTop="15" />
+      <File id="F7912007-6431-4AF0-9F4C-B9AE1BB302E9/f:Program.cs" caret="1001" fromTop="26" />
+      <File id="BC95E95A-D02E-4EB0-8750-9A321B5C201F/d:FlowSystemService/f:DataContextExtractorTest.cs" caret="0" fromTop="0" />
+      <File id="BC95E95A-D02E-4EB0-8750-9A321B5C201F/d:FlowSystemService/f:DryRunTest.cs" caret="0" fromTop="0" />
+      <File id="BC95E95A-D02E-4EB0-8750-9A321B5C201F/d:FlowSystemService/f:ScriptInterpreterTest.cs" caret="423" fromTop="17" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Web.Debug.config" caret="143" fromTop="2" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Web.config" caret="6423" fromTop="62" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:StepNode.cs" caret="27946" fromTop="29" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:NodeBase.cs" caret="16202" fromTop="46" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="10520" fromTop="21" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionEventConverter.cs" caret="12025" fromTop="21" />
     </RecentFiles>
-    <RecentEdits />
+    <RecentEdits>
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:StepRunDescriptor.cs" caret="48" fromTop="0" />
+      <File id="BC95E95A-D02E-4EB0-8750-9A321B5C201F/d:FlowSystemService/f:ScriptInterpreterTest.cs" caret="1198" fromTop="31" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Web.config" caret="7430" fromTop="20" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Web.config" caret="7430" fromTop="43" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Web.config" caret="7430" fromTop="54" />
+    </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
     <NAntPath value="" />
@@ -24,4 +44,11 @@
     <NUnitInstallDir>C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0\</NUnitInstallDir>
     <UseAddins>Never</UseAddins>
   </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="using" priority="0" />
+      <Item value="Easis" priority="0" />
+      <Item value="Common" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
 </Configuration>

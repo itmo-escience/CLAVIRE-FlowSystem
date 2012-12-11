@@ -8,6 +8,7 @@ using Easis.Wfs.EasyFlow.Model;
 using Easis.Wfs.EasyFlow.Parsing;
 using Easis.Wfs.FlowSystemService.PESAbstraction.LongRunning;
 using Easis.Wfs.FlowSystemService.PESAbstraction.Storage;
+using Easis.Wfs.FlowSystemService.Utils;
 using Easis.Wfs.Interpreting;
 using Easis.Wfs.Interpreting.Utils;
 using Eventing;
@@ -21,6 +22,52 @@ using Easis.Common.DataContracts;
 
 namespace Easis.Wfs.FlowSystemService
 {
+
+    /// <summary>
+    /// Class for management of disconnected jobs
+    /// provide interface for free threads to get ready jobs
+    /// </summary>
+    internal class DisconnectedJobCollection : IEventConsumer
+    {
+        private List<Pair<Job, bool>> JobsReadyness = new List<Pair<Job, bool>>();
+        private object SyncObject = new object();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Job if ready job exists and null overwise</returns>
+        public Job TryTakeReadyJob()
+        {
+            lock (SyncObject)
+            {
+                var ret = JobsReadyness.FirstOrDefault(pair => pair.Second == true);
+                if (ret)
+                    return ret.First;
+                else
+                    return null;
+            }
+        }
+
+        public void AddDisconnectedJob(Job job)
+        {
+            lock (SyncObject)
+            {
+                JobsReadyness.Add(new Pair<Job, bool>(job, false));
+            }
+        }
+
+        public void PushEvent(FlowEvent flowEvent)
+        {
+            lock (SyncObject)
+            {
+                var readyJob = JobsReadyness.FirstOrDefault(pair => pair.First.WfId == flowEvent.WfId);
+                if (readyJob != null)
+                {
+                    readyJob.Second = true;
+                }
+            }
+        }
+    }
     /// <summary>
     /// Основной класс сервиса. FlowSystemService является оберткой для данного класса. Содержит логику многопоточной обработки задач.
     /// Реализован по шаблону проектирования одиночка (singleton). Поддерживает многопоточный доступ.
@@ -64,6 +111,8 @@ namespace Easis.Wfs.FlowSystemService
         /// </summary>
         private SyncronizedBlockingQueue<Job> _queue = new SyncronizedBlockingQueue<Job>();
 
+        private DisconnectedJobCollection _disconnectedJobs = new DisconnectedJobCollection();
+
         // С помощью него осуществляется проброс внешних событий
         // TODO: заменить dict на безопасный dict
         private IDictionary<Guid, Job> _startedJobs = new Dictionary<Guid, Job>();
@@ -85,137 +134,207 @@ namespace Easis.Wfs.FlowSystemService
             while (true)
             {
                 _log.Debug("[thread: {0}] Waiting for job", Thread.CurrentThread.ManagedThreadId);
-                Job job = _queue.Dequeue();
 
-                // переносим в список исполняющихся заданий
-                // TODO: проверить дубликат
-                _startedJobs.Add(job.WfId, job);
+                bool isNewJob;
+                Job job = null;
 
-                _log.Info("[thread: {0}] WF#{1} was dequeued", Thread.CurrentThread.ManagedThreadId, job.WfId);
+                //--------------------------------------
+                // GETTING JOB FROM THE 2 SOURCES
+                //--------------------------------------
+                // try to take job from disconnected
+                var readyJob = _disconnectedJobs.TryTakeReadyJob();
 
-                EventingService.EventingBrokerServiceClient proxy = null;
-                WFStateUpdatedEvent ev = null;
-                EventReport er = null;
-
-                #region Eventing
-                try
+                if (readyJob != null)
                 {
-                    // generating event
-                    proxy = new EventingService.EventingBrokerServiceClient();
-
-                    ev = new WFStateUpdatedEvent();
-                    ev.WFRunCode = job.WfId.ToString();
-                    ev.WFStepCode = "";
-                    ev.WFStateUpdatedType = WFStateUpdatedTypeEnum.WFStarted;
-                    ev.Comment = "Interpreter thread id: " + Thread.CurrentThread.ManagedThreadId;
-
-                    er = new EventReport()
-                                         {
-                                             Source = "Interpreter",
-                                             Body =
-                                                 EventReportSerializer.SerializeObject(ev, typeof(WFStateUpdatedEvent)),
-                                             SchemeUri =
-                                                 "http://escience.ifmo.ru/easis/eventing/schemes/WFStateUpdatedEvent.xsd",
-                                             Timestamp = DateTime.Now,
-                                             Topic = "WFStateUpdatedEvent"
-                                         };
+                    _log.Info("[thread: {0}] WF#{1} was taken from disconnected jobs", Thread.CurrentThread.ManagedThreadId, readyJob.WfId);
+                    job = readyJob;
+                    isNewJob = false;
+                }
+                // no ready jobs, go to new
+                else
+                {
+                    // try to take new job
                     try
                     {
-                        proxy.FireEvent(er);
-                        _log.Trace("[eventing] Generated {0}", er.ToString());
+                        //TODO: move to settings
+                        job = _queue.Dequeue(new TimeSpan(0, 0, 10));
+                        isNewJob = true;
+                    }
+                    catch (TimeoutException)
+                    {
+                        // try to take from another source
+                        continue;
+                    }
+                }
+                // job is taken
+
+                //--------------------------------------
+                // PRE actions for new job
+                //--------------------------------------
+                if (isNewJob)
+                {
+                    // переносим в список исполняющихся заданий
+                    // TODO: проверить дубликат
+                    _startedJobs.Add(job.WfId, job);
+
+                    _log.Info("[thread: {0}] new job WF#{1} was dequeued", Thread.CurrentThread.ManagedThreadId,
+                              job.WfId);
+
+                    EventingService.EventingBrokerServiceClient proxy = null;
+                    WFStateUpdatedEvent ev = null;
+                    EventReport er = null;
+
+                    #region Eventing
+
+                    try
+                    {
+                        // generating event
+                        proxy = new EventingService.EventingBrokerServiceClient();
+
+                        ev = new WFStateUpdatedEvent();
+                        ev.WFRunCode = job.WfId.ToString();
+                        ev.WFStepCode = "";
+                        ev.WFStateUpdatedType = WFStateUpdatedTypeEnum.WFStarted;
+                        ev.Comment = "Interpreter thread id: " + Thread.CurrentThread.ManagedThreadId;
+
+                        er = new EventReport()
+                                 {
+                                     Source = "Interpreter",
+                                     Body =
+                                         EventReportSerializer.SerializeObject(ev, typeof(WFStateUpdatedEvent)),
+                                     SchemeUri =
+                                         "http://escience.ifmo.ru/easis/eventing/schemes/WFStateUpdatedEvent.xsd",
+                                     Timestamp = DateTime.Now,
+                                     Topic = "WFStateUpdatedEvent"
+                                 };
+                        try
+                        {
+                            proxy.FireEvent(er);
+                            _log.Trace("[eventing] Generated {0}", er.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            _log.ErrorException("Error while generating 'WF start' event. Ignoring.", ex);
+                            //TODO: continue execution?
+                        }
                     }
                     catch (Exception ex)
                     {
                         _log.ErrorException("Error while generating 'WF start' event. Ignoring.", ex);
-                        //TODO: continue execution?
                     }
-                }
-                catch (Exception ex)
-                {
-                    _log.ErrorException("Error while generating 'WF start' event. Ignoring.", ex);
+
+                    #endregion
                 }
 
-                #endregion
-
+                //--------------------------------------
+                // MAIN ACTIONS
+                //--------------------------------------
+                bool wasFinished = false;
                 try
                 {
-                    job.Execute(_flowSystemContext, _stepStarter, _storage, _longRunningController);
+                    if (isNewJob)
+                        job.Execute(_flowSystemContext, _stepStarter, _storage, _longRunningController);
+                    else
+                        job.ThreadReConnect();
+
+                    wasFinished = true;
+                }
+                catch (ThreadDisconnectedException)
+                {
+                    _log.Trace("The job has been added to disconnected. Thread is free.");
+                    _disconnectedJobs.AddDisconnectedJob(job);
                 }
                 catch (Exception ex)
                 {
                     _log.ErrorException("Error during job execution", ex);
                 }
 
-                #region Eventing
-                try
+                //--------------------------------------
+                // POST actions
+                //--------------------------------------
+                if (wasFinished)
                 {
-                    // generating event
-                    proxy = new EventingService.EventingBrokerServiceClient();
+                    #region Resulting
 
-
-                    ev = new WFStateUpdatedEvent();
-                    ev.WFRunCode = job.WfId.ToString();
-                    ev.WFStepCode = "";
-                    ev.WFStateUpdatedType = WFStateUpdatedTypeEnum.WFFinished;
-                    ev.Comment = "Interpreter thread id: " + Thread.CurrentThread.ManagedThreadId;
-
-                    er = new EventReport()
-                             {
-                                 Source = "Interpreter",
-                                 Body = EventReportSerializer.SerializeObject(ev, typeof(WFStateUpdatedEvent)),
-                                 SchemeUri =
-                                     "http://escience.ifmo.ru/easis/eventing/schemes/WFStateUpdatedEvent.xsd",
-                                 Timestamp = DateTime.Now,
-                                 Topic = "WFStateUpdatedEvent"
-                             };
                     try
                     {
-                        proxy.FireEvent(er);
-                        _log.Trace("[eventing] Generated {0}", er.ToString());
+                        MonitoringFacade.MonitoringServiceClient moncli =
+                            new MonitoringFacade.MonitoringServiceClient();
+
+                        try
+                        {
+                            var jd = job.GetDescription();
+                            moncli.PutJobResult(jd);
+                            _log.Trace("Results were commited to provenance");
+                        }
+                        catch (Exception ex)
+                        {
+                            // переносим в список завершенных заданий
+                            _finishedJobs.Add(job);
+                            _log.ErrorException(
+                                "Error while constructing result. Ignoring. Alarm! Job has been transmited to _finishedJobs. It smels like memory leaking.",
+                                ex);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _log.ErrorException("Error while constructing result. Ignoring.", ex);
+                    }
+
+                    #endregion
+
+                    #region Eventing
+
+                    try
+                    {
+                        EventingService.EventingBrokerServiceClient proxy = null;
+                        WFStateUpdatedEvent ev = null;
+                        EventReport er = null;
+
+                        // generating event
+                        proxy = new EventingService.EventingBrokerServiceClient();
+
+                        ev = new WFStateUpdatedEvent();
+                        ev.WFRunCode = job.WfId.ToString();
+                        ev.WFStepCode = "";
+                        ev.WFStateUpdatedType = WFStateUpdatedTypeEnum.WFFinished;
+                        ev.Comment = "Interpreter thread id: " + Thread.CurrentThread.ManagedThreadId;
+
+                        er = new EventReport()
+                                 {
+                                     Source = "Interpreter",
+                                     Body = EventReportSerializer.SerializeObject(ev, typeof(WFStateUpdatedEvent)),
+                                     SchemeUri =
+                                         "http://escience.ifmo.ru/easis/eventing/schemes/WFStateUpdatedEvent.xsd",
+                                     Timestamp = DateTime.Now,
+                                     Topic = "WFStateUpdatedEvent"
+                                 };
+                        try
+                        {
+                            proxy.FireEvent(er);
+                            _log.Trace("[eventing] Generated {0}", er.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            _log.ErrorException("Error while generating 'WF stop' event. Ignoring.", ex);
+                        }
                     }
                     catch (Exception ex)
                     {
                         _log.ErrorException("Error while generating 'WF stop' event. Ignoring.", ex);
                     }
+
+                    #endregion
+
+                    // TODO: проверить наличие
+                    _startedJobs.Remove(job.WfId);
+
+                    _log.Info("[thread: {0}] Finished execution of WF#{1}", Thread.CurrentThread.ManagedThreadId,
+                              job.WfId);
                 }
-                catch (Exception ex)
-                {
-                    _log.ErrorException("Error while generating 'WF stop' event. Ignoring.", ex);
-                }
-
-                #endregion
-
-                #region Resulting
-                try
-                {
-                    MonitoringFacade.MonitoringServiceClient moncli = new MonitoringFacade.MonitoringServiceClient();
-
-                    try
-                    {
-                        var jd = job.GetDescription();
-                        moncli.PutJobResult(jd);
-                        _log.Trace("Results were commited to provenance");
-                    }
-                    catch (Exception ex)
-                    {
-                        // переносим в список завершенных заданий
-                        _finishedJobs.Add(job);
-                        _log.ErrorException("Error while constructing result. Ignoring. Alarm! Job has been transmited to _finishedJobs. It smels like memory leaking.", ex);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    _log.ErrorException("Error while constructing result. Ignoring.", ex);
-                }
-
-                #endregion
-
-                // TODO: проверить наличие
-                _startedJobs.Remove(job.WfId);
-
-                _log.Info("[thread: {0}] Finished execution of WF#{1}", Thread.CurrentThread.ManagedThreadId, job.WfId);
             }
         }
+
         #endregion
 
         #region Resulting
@@ -276,7 +395,7 @@ namespace Easis.Wfs.FlowSystemService
             _stepStarter.IsDry = false;
 
             _storage = new FedorStorage((string)Properties.Settings.Default["StorageUri"]);
-            
+
             _longRunningController = new ZmqLongRunningController();
 
             _flowSystemContext = new FlowSystemContext();
@@ -361,7 +480,7 @@ namespace Easis.Wfs.FlowSystemService
             if (_startedJobs.ContainsKey(WfId))
             {
                 _log.Debug("Got Pause command for WF#{0}. {1}", WfId, blockId);
-                if(blockId == -1)
+                if (blockId == -1)
                     _startedJobs[WfId].Pause();
                 else
                     _startedJobs[WfId].Pause(blockId);
@@ -482,7 +601,7 @@ namespace Easis.Wfs.FlowSystemService
                 foreach (var value in _startedJobs.Values)
                 {
                     List<LongRunningStepRunInfo> p = value.GetLongRunningRunInfos();
-                    if(p.Count > 0)
+                    if (p.Count > 0)
                     {
                         ret.Add(value.WfId, p);
                     }

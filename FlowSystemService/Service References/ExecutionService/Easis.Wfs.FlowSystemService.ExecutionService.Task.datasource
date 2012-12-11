@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="Task" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>Easis.Wfs.FlowSystemService.ExecutionService.Task</TypeInfo>
+   <TypeInfo>Easis.Wfs.FlowSystemService.ExecutionService.Task, Service References.ExecutionService.Reference.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

@@ -13,6 +13,7 @@ namespace Easis.Common.DataContracts
         Validating,
         Validated,
         DryRun,
+        DryRunFinished,
         Active,
         Finished,
         Error
