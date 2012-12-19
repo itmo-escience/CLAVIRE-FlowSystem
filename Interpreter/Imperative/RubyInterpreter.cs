@@ -14,10 +14,14 @@ namespace Easis.Wfs.Interpreting.Imperative
 {
     class RubyInterpreter : IScriptInterpreter
     {
-        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private WfLog Log;
 
         private string _initScript = "";
 
+        public RubyInterpreter(WfLog log)
+        {
+            Log = new WfLog(log, LogManager.GetCurrentClassLogger());
+        }
 
         protected ValueBase ConvertRubyTypesToEf(object val)
         {

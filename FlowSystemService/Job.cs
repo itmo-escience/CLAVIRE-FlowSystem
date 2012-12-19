@@ -26,7 +26,7 @@ namespace Easis.Wfs.FlowSystemService
     /// </summary>
     public sealed class Job : IControllable, IController, IThreadConnectable //IJsonMonitorable
     {
-        static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        WfLog _log = null;
         /// <summary>
         /// Описание ошибки для пользователя
         /// </summary>
@@ -204,6 +204,9 @@ namespace Easis.Wfs.FlowSystemService
         {
             IStepStarter stepStarter = new DryExecutionStepStarter(null);
 
+            // check timeout
+            TimeSpan timeout = Properties.Settings.Default.ThreadWaitEventTimeout;
+
             // Создаем контекст
             IGlobalContext gc = new GlobalContext
             {
@@ -212,7 +215,8 @@ namespace Easis.Wfs.FlowSystemService
                 PackageRegistry = new ListBasedPackageRegistry(),
                 StepStarter = stepStarter,
                 LongRunningController = new DryRunLongRunningController(),
-                Storage = new DruRunStorage()
+                Storage = new DruRunStorage(),
+                ThreadWaitForEventTimeout = timeout
             };
 
             DeclarativeInterpreter declarativeInterpreter = new DeclarativeInterpreter(gc);
@@ -284,6 +288,30 @@ namespace Easis.Wfs.FlowSystemService
         }
 
 
+        protected void FinalizeJob()
+        {
+            // TODO: think where will be results collection
+            // Collect results
+            _fileDescriptors = _declarativeInterpreter.Context.FileRegistry.FindFilesByType(FileDescriptor.FileType.GeneratedAfterRun);
+
+            // TODO: съесть результат интерпретации
+            _log.Info("[thread: {0}]  Interpretion of WF#{1} finished. Interpreter state: {2}", Thread.CurrentThread.ManagedThreadId, this.WfId, _declarativeInterpreter.State);
+
+            // Решаем, выставлять ошибку или успех
+            if (_declarativeInterpreter.State == DeclarativeInterpreter.InterpreterState.error)
+            {
+                _log.Trace("Changing job state to Error");
+                ErrorUserComment = _declarativeInterpreter.GetErrorUserComment();
+                VerboseErrorComment = _declarativeInterpreter.GetVerboseErrorComment();
+                State = JobState.Error;
+            }
+            else
+                State = JobState.Finished;
+
+            _timestampFinished = DateTime.Now;
+
+        }
+
         /// <summary>
         /// Процедура исполнения задания. Производит первичный запуск, затем обычный запуск.
         /// Блокирует поток обработки задания.
@@ -302,7 +330,6 @@ namespace Easis.Wfs.FlowSystemService
                                     };
 
             DeclarativeInterpreter declarativeInterpreter = new DeclarativeInterpreter(gc);
-
             _declarativeInterpreter = declarativeInterpreter;
 
             // Соединяем точку входа для событий с eventConsumer задания
@@ -318,24 +345,12 @@ namespace Easis.Wfs.FlowSystemService
                 declarativeInterpreter.ExecuteFlow(_wfId, _parseResult.ScriptModel.MainFlow, _flowDataContext,
                                                    _flowExecutionProperties);
 
+                FinalizeJob();
 
-                // TODO: think where will be results collection
-                // Collect results
-                _fileDescriptors = gc.FileRegistry.FindFilesByType(FileDescriptor.FileType.GeneratedAfterRun);
-
-                // TODO: съесть результат интерпретации
-                _log.Info("[thread: {0}]  Interpretion of WF#{1} finished. Interpreter state: {2}", Thread.CurrentThread.ManagedThreadId, this.WfId, declarativeInterpreter.State);
-
-                // Решаем, выставлять ошибку или успех
-                if (declarativeInterpreter.State == DeclarativeInterpreter.InterpreterState.error)
-                {
-                    _log.Trace("Changing job state to Error");
-                    ErrorUserComment = declarativeInterpreter.GetErrorUserComment();
-                    VerboseErrorComment = declarativeInterpreter.GetVerboseErrorComment();
-                    State = JobState.Error;
-                }
-                else
-                    State = JobState.Finished;
+            }
+            catch (ThreadDisconnectedException tde)
+            {
+                throw tde;
             }
             catch (Exception ex)
             {
@@ -346,9 +361,6 @@ namespace Easis.Wfs.FlowSystemService
                 ErrorException = ex;
                 State = JobState.Error;
                 // TODO: сформировать JobResult
-            }
-            finally
-            {
                 _timestampFinished = DateTime.Now;
             }
         }
@@ -439,6 +451,27 @@ namespace Easis.Wfs.FlowSystemService
                             return;
                         }
                         break;
+                    // valid only if thread is reconnecting
+                    case JobState.Active:
+                        try
+                        {
+                            ThreadReConnect();
+                            FinalizeJob();
+                        }
+                        catch (ThreadDisconnectedException tde)
+                        {
+                            throw tde;
+                        }
+                        catch (Exception e)
+                        {
+                            _log.ErrorException(String.Format("[thread: {0}]  Error while executing job", Thread.CurrentThread.ManagedThreadId), e);
+                            ErrorUserComment = "Runtime error";
+                            ErrorException = e;
+                            State = JobState.Error;
+                            _timestampFinished = DateTime.Now;
+                            return;
+                        }
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -507,9 +540,9 @@ namespace Easis.Wfs.FlowSystemService
         /// <param name="wfId">Идентификатор WF</param>
         public Job(JobRequest jobRequest, Guid wfId)
         {
+            _log = new WfLog(LogManager.GetCurrentClassLogger(), wfId);
             _jobRequest = jobRequest;
             _wfId = wfId;
-
             _timestampPushed = DateTime.Now;
         }
         /// <summary>
@@ -732,11 +765,32 @@ namespace Easis.Wfs.FlowSystemService
         #endregion
 
         #region Threading
-        private bool IsVirgin = true;
-
         public void ThreadReConnect()
         {
-            IsVirgin = false;
+            try
+            {
+                _timestampStarted = DateTime.Now;
+                // Синхронный вызов, запускающий долгое исполнение WF
+                _declarativeInterpreter.ThreadReConnect();
+
+                FinalizeJob();
+
+            }
+            catch (ThreadDisconnectedException tde)
+            {
+                throw tde;
+            }
+            catch (Exception ex)
+            {
+                // TODO: уточнить выбрасываемые исключения и обработать их
+                _log.ErrorException(String.Format("[thread: {0}]  Cought exception while interpretion of WF#{1}. CHECK MANUALLY {2} ", Thread.CurrentThread.ManagedThreadId, this.WfId, ex.Message), ex);
+                ErrorUserComment = "Runtime error";
+                VerboseErrorComment = "Interpretion error: " + ex.Message;
+                ErrorException = ex;
+                State = JobState.Error;
+                // TODO: сформировать JobResult
+                _timestampFinished = DateTime.Now;
+            }
         }
         #endregion
     }

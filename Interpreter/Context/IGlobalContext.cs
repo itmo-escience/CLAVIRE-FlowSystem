@@ -10,6 +10,7 @@ namespace Easis.Wfs.Interpreting
         FlowSystemContext FlowSystemContext { get; set; }
         ILongRunningController LongRunningController { get; set; }
         IStorage Storage { get; set; }
+        TimeSpan ThreadWaitForEventTimeout { get; set; }
 
         // TODO: make createfrom instead of create
         IStepNodeContext CreateStepNodeContext(Guid wfId, ICodeInterpreter codeInterpreter,
@@ -29,6 +30,7 @@ namespace Easis.Wfs.Interpreting
         public FlowSystemContext FlowSystemContext  { get; set; }
         public ILongRunningController LongRunningController { get; set; }
         public IStorage Storage { get; set; }
+        public TimeSpan ThreadWaitForEventTimeout { get; set; }
 
         public IStepNodeContext CreateStepNodeContext(Guid wfId, ICodeInterpreter codeInterpreter, IInternalEventGenerator internalEventGenerator, INodeGraphController nodeGraphController)
         {

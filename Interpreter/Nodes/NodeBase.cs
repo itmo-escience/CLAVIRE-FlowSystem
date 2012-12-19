@@ -14,7 +14,7 @@ namespace Easis.Wfs.Interpreting
     /// </summary>
     public abstract class NodeBase : IControllable //IJsonMonitorable
     {
-        protected static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        protected WfLog _log;
 
         #region Parsed data
         /// <summary>
@@ -410,8 +410,10 @@ namespace Easis.Wfs.Interpreting
         /// </summary>
         /// <param name="block"></param>
         /// <param name="context"></param>
-        protected NodeBase(BlockBase block, INodeContext context)
+        protected NodeBase(BlockBase block, INodeContext context, WfLog log)
         {
+            _log = new WfLog(log, LogManager.GetCurrentClassLogger());
+
             _block = block;
             Context = context;
             //CodeInterpreter = codeInterpreter;

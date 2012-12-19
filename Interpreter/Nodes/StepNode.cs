@@ -42,8 +42,8 @@ namespace Easis.Wfs.Interpreting
         protected IDictionary<string, string> _params = null;
         #endregion
 
-        public StepNode(StepBlock block, IStepNodeContext context)
-            : base(block, context)
+        public StepNode(StepBlock block, IStepNodeContext context, WfLog log)
+            : base(block, context, log)
         {
             Context = context;
             this.block = block;
@@ -415,7 +415,7 @@ namespace Easis.Wfs.Interpreting
                     }
 
                     StructureValue varOutputs = new StructureValue(new Dictionary<string, ValueBase>());
-                    JsonDataFormatter jdf = new JsonDataFormatter();
+                    JsonDataFormatter jdf = new JsonDataFormatter(_log);
                     // output params
                     foreach (var outputParam in result.OutputParams)
                     {
@@ -490,7 +490,7 @@ namespace Easis.Wfs.Interpreting
                 else
                 {
                     _log.Trace("{0} Start interpretation of post script code section", ToString());
-                    ScriptInterpreterFactory fact = new ScriptInterpreterFactory();
+                    ScriptInterpreterFactory fact = new ScriptInterpreterFactory(_log);
                     IScriptInterpreter si = fact.GetScriptInterpreter("ruby");
                     HashValue hv = si.ExecuteScript(Context.CodeInterpreter.GetGlobalDataScope(),
                                      Context.CodeInterpreter.GetBlockDataScope(), block.PostCodeSection);
@@ -626,7 +626,7 @@ namespace Easis.Wfs.Interpreting
 
             StepNodeContext snc = (StepNodeContext)Context.Clone();
             snc.CodeInterpreter = new ImperativeInterpreter(snc.CodeInterpreter.GetGlobalDataScope(), newName);
-            StepNode sn = new StepNode(sb, snc);
+            StepNode sn = new StepNode(sb, snc, _log);
 
             return sn;
         }

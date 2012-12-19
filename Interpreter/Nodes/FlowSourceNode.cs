@@ -9,8 +9,8 @@ namespace Easis.Wfs.Interpreting
 {
     public class FlowSourceNode : NodeBase
     {
-        public FlowSourceNode(BlockBase block, INodeContext context)
-            : base(block, context)
+        public FlowSourceNode(BlockBase block, INodeContext context, WfLog log)
+            : base(block, context, log)
         {
             // Создаем триггер на старт WF
             Subscribe(ACTION_START,new FlowEvent(FlowEvent.FLOW_STARTED,Guid.Empty,-1,null), TriggerEventExpressionType.Or);

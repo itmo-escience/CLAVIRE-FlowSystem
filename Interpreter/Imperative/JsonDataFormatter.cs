@@ -9,7 +9,13 @@ namespace Easis.Wfs.Interpreting.Imperative
 {
     class JsonDataFormatter
     {
-        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private WfLog Log;
+
+        public JsonDataFormatter(WfLog log)
+        {
+            Log = new WfLog(log, LogManager.GetCurrentClassLogger());
+        }
+
         public ValueBase ConvertValueFromJson(string val)
         {
             BsonValue bv;
@@ -26,7 +32,7 @@ namespace Easis.Wfs.Interpreting.Imperative
                 bv = bd["value"];
             }
 
-            BsonDataFormatter bdf = new BsonDataFormatter();
+            BsonDataFormatter bdf = new BsonDataFormatter(Log);
             return bdf.ConvertValueFromBson(bv);
         }
     }

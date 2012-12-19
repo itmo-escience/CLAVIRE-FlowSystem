@@ -24,18 +24,22 @@ namespace Easis.Wfs.Interpreting
     /// </summary>
     public class FlowGraph : INodeGraphController //IJsonMonitorable
     {
-        static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        private readonly Guid _wfId;
+        WfLog _log;
 
         private readonly ICollection<NodeBase> _nodes = new List<NodeBase>();
         private readonly ICollection<NodeBase> _nodesAdditions = new List<NodeBase>();
 
-        public FlowGraph()
+        public FlowGraph(Guid WfId)
         {
+            _wfId = WfId;
+            _log = new WfLog(LogManager.GetCurrentClassLogger(), WfId);
         }
 
-        public FlowGraph(ICollection<NodeBase> nodes)
+        public FlowGraph(Guid WfId, ICollection<NodeBase> nodes)
         {
             _nodes = nodes;
+            _log = new WfLog(LogManager.GetCurrentClassLogger(), WfId);
         }
 
         private FlowSinkNode _sinkNode = null;
@@ -47,9 +51,6 @@ namespace Easis.Wfs.Interpreting
         public void Validate()
         {
             // TODO: реализовать 
-            // http://194.85.163.238/nano/ticket/23
-            _log.Debug("Validation is not realized. See ticket http://194.85.163.238/nano/ticket/23");
-
             // empty graph
             if (_nodes.Count == 0)
             {
@@ -91,7 +92,6 @@ namespace Easis.Wfs.Interpreting
         public void ValidateTriggers()
         {
             // TODO: реализовать 
-            _log.Debug("Trigger validation is not realized. See ticket http://194.85.163.238/nano/ticket/23");
         }
 
         /// <summary>

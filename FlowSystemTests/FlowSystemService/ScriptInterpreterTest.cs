@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Easis.Wfs;
 using Easis.Wfs.EasyFlow.Model;
 using Easis.Wfs.Interpreting;
 using Easis.Wfs.Interpreting.Imperative;
@@ -17,7 +18,8 @@ namespace FlowSystemTests.FlowSystemService
         [Test]
         public void BaseTestRuby()
         {
-            ScriptInterpreterFactory fact = new ScriptInterpreterFactory();
+            WfLog log = new WfLog(NLog.LogManager.GetCurrentClassLogger(), Guid.Empty);
+            ScriptInterpreterFactory fact = new ScriptInterpreterFactory(log);
             IScriptInterpreter si = fact.GetScriptInterpreter("ruby");
             GlobalDataScope gds = new GlobalDataScope();
             BlockDataScope bds = new BlockDataScope(gds, "step1");

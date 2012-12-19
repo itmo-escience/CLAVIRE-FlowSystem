@@ -7,11 +7,18 @@ namespace Easis.Wfs.Interpreting.Imperative
 {
     class ScriptInterpreterFactory
     {
+        private readonly WfLog _log;
+
+        public ScriptInterpreterFactory(WfLog log)
+        {
+            _log = log;
+        }
+
         public IScriptInterpreter GetScriptInterpreter(string lang)
         {
             if(lang.ToLower() == "ruby")
             {
-                return new RubyInterpreter();
+                return new RubyInterpreter(_log);
             }
             else
             {

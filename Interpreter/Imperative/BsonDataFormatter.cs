@@ -9,7 +9,12 @@ namespace Easis.Wfs.Interpreting.Imperative
 {
     class BsonDataFormatter
     {
-        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        public BsonDataFormatter(WfLog log)
+        {
+            Log = new WfLog(log, LogManager.GetCurrentClassLogger());
+        }
+
+        private WfLog Log;
 
         public ValueBase ConvertValueFromBson(BsonValue val)
         {

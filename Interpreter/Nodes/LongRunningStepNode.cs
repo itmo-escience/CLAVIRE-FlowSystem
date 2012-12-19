@@ -15,8 +15,8 @@ namespace Easis.Wfs.Interpreting.Nodes
 
         public LongRunningStepRunInfo LongRunInfo { get; set; }
 
-        public LongRunningStepNode(StepBlock block, ILongRunningStepNodeContext context)
-            : base(block, context)
+        public LongRunningStepNode(StepBlock block, ILongRunningStepNodeContext context, WfLog log)
+            : base(block, context, log)
         {
             Context = context;
         }

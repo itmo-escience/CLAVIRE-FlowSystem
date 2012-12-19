@@ -19,7 +19,7 @@ namespace Easis.Wfs.Interpreting
     /// </summary>
     public class DeclarativeInterpreter : IEventConsumer, IInternalEventGenerator, IControllable, IController, IThreadConnectable //IJsonMonitorable
     {
-        static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        WfLog _log = null;
 
         private object _syncRoot = new object();
 
@@ -35,7 +35,7 @@ namespace Easis.Wfs.Interpreting
         private FlowGraph _flowGraph = null;
 
         // Уберконтекст
-        private IGlobalContext Context;
+        public IGlobalContext Context;
 
         #endregion
 
@@ -228,7 +228,7 @@ namespace Easis.Wfs.Interpreting
         {
             ICollection<NodeBase> nodes = new List<NodeBase>();
 
-            _flowGraph = new FlowGraph();
+            _flowGraph = new FlowGraph(WfId);
 
             foreach (var block in _flow.Blocks)
             {
@@ -259,7 +259,7 @@ namespace Easis.Wfs.Interpreting
                         {
                             ILongRunningStepNodeContext snc = Context.CreateLongRunningStepNodeContext(WfId, codeInterpreter, this, _flowGraph);
                             snc.ExecutionContext = _flowExecutionProperties;
-                            stepNode = new LongRunningStepNode((StepBlock)block, snc);
+                            stepNode = new LongRunningStepNode((StepBlock)block, snc, _log);
                         }
                         else
                         {
@@ -267,11 +267,11 @@ namespace Easis.Wfs.Interpreting
                             snc.ExecutionContext = _flowExecutionProperties;
                             if (isSweeper)
                             {
-                                stepNode = new SweepStepNode((StepBlock)block, snc);
+                                stepNode = new SweepStepNode((StepBlock)block, snc, _log);
                             }
                             else
                             {
-                                stepNode = new StepNode((StepBlock)block, snc);
+                                stepNode = new StepNode((StepBlock)block, snc, _log);
                             }
                         }
 
@@ -363,7 +363,7 @@ namespace Easis.Wfs.Interpreting
                     // thread swithing
                     try
                     {
-                        flowEvent = _eventBus.Dequeue(new TimeSpan);
+                        flowEvent = _eventBus.Dequeue(Context.ThreadWaitForEventTimeout);
                     }
                     catch (TimeoutException)
                     {
@@ -457,6 +457,8 @@ namespace Easis.Wfs.Interpreting
         /// <param name="flowExecutionProperties">Опции исполнения WF</param>
         public void ExecuteFlow(Guid wfId, Flow flow, FlowDataContext flowDataContext, ExecutionContext flowExecutionProperties)
         {
+            _log = new WfLog(LogManager.GetCurrentClassLogger(), wfId);
+
             _wfId = wfId;
             _flow = flow;
             _flowDataContext = flowDataContext;
@@ -513,7 +515,7 @@ namespace Easis.Wfs.Interpreting
                                                NodeGraphController = _flowGraph
                                            };
             // в конструкторе проставится триггер на FLOW_START
-            FlowSourceNode sourceNode = new FlowSourceNode(sourceBlock, nodeContext);
+            FlowSourceNode sourceNode = new FlowSourceNode(sourceBlock, nodeContext, _log);
 
             ISinkNodeContext sinkNodeContext = new SinkNodeContext()
                                                    {
@@ -522,7 +524,7 @@ namespace Easis.Wfs.Interpreting
                                                        DeclarativeInterpreter = this,
                                                        NodeGraphController = _flowGraph
                                                    };
-            FlowSinkNode sinkNode = new FlowSinkNode(sinkBlock, sinkNodeContext);
+            FlowSinkNode sinkNode = new FlowSinkNode(sinkBlock, sinkNodeContext, _log);
 
             _log.Info("Linking Sink and Source nodes");
             _flowGraph.InitSinkSource(sinkNode, sourceNode);

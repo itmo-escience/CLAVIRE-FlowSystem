@@ -10,8 +10,8 @@ namespace Easis.Wfs.Interpreting.Nodes
 {
     class SweepStepNode : StepNode
     {
-        public SweepStepNode(StepBlock block, IStepNodeContext context)
-            : base(block, context)
+        public SweepStepNode(StepBlock block, IStepNodeContext context, WfLog log)
+            : base(block, context, log)
         {
         }
 

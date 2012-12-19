@@ -11,7 +11,7 @@ namespace Easis.Wfs.Interpreting
 
         protected new ISinkNodeContext Context { get; set; }
 
-        public FlowSinkNode(BlockBase block, ISinkNodeContext context) : base(block, context)
+        public FlowSinkNode(BlockBase block, ISinkNodeContext context, WfLog log) : base(block, context, log)
         {
             Context = context;
             

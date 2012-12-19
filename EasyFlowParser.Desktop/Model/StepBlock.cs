@@ -13,14 +13,17 @@ namespace Easis.Wfs.EasyFlow.Model
         /// <summary>
         /// Gets package run parameters.        
         /// </summary>
-        public RunParameters RunParameters { get; internal set; }
+        public RunParameters RunParameters { get; set; }
 
         /// <summary>
         /// Gets execution parameters.
         /// </summary>
-        public RunParameters ExecParameters { get; internal set; }
+        public RunParameters ExecParameters { get; set; }
 
-        public bool IsLongRunning { get; internal set; }
+        /// <summary>
+        /// Is this block interactive (long-running)?
+        /// </summary>
+        public bool IsLongRunning { get; set; }
 
         private string _postCodeSection;
 

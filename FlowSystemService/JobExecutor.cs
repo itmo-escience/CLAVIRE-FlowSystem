@@ -41,7 +41,7 @@ namespace Easis.Wfs.FlowSystemService
             lock (SyncObject)
             {
                 var ret = JobsReadyness.FirstOrDefault(pair => pair.Second == true);
-                if (ret)
+                if (ret!=null)
                     return ret.First;
                 else
                     return null;
@@ -68,6 +68,7 @@ namespace Easis.Wfs.FlowSystemService
             }
         }
     }
+
     /// <summary>
     /// Основной класс сервиса. FlowSystemService является оберткой для данного класса. Содержит логику многопоточной обработки задач.
     /// Реализован по шаблону проектирования одиночка (singleton). Поддерживает многопоточный доступ.
@@ -168,6 +169,8 @@ namespace Easis.Wfs.FlowSystemService
                 }
                 // job is taken
 
+                WfLog _wflog = new WfLog(_log, job.WfId);
+
                 //--------------------------------------
                 // PRE actions for new job
                 //--------------------------------------
@@ -210,17 +213,19 @@ namespace Easis.Wfs.FlowSystemService
                         try
                         {
                             proxy.FireEvent(er);
-                            _log.Trace("[eventing] Generated {0}", er.ToString());
+                            _wflog.Trace("[eventing] Generated {0}", er.ToString());
                         }
                         catch (Exception ex)
                         {
                             _log.ErrorException("Error while generating 'WF start' event. Ignoring.", ex);
+                            _wflog.ErrorException("Error while generating 'WF start' event. Ignoring.", ex);
                             //TODO: continue execution?
                         }
                     }
                     catch (Exception ex)
                     {
                         _log.ErrorException("Error while generating 'WF start' event. Ignoring.", ex);
+                        _wflog.ErrorException("Error while generating 'WF start' event. Ignoring.", ex);
                     }
 
                     #endregion
@@ -242,10 +247,12 @@ namespace Easis.Wfs.FlowSystemService
                 catch (ThreadDisconnectedException)
                 {
                     _log.Trace("The job has been added to disconnected. Thread is free.");
+                    _wflog.Trace("The job has been added to disconnected. Thread is free.");
                     _disconnectedJobs.AddDisconnectedJob(job);
                 }
                 catch (Exception ex)
                 {
+                    _wflog.ErrorException("Error during job execution", ex);
                     _log.ErrorException("Error during job execution", ex);
                 }
 
@@ -265,20 +272,20 @@ namespace Easis.Wfs.FlowSystemService
                         {
                             var jd = job.GetDescription();
                             moncli.PutJobResult(jd);
-                            _log.Trace("Results were commited to provenance");
+                            _wflog.Trace("Results were commited to provenance");
                         }
                         catch (Exception ex)
                         {
                             // переносим в список завершенных заданий
                             _finishedJobs.Add(job);
-                            _log.ErrorException(
-                                "Error while constructing result. Ignoring. Alarm! Job has been transmited to _finishedJobs. It smels like memory leaking.",
-                                ex);
+                            _log.ErrorException("Error while constructing result. Ignoring. Alarm! Job has been transmited to _finishedJobs. It smels like memory leaking.", ex);
+                            _wflog.ErrorException("Error while constructing result. Ignoring. Alarm! Job has been transmited to _finishedJobs. It smels like memory leaking.", ex);
                         }
                     }
                     catch (Exception ex)
                     {
                         _log.ErrorException("Error while constructing result. Ignoring.", ex);
+                        _wflog.ErrorException("Error while constructing result. Ignoring.", ex);
                     }
 
                     #endregion
@@ -312,16 +319,18 @@ namespace Easis.Wfs.FlowSystemService
                         try
                         {
                             proxy.FireEvent(er);
-                            _log.Trace("[eventing] Generated {0}", er.ToString());
+                            _wflog.Trace("[eventing] Generated {0}", er.ToString());
                         }
                         catch (Exception ex)
                         {
                             _log.ErrorException("Error while generating 'WF stop' event. Ignoring.", ex);
+                            _wflog.ErrorException("Error while generating 'WF stop' event. Ignoring.", ex);
                         }
                     }
                     catch (Exception ex)
                     {
                         _log.ErrorException("Error while generating 'WF stop' event. Ignoring.", ex);
+                        _wflog.ErrorException("Error while generating 'WF stop' event. Ignoring.", ex);
                     }
 
                     #endregion
@@ -329,8 +338,8 @@ namespace Easis.Wfs.FlowSystemService
                     // TODO: проверить наличие
                     _startedJobs.Remove(job.WfId);
 
-                    _log.Info("[thread: {0}] Finished execution of WF#{1}", Thread.CurrentThread.ManagedThreadId,
-                              job.WfId);
+                    _log.Info("[thread: {0}] Finished execution of WF#{1}", Thread.CurrentThread.ManagedThreadId, job.WfId);
+                    _wflog.Info("[thread: {0}] Finished execution of WF#{1}", Thread.CurrentThread.ManagedThreadId, job.WfId);
                 }
             }
         }
