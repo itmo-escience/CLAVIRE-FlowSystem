@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://escience.ifmo.ru/easis/eventing" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://srv08:81/EventingBroker/EventingBrokerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Eventing" />
-  <xs:import schemaLocation="http://srv08:81/EventingBroker/EventingBrokerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://192.168.4.1/Eventing/EventingBrokerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Eventing" />
+  <xs:import schemaLocation="http://192.168.4.1/Eventing/EventingBrokerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:element name="FireEvent">
     <xs:complexType>
       <xs:sequence>

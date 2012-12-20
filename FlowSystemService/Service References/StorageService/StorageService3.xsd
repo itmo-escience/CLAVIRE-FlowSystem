@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Easis.Services.Storage.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Easis.Services.Storage.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://srv08/StorageServices/StorageService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DbAccess.Mongo" />
+  <xs:import schemaLocation="http://192.168.4.1/StorageServices/StorageService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DbAccess.Mongo" />
   <xs:complexType name="DataEntry">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Easis.Common.DbAccess.Mongo" base="q1:MongoEntityWithGuidContractBase">

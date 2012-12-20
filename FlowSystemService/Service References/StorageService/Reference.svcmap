@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d49244a1-cf50-47b8-919d-37123118b2b1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7e108f84-cd22-4df7-a604-a87c8c68a12f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,16 +18,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://srv08/StorageServices/StorageService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.4.1/StorageServices/StorageService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="StorageService5.xsd" MetadataType="Schema" ID="ff853690-e47c-4bd8-abeb-56567e91a308" SourceId="1" SourceUrl="http://srv08/StorageServices/StorageService.svc?xsd=xsd3" />
-    <MetadataFile FileName="StorageService1.wsdl" MetadataType="Wsdl" ID="0a4079f2-65f9-4dcc-9845-3e88ac8e032b" SourceId="1" SourceUrl="http://srv08/StorageServices/StorageService.svc?wsdl" />
-    <MetadataFile FileName="StorageService51.xsd" MetadataType="Schema" ID="9b7e364d-77d0-4b93-a13d-85abe479ee6d" SourceId="1" SourceUrl="http://srv08/StorageServices/StorageService.svc?xsd=xsd0" />
-    <MetadataFile FileName="StorageService52.xsd" MetadataType="Schema" ID="c592f89b-8273-45c5-b9db-9823e5912c97" SourceId="1" SourceUrl="http://srv08/StorageServices/StorageService.svc?xsd=xsd4" />
-    <MetadataFile FileName="StorageService1.disco" MetadataType="Disco" ID="5a4844d5-7a89-4c59-a405-4a78a91db9c9" SourceId="1" SourceUrl="http://srv08/StorageServices/StorageService.svc?disco" />
-    <MetadataFile FileName="StorageService53.xsd" MetadataType="Schema" ID="09628bc2-f05a-4402-a875-a43a1487b72a" SourceId="1" SourceUrl="http://srv08/StorageServices/StorageService.svc?xsd=xsd2" />
-    <MetadataFile FileName="StorageService54.xsd" MetadataType="Schema" ID="5e81bb33-3d45-499b-b14f-1ab4830dee87" SourceId="1" SourceUrl="http://srv08/StorageServices/StorageService.svc?xsd=xsd1" />
+    <MetadataFile FileName="StorageService.xsd" MetadataType="Schema" ID="3533e2b6-3b8f-4058-8a39-6e4f5889a8c8" SourceId="1" SourceUrl="http://192.168.4.1/StorageServices/StorageService.svc?xsd=xsd4" />
+    <MetadataFile FileName="StorageService1.xsd" MetadataType="Schema" ID="aeb3c7e6-48a8-4838-a15c-c556806cb918" SourceId="1" SourceUrl="http://192.168.4.1/StorageServices/StorageService.svc?xsd=xsd5" />
+    <MetadataFile FileName="StorageService.disco" MetadataType="Disco" ID="acabb590-4767-40da-a213-543536033cad" SourceId="1" SourceUrl="http://192.168.4.1/StorageServices/StorageService.svc?disco" />
+    <MetadataFile FileName="StorageService2.xsd" MetadataType="Schema" ID="4cad5f55-4240-4c29-9e25-a452f8f9eb72" SourceId="1" SourceUrl="http://192.168.4.1/StorageServices/StorageService.svc?xsd=xsd1" />
+    <MetadataFile FileName="StorageService3.xsd" MetadataType="Schema" ID="fc6f99f5-650d-4c08-aa43-3ecb4657f3c4" SourceId="1" SourceUrl="http://192.168.4.1/StorageServices/StorageService.svc?xsd=xsd2" />
+    <MetadataFile FileName="StorageService4.xsd" MetadataType="Schema" ID="f649f92b-544f-49f1-9489-8cab5ed19d65" SourceId="1" SourceUrl="http://192.168.4.1/StorageServices/StorageService.svc?xsd=xsd3" />
+    <MetadataFile FileName="StorageService.wsdl" MetadataType="Wsdl" ID="bd687ceb-9ef6-4a82-80df-0c92b23a9502" SourceId="1" SourceUrl="http://192.168.4.1/StorageServices/StorageService.svc?wsdl" />
+    <MetadataFile FileName="StorageService5.xsd" MetadataType="Schema" ID="b57abc75-b162-4db6-864a-99d97b4abc8b" SourceId="1" SourceUrl="http://192.168.4.1/StorageServices/StorageService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

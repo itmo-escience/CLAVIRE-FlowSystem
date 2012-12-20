@@ -8,10 +8,10 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="increment" type="xs:int" />
-      <xs:element name="machine" type="xs:int" />
-      <xs:element name="pid" type="xs:short" />
-      <xs:element name="timestamp" type="xs:int" />
+      <xs:element name="_increment" type="xs:int" />
+      <xs:element name="_machine" type="xs:int" />
+      <xs:element name="_pid" type="xs:short" />
+      <xs:element name="_timestamp" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ObjectId" nillable="true" type="tns:ObjectId" />

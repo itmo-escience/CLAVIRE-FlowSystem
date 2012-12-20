@@ -56,12 +56,19 @@
     <Reference Include="clrzmq-ext">
       <HintPath>..\Libs\clrzmq-ext.dll</HintPath>
     </Reference>
+    <Reference Include="DataContracts">
+      <HintPath>..\Libs\DataContracts.dll</HintPath>
+    </Reference>
     <Reference Include="Eventing">
       <HintPath>..\Libs\Eventing.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MongoDB.Bson">
       <HintPath>..\Libs\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=1.4.4369.36872, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json.Net35">
       <HintPath>..\Libs\Newtonsoft.Json.Net35.dll</HintPath>
@@ -98,15 +105,15 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\EventingService\EventingBrokerService.wsdl" />
-    <None Include="Service References\EventingService\EventingBrokerService.xsd">
+    <None Include="Service References\EventingService\EventingBrokerService2.wsdl" />
+    <None Include="Service References\EventingService\EventingBrokerService21.wsdl" />
+    <None Include="Service References\EventingService\EventingBrokerService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EventingService\EventingBrokerService1.wsdl" />
-    <None Include="Service References\EventingService\EventingBrokerService1.xsd">
+    <None Include="Service References\EventingService\EventingBrokerService31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EventingService\EventingBrokerService2.xsd">
+    <None Include="Service References\EventingService\EventingBrokerService32.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ExecutionService\Easis.Wfs.FlowSystemService.ExecutionService.BriefTaskInfo.datasource">
@@ -128,6 +135,12 @@
     </None>
     <None Include="Service References\ExecutionService\ExecutionBrokerService3.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonitoringFacade\Easis.Wfs.FlowSystemService.MonitoringFacade.JobDescription.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MonitoringFacade\Easis.Wfs.FlowSystemService.MonitoringFacade.ResourceDescription.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\MonitoringFacade\MonitoringFacade.wsdl" />
     <None Include="Service References\MonitoringFacade\MonitoringFacade.xsd">
@@ -167,20 +180,23 @@
     <None Include="Service References\StorageService\Easis.Wfs.FlowSystemService.StorageService.DataEntry.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\StorageService\StorageService1.wsdl" />
+    <None Include="Service References\StorageService\StorageService.wsdl" />
+    <None Include="Service References\StorageService\StorageService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StorageService\StorageService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StorageService\StorageService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StorageService\StorageService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StorageService\StorageService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\StorageService\StorageService5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\StorageService\StorageService51.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\StorageService\StorageService52.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\StorageService\StorageService53.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\StorageService\StorageService54.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web References\PES\Reference.map">
@@ -194,7 +210,6 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\PES\SequenceService.disco" />
-    <None Include="Service References\EventingService\EventingBrokerService.disco" />
     <None Include="Service References\EventingService\configuration91.svcinfo" />
     <None Include="Service References\EventingService\configuration.svcinfo" />
     <None Include="Service References\EventingService\Reference.svcmap">
@@ -213,13 +228,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\StorageService\configuration91.svcinfo" />
-    <None Include="Service References\StorageService\configuration.svcinfo" />
-    <None Include="Service References\StorageService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\StorageService\StorageService1.disco" />
     <None Include="Service References\MonitoringFacade\MonitoringFacade.disco" />
     <None Include="Service References\ExecutionService\ExecutionBrokerService.disco" />
     <None Include="Service References\ResourceBaseService\ResourceBaseService.disco" />
@@ -231,6 +239,14 @@
     </None>
     <None Include="libzmq.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Service References\EventingService\EventingBrokerService1.disco" />
+    <None Include="Service References\StorageService\StorageService.disco" />
+    <None Include="Service References\StorageService\configuration91.svcinfo" />
+    <None Include="Service References\StorageService\configuration.svcinfo" />
+    <None Include="Service References\StorageService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -352,10 +368,6 @@
     <ProjectReference Include="..\Common.Desktop\Common.Desktop.csproj">
       <Project>{FD2D188C-6EFB-48BA-8F8B-E0E4A9CD5F0C}</Project>
       <Name>Common.Desktop</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataContracts\DataContracts.csproj">
-      <Project>{21EBFA07-8242-41DE-9A5D-C4583344BB3B}</Project>
-      <Name>DataContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\EasyFlowParser.Desktop\EasyFlowParser.Desktop.csproj">
       <Project>{6A61B835-2584-4386-B305-2A5DA87AD6D6}</Project>

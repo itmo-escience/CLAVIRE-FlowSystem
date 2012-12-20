@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="ZL3pXI/NLOQuJbjwwhL9sf1cNdA=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="CisHV2CkOsjfQYi9INq+WvXU574=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="StorageService">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="StorageService" contract="StorageService.IStorageService" bindingType="basicHttpBinding" address="http://srv08/StorageServices/StorageService.svc" bindingConfiguration="StorageService">
+    <endpoint name="StorageService" contract="StorageService.IStorageService" bindingType="basicHttpBinding" address="http://192.168.4.1/StorageServices/StorageService.svc" bindingConfiguration="StorageService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://srv08/StorageServices/StorageService.svc</serializedValue>
+          <serializedValue>http://192.168.4.1/StorageServices/StorageService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

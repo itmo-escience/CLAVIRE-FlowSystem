@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="rqwbqZG8bhaEd3IJ/Pyp9pDtgOc=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="pr9aOn8A7mUzCM8bH5pH33W6Yh0=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="ebs">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="ebs" contract="EventingService.IEventingBrokerService" bindingType="basicHttpBinding" address="http://srv08:81/EventingBroker/EventingBrokerService.svc" bindingConfiguration="ebs">
+    <endpoint name="ebs" contract="EventingService.IEventingBrokerService" bindingType="basicHttpBinding" address="http://192.168.4.1/Eventing/EventingBrokerService.svc" bindingConfiguration="ebs">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://srv08:81/EventingBroker/EventingBrokerService.svc</serializedValue>
+          <serializedValue>http://192.168.4.1/Eventing/EventingBrokerService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
