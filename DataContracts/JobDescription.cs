@@ -16,7 +16,7 @@ namespace Easis.Common.DataContracts
         [DataMember]
         public string Priority { get; set; }
         [DataMember]
-        public IDictionary<string, string> ExtraElements = new Dictionary<string, string>();
+        public IDictionary<string, object> ExtraElements = new Dictionary<string, object>();
 
 
         public object Clone()
@@ -130,8 +130,12 @@ namespace Easis.Common.DataContracts
         public Nullable<DateTime> Started { get; set; }
         [DataMember]
         public Nullable<DateTime> Ended { get; set; }
+
+        //TODO: make separate class
         [DataMember]
-        public Nullable<TimeSpan> Estimated { get; set; }
+        public double Estimation { get; set; }
+        [DataMember]
+        public double EstimationDispersion { get; set; }
 
         [DataMember]
         public string State { get; set; }

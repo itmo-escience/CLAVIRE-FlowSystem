@@ -68,6 +68,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfKeyValueOfTaskTimeOverheadsdurationn_S0y7xoR" nillable="true" type="tns:ArrayOfKeyValueOfTaskTimeOverheadsdurationn_S0y7xoR" />
+  <xs:complexType name="ArrayOfKeyValueOfstringduration">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfstringduration">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" nillable="true" type="xs:string" />
+            <xs:element name="Value" type="ser:duration" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfstringduration" nillable="true" type="tns:ArrayOfKeyValueOfstringduration" />
   <xs:complexType name="ArrayOfKeyValueOfTaskTimeMetricdateTimekZwGsPiz">
     <xs:annotation>
       <xs:appinfo>

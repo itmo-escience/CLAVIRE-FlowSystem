@@ -11,139 +11,7 @@ namespace Easis.Wfs.FlowSystemService
 {
     public class DryExecutionStepStarter : ExecutionStepStarter
     {
-        //class EBSC : IExecutionBrokerService
-        //{
-        //    public void ExecuteAsync(ulong[] ids)
-        //    {
-                
-        //    }
-
-        //    public bool MagicHappens()
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public IAsyncResult BeginMagicHappens(AsyncCallback callback, object asyncState)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public bool EndMagicHappens(IAsyncResult result)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public void Define(TaskDescription[] tasks, TaskDependency[] dependencies)
-        //    {
-                
-        //    }
-
-        //    public IAsyncResult BeginDefine(TaskDescription[] tasks, TaskDependency[] dependencies, AsyncCallback callback, object asyncState)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public void EndDefine(IAsyncResult result)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public void Execute(ulong[] taskIds)
-        //    {
-                
-        //    }
-
-        //    public IAsyncResult BeginExecute(ulong[] taskIds, AsyncCallback callback, object asyncState)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public void EndExecute(IAsyncResult result)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public void Abort(ulong[] taskId)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public IAsyncResult BeginAbort(ulong[] taskId, AsyncCallback callback, object asyncState)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public void EndAbort(IAsyncResult result)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public Task GetInfo(ulong taskId)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public IAsyncResult BeginGetInfo(ulong taskId, AsyncCallback callback, object asyncState)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public Task EndGetInfo(IAsyncResult result)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public BriefTaskInfo[] GetBriefTaskList()
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public IAsyncResult BeginGetBriefTaskList(AsyncCallback callback, object asyncState)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public BriefTaskInfo[] EndGetBriefTaskList(IAsyncResult result)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    private static ulong cur = 1000;
-
-        //    public ulong GetNewTaskId()
-        //    {
-        //        cur++;
-        //        return cur;
-        //    }
-
-        //    public IAsyncResult BeginGetNewTaskId(AsyncCallback callback, object asyncState)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public ulong EndGetNewTaskId(IAsyncResult result)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public void Update()
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public IAsyncResult BeginUpdate(AsyncCallback callback, object asyncState)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-
-        //    public void EndUpdate(IAsyncResult result)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-        //}
-
-
-        private static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        //private static readonly Logger _log = LogManager.GetCurrentClassLogger();
 
         private IEventConsumer _eventConsumer;
 
@@ -162,7 +30,8 @@ namespace Easis.Wfs.FlowSystemService
 
         public override void StartStep(StepRunDescriptor stepRunDescriptor)
         {
-            //EBSC ec = new EBSC();// new ExecutionBrokerServiceClient();
+            WfLog _log = new WfLog(LogManager.GetCurrentClassLogger(), stepRunDescriptor.WfId);
+
             ExecutionBrokerServiceClient ec = new ExecutionBrokerServiceClient();
 
             bool isIdNew = true;

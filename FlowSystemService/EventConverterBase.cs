@@ -16,7 +16,7 @@ namespace Easis.Wfs.FlowSystemService
     /// </summary>
     abstract class EventConverterBase
     {
-        protected static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        protected static readonly Logger _slog = LogManager.GetCurrentClassLogger();
         // Лочатся все интерфейсные методы
         protected object _syncRoot = new object();
 

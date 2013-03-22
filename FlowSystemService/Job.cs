@@ -318,6 +318,9 @@ namespace Easis.Wfs.FlowSystemService
         /// </summary>
         protected void ExecuteJob()
         {
+            // check timeout
+            TimeSpan timeout = Properties.Settings.Default.ThreadWaitEventTimeout;
+
             // Создаем контекст
             IGlobalContext gc = new GlobalContext
                                     {
@@ -326,7 +329,8 @@ namespace Easis.Wfs.FlowSystemService
                                         PackageRegistry = new ListBasedPackageRegistry(),
                                         StepStarter = _stepStarter,
                                         LongRunningController = _longRunningController,
-                                        Storage = _storage
+                                        Storage = _storage,
+                                        ThreadWaitForEventTimeout = timeout
                                     };
 
             DeclarativeInterpreter declarativeInterpreter = new DeclarativeInterpreter(gc);

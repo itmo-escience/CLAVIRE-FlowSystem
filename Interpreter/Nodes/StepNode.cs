@@ -199,7 +199,7 @@ namespace Easis.Wfs.Interpreting
             }
             catch (Exception ex)
             {
-                _log.Error("[Ignorring temporary] Error while forming outputs");
+                _log.Warn("[Ignorring temporary] Error while forming outputs");
                 outputs = new List<FileParam>();
             }
 
@@ -728,7 +728,8 @@ namespace Easis.Wfs.Interpreting
                 ret.RunInfo.ExternalId = _info.ExternalId;
                 ret.RunInfo.ResourceInfo = _info.ResourceInfo;
                 ret.RunInfo.NodeInfo = _info.NodeInfos;
-                ret.RunInfo.Estimated = _info.Estimated;
+                ret.RunInfo.Estimation = _info.Estimation;
+                ret.RunInfo.EstimationDispersion = _info.EstimationDispersion;
                 ret.RunInfo.Started = _info.Started;
             }
 

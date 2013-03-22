@@ -27,6 +27,7 @@
     <MetadataFile FileName="ExecutionBrokerService1.xsd" MetadataType="Schema" ID="daebe8e0-93bb-4de3-a9d6-83b105992fdb" SourceId="1" SourceUrl="http://192.168.4.1/Execution/ExecutionBrokerService.svc?xsd=xsd3" />
     <MetadataFile FileName="ExecutionBrokerService2.xsd" MetadataType="Schema" ID="33acd685-ec40-4aa3-bfd6-650cac899a12" SourceId="1" SourceUrl="http://192.168.4.1/Execution/ExecutionBrokerService.svc?xsd=xsd1" />
     <MetadataFile FileName="ExecutionBrokerService.disco" MetadataType="Disco" ID="9b375f2f-57ca-46d2-8008-eda07dbf8c10" SourceId="1" SourceUrl="http://192.168.4.1/Execution/ExecutionBrokerService.svc?disco" />
+    <MetadataFile FileName="ExecutionBrokerService4.xsd" MetadataType="Schema" ID="1bc37305-144b-4ac5-9898-080c7cf559cb" SourceId="1" SourceUrl="http://192.168.4.1/Execution/ExecutionBrokerService.svc?xsd=xsd4" />
     <MetadataFile FileName="ExecutionBrokerService3.xsd" MetadataType="Schema" ID="bb6d5edb-8498-43ac-b45b-8cf858ac7873" SourceId="1" SourceUrl="http://192.168.4.1/Execution/ExecutionBrokerService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>

@@ -355,7 +355,7 @@ namespace Easis.Wfs.Interpreting
             get { return _state; }
             protected set
             {
-                _log.Debug("                         Node#{0} state changed {1} -> {2}", Id, _state, value);
+                //_log.Debug("                         Node#{0} state changed {1} -> {2}", Id, _state, value);
                 _state = value;
 
                 // генерируем события только для стандартных FINISHED и STARTED

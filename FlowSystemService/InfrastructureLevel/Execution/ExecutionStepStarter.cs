@@ -15,12 +15,14 @@ namespace Easis.Wfs.FlowSystemService
 {
     public class ExecutionStepStarter : IStepStarter
     {
-        static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        //static readonly Logger _log = LogManager.GetCurrentClassLogger();
 
         protected object _syncRoot = new object();
 
         public TaskDescription FormTaskDescription(StepRunDescriptor stepRunDescriptor)
         {
+            WfLog _log = new WfLog(LogManager.GetCurrentClassLogger(), stepRunDescriptor.WfId);
+
             TaskDescription td = new TaskDescription
                 {
                     Method = stepRunDescriptor.MethodName,
@@ -31,13 +33,10 @@ namespace Easis.Wfs.FlowSystemService
             if (stepRunDescriptor.ExecutionContext != null)
             {
                 td.UserId = stepRunDescriptor.ExecutionContext.UserId;
-                
                 td.UserCert = stepRunDescriptor.ExecutionContext.TempUserCert;
 
                 if (stepRunDescriptor.ExecutionContext.Priority != null)
                 {
-                    // TODO: remove
-                    _log.Trace("----------- {0}", stepRunDescriptor.ExecutionContext.Priority);
                     switch (stepRunDescriptor.ExecutionContext.Priority.ToLower())
                     {
                         case "urgent":
@@ -54,26 +53,13 @@ namespace Easis.Wfs.FlowSystemService
                 td.ExecParams = new Dictionary<string, string>();
                 foreach (var element in stepRunDescriptor.ExecutionContext.ExtraElements)
                 {
-                    td.ExecParams.Add(element.Key, element.Value);
+                    td.ExecParams.Add(element.Key, (string)element.Value);
                 }
             }
             //toto: else
             #endregion
 
-
             td.LaunchMode = stepRunDescriptor.RunMode == StepRunMode.Meta ? TaskLaunchMode.Auto : TaskLaunchMode.Manual;
-
-            //// NOTE: choosing PES working mode
-            //if (stepRunDescriptor.RunParameters.Params.Count == 0)
-            //{
-            //    td.LaunchMode = TaskLaunchMode.Manual;
-            //    _log.Trace("Manual launch mode was set (no params were defined)");
-            //}
-            //else
-            //{
-            //    td.LaunchMode = TaskLaunchMode.Auto;
-            //    _log.Trace("Auto launch mode was set ({0} params were defined)", stepRunDescriptor.RunParameters.Params.Count);
-            //}
 
             td.InputFiles = new TaskFileDescription[stepRunDescriptor.RunParameters.InputFiles.Count];
             int i = 0;
@@ -131,6 +117,8 @@ namespace Easis.Wfs.FlowSystemService
 
         public virtual void StartStep(StepRunDescriptor stepRunDescriptor)
         {
+            WfLog _log = new WfLog(LogManager.GetCurrentClassLogger(), stepRunDescriptor.WfId);
+
             ExecutionService.ExecutionBrokerServiceClient ec = new ExecutionBrokerServiceClient();
             // 1. new id
             ulong tid = ec.GetNewTaskId();
@@ -156,7 +144,7 @@ namespace Easis.Wfs.FlowSystemService
                 IdAccordanceDict.Instance.SaveDescriptor(tid, stepRunDescriptor);
             }
 
-            _log.Trace("Staring step using Execution.");
+            _log.Info("Staring step using Execution\n  TaskId: {0}\n  Object: {1}\n  UserId: {2}\n  Priority: {3}", td.TaskId, td.Package + "." + td.Method, td.UserId, td.Priority);
             // 3. execute
             ec.ExecuteAsync(new ulong[] { tid });
         }

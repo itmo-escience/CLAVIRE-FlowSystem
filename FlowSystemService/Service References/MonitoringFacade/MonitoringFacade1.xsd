@@ -32,7 +32,7 @@
   <xs:element name="JobDescription" nillable="true" type="tns:JobDescription" />
   <xs:complexType name="ExecutionContext">
     <xs:sequence>
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ExtraElements" nillable="true" type="q2:ArrayOfKeyValueOfstringstring" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ExtraElements" nillable="true" type="q2:ArrayOfKeyValueOfstringanyType" />
       <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TempUserCert" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
@@ -93,7 +93,8 @@
   <xs:complexType name="RunInfo">
     <xs:sequence>
       <xs:element minOccurs="0" name="Ended" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Estimated" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Estimation" type="xs:double" />
+      <xs:element minOccurs="0" name="EstimationDispersion" type="xs:double" />
       <xs:element minOccurs="0" name="ExternalId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NodeInfo" nillable="true" type="tns:ArrayOfNodeRunInfo" />
       <xs:element minOccurs="0" name="ResourceInfo" nillable="true" type="tns:ResourceRunInfo" />

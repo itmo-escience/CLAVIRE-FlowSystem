@@ -11,8 +11,6 @@ namespace Easis.Wfs.EasyFlow.Model
     {
         private static readonly Logger _log = LogManager.GetCurrentClassLogger();
 
-
-
         /// <summary>
         /// Magic indexing behavior for lists
         /// to remove this just delete override

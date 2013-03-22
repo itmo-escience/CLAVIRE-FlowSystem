@@ -34,6 +34,9 @@ namespace Easis.Wfs.Interpreting
         // WF
         private FlowGraph _flowGraph = null;
 
+        private BlockBase _sourceBlock;
+        private BlockBase _sinkBlock;
+
         // Уберконтекст
         public IGlobalContext Context;
 
@@ -336,8 +339,6 @@ namespace Easis.Wfs.Interpreting
 
             _log.Info("Cleaning ");
             CollectGarbage();
-            //                _flow.Blocks.Remove(sourceBlock);
-            //                _flow.Blocks.Remove(sinkBlock);
         }
 
         #endregion
@@ -367,6 +368,7 @@ namespace Easis.Wfs.Interpreting
                     }
                     catch (TimeoutException)
                     {
+                        _log.Trace("Thread has been waiting for {0} for event in queue. Releasing.", Context.ThreadWaitForEventTimeout);
                         throw new ThreadDisconnectedException();
                     }
 
@@ -405,6 +407,9 @@ namespace Easis.Wfs.Interpreting
         private void CollectGarbage()
         {
             //TODO: Удаление ненужных файлов
+
+            _flow.Blocks.Remove(_sourceBlock);
+            _flow.Blocks.Remove(_sinkBlock);
         }
 
         #endregion
@@ -501,12 +506,11 @@ namespace Easis.Wfs.Interpreting
             _log.Info("Creating Sink node and Source node");
             // Creating Source and Sink nodes
             // Заглушки
-            BlockBase sourceBlock = new StepBlock();
-            BlockBase sinkBlock = new StepBlock();
+            _sourceBlock = new StepBlock();
+            _sinkBlock = new StepBlock();
             // Получаем ID
-            _flow.Blocks.Add(sourceBlock);
-            _flow.Blocks.Add(sinkBlock);
-
+            _flow.Blocks.Add(_sourceBlock);
+            _flow.Blocks.Add(_sinkBlock);
 
             INodeContext nodeContext = new NodeContext()
                                            {
@@ -515,7 +519,7 @@ namespace Easis.Wfs.Interpreting
                                                NodeGraphController = _flowGraph
                                            };
             // в конструкторе проставится триггер на FLOW_START
-            FlowSourceNode sourceNode = new FlowSourceNode(sourceBlock, nodeContext, _log);
+            FlowSourceNode sourceNode = new FlowSourceNode(_sourceBlock, nodeContext, _log);
 
             ISinkNodeContext sinkNodeContext = new SinkNodeContext()
                                                    {
@@ -524,7 +528,7 @@ namespace Easis.Wfs.Interpreting
                                                        DeclarativeInterpreter = this,
                                                        NodeGraphController = _flowGraph
                                                    };
-            FlowSinkNode sinkNode = new FlowSinkNode(sinkBlock, sinkNodeContext, _log);
+            FlowSinkNode sinkNode = new FlowSinkNode(_sinkBlock, sinkNodeContext, _log);
 
             _log.Info("Linking Sink and Source nodes");
             _flowGraph.InitSinkSource(sinkNode, sourceNode);
@@ -549,18 +553,6 @@ namespace Easis.Wfs.Interpreting
         }
 
         #endregion
-
-        //public string GetStatus()
-        //{
-        //    lock (_syncRoot)
-        //    {
-        //        string ret = "";
-        //        ret += "'interpreter_state': '" + State.ToString() + "',\n";
-        //        if (_flowGraph != null)
-        //            ret += _flowGraph.GetStatus();
-        //        return ret;
-        //    }
-        //}
 
         /// <summary>
         /// in external context

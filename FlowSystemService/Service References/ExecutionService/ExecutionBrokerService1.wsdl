@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://192.168.4.1/Execution/ExecutionBrokerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://192.168.4.1/Execution/ExecutionBrokerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MITP" />
       <xsd:import schemaLocation="http://192.168.4.1/Execution/ExecutionBrokerService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://192.168.4.1/Execution/ExecutionBrokerService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Easis.PackageBase.Definition" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IExecutionBrokerService_MagicHappens_InputMessage">

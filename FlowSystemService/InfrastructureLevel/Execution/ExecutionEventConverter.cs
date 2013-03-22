@@ -20,14 +20,14 @@ namespace Easis.Wfs.FlowSystemService
 {
     class ExecutionEventConverter : EventConverterBase
     {
-        static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        static readonly Logger _slog = LogManager.GetCurrentClassLogger();
         protected override bool InternalCanConvert(EventReport eventReport)
         {
             return String.Equals(eventReport.Source, "Execution", StringComparison.CurrentCultureIgnoreCase) &&
                 String.Equals(eventReport.Topic, "WFStateUpdatedEvent", StringComparison.CurrentCultureIgnoreCase);
         }
 
-        private Task ExecutionGetTask(ulong sequenceId)
+        private Task ExecutionGetTask(ulong sequenceId, WfLog log)
         {
             // 2. Спросить у песа детали
             ExecutionService.ExecutionBrokerServiceClient cli = new ExecutionBrokerServiceClient();
@@ -52,27 +52,27 @@ namespace Easis.Wfs.FlowSystemService
                     attempts++;
                     if (attempts > maxAttempts)
                     {
-                        _log.Error("Cannot get information about sequence {0} from PES. Maxattempts reached. Exception thrown.", sequenceId);
+                        log.Error("Cannot get information about sequence {0} from PES. Maxattempts reached. Exception thrown.", sequenceId);
                         throw new Exception("Max number of attempts reached");
                     }
 
-                    _log.WarnException(String.Format("Cannot get information about sequence {0} from PES. Ignoring. Attempt {1}.", sequenceId, attempts), e);
+                    log.WarnException(String.Format("Cannot get information about sequence {0} from PES. Ignoring. Attempt {1}.", sequenceId, attempts), e);
 
                     attempts++;
                     Thread.Sleep(sleepAttempt);
                 }
             }
 
-            _log.Trace("SequenceGetInfo returns {0}", task == null ? "NULL" : "valid object");
+            log.Trace("SequenceGetInfo returns {0}", task == null ? "NULL" : "valid object");
 
             if (task != null)
-                _log.Trace(task.ToJsonString());
+                log.Trace(task.ToJsonString());
 
             return task;
 
         }
 
-        private StepRunInfo GetInfo(ulong sequenceId)
+        private StepRunInfo GetInfo(ulong sequenceId, WfLog log)
         {
             StepRunInfo ret;
             // typed copy
@@ -92,7 +92,7 @@ namespace Easis.Wfs.FlowSystemService
 
             ret.ExternalId = sequenceId.ToString();
 
-            Task task = ExecutionGetTask(sequenceId);
+            Task task = ExecutionGetTask(sequenceId, log);
 
             // PES вернул NULL
             if (task == null)
@@ -125,11 +125,15 @@ namespace Easis.Wfs.FlowSystemService
                     if (task.Time.WhenFinished != null)
                         if (task.Time.WhenFinished.ContainsKey(TaskTimeMetric.Calculation))
                             ret.Ended = task.Time.WhenFinished[TaskTimeMetric.Calculation];
-                    if (task.Time.EstimatedFinish != null && task.Time.EstimatedStart != null)
-                        ret.Estimated = task.Time.EstimatedFinish -
-                                        (DateTime.Now > task.Time.EstimatedStart
-                                             ? DateTime.Now
-                                             : task.Time.EstimatedStart);
+                }
+
+                if(task.CurrentSchedule != null && task.CurrentSchedule.Estimation != null)
+                {
+                    if(task.CurrentSchedule.Estimation.ByModel != null && task.CurrentSchedule.Estimation.ByModel.CalculationTime != null)
+                    {
+                        ret.Estimation = task.CurrentSchedule.Estimation.ByModel.CalculationTime.Value;
+                        ret.EstimationDispersion = task.CurrentSchedule.Estimation.ByModel.CalculationTime.Dispersion;
+                    }
                 }
             }
 
@@ -162,13 +166,13 @@ namespace Easis.Wfs.FlowSystemService
                     if (task.AssignedNodes.Length > 0)
                     {
                         if (task.AssignedNodes.Length > 1)
-                            _log.Warn("Assigned nodes contains more than one element for long running task (only one is supported).");
+                            _slog.Warn("Assigned nodes contains more than one element for long running task (only one is supported).");
 
-                        _log.Trace("Fetching info from resource base about node '{0}.{1}'", ret.ResourceInfo.ResourceName, task.AssignedNodes[0].NodeName);
+                        log.Trace("Fetching info from resource base about node '{0}.{1}'", ret.ResourceInfo.ResourceName, task.AssignedNodes[0].NodeName);
                         ResourceNode rn = rbcli.GetResourceNodeByName(ret.ResourceInfo.ResourceName, task.AssignedNodes[0].NodeName);
 
                         //TODO: del
-                        _log.Trace(rn.ToJsonString());
+                        log.Trace(rn.ToJsonString());
 
                         var packagesInfo = rn.Packages;
                         foreach (var packageOnNode in packagesInfo)
@@ -182,7 +186,7 @@ namespace Easis.Wfs.FlowSystemService
                                 }
                                 else
                                 {
-                                    _log.Error("Command endpoint is not specified for package '{0}' in resource base", stepRunDescriptor.PackageName);
+                                    log.Error("Command endpoint is not specified for package '{0}' in resource base", stepRunDescriptor.PackageName);
                                     throw new InterpretionException(String.Format("Command endpoint is not specified for package '{0}' in resource base", stepRunDescriptor.PackageName));
                                 }
 
@@ -192,7 +196,7 @@ namespace Easis.Wfs.FlowSystemService
                                 }
                                 else
                                 {
-                                    _log.Error("Publish endpoint is not specified for package '{0}' in resource base", stepRunDescriptor.PackageName);
+                                    log.Error("Publish endpoint is not specified for package '{0}' in resource base", stepRunDescriptor.PackageName);
                                     throw new InterpretionException(String.Format("Command endpoint is not specified for package '{0}' in resource base", stepRunDescriptor.PackageName));
                                 }
 
@@ -200,11 +204,11 @@ namespace Easis.Wfs.FlowSystemService
                             }
                         }
 
-                        _log.Trace("Fetched info about lr task cmd at '{0}' pub at '{1}'", lrret.CommandEndpoint, lrret.PublishingEndpoint);
+                        log.Trace("Fetched info about lr task cmd at '{0}' pub at '{1}'", lrret.CommandEndpoint, lrret.PublishingEndpoint);
                     }
                     else
                     {
-                        _log.Error("Assigned node fetched from Execution is null. Cannot fetch info about long running task.");
+                        log.Error("Assigned node fetched from Execution is null. Cannot fetch info about long running task.");
                         throw new InterpretionException(
                             "Assigned node fetched from Execution is null. Cannot fetch info about long running task.");
                     }
@@ -214,13 +218,13 @@ namespace Easis.Wfs.FlowSystemService
             return ret;
         }
 
-        private StepRunResult GetResult(ulong sequenceId)
+        private StepRunResult GetResult(ulong sequenceId, WfLog log)
         {
             StepRunResult ret = new StepRunResult();
 
             ret.ExternalId = sequenceId.ToString();
 
-            Task task = ExecutionGetTask(sequenceId);
+            Task task = ExecutionGetTask(sequenceId, log);
 
             // PES вернул NULL
             if (task == null)
@@ -238,7 +242,7 @@ namespace Easis.Wfs.FlowSystemService
                     // output files
                     foreach (var outFile in task.OutputFiles)
                     {
-                        _log.Trace("Found output file name:'{0}' slot:'{1}' storageid:{2}", outFile.FileName, outFile.SlotName, outFile.StorageId, outFile);
+                        log.Trace("Found output file name:'{0}' slot:'{1}' storageid:{2}", outFile.FileName, outFile.SlotName, outFile.StorageId, outFile);
                         FileDescriptor fd = new FileDescriptor(null, outFile.FileName, outFile.StorageId);
                         ret.OutputFiles.Add(fd);
                     }
@@ -250,7 +254,7 @@ namespace Easis.Wfs.FlowSystemService
                     }
                     catch (Exception ex)
                     {
-                        _log.Error("Exception while fetching output params. Ignoring.", ex);
+                        log.Error("Exception while fetching output params. Ignoring.", ex);
                     }
 
                     // registering data -------------------------------------------
@@ -277,22 +281,22 @@ namespace Easis.Wfs.FlowSystemService
                             StorageService.StorageServiceClient scli = new StorageServiceClient();
                             string[] ids = scli.RegisterDataBatch(des.ToArray());
 
-                            _log.Trace("Storage service returned {0} ids for {1} data entries", ids.Length, ret.OutputFiles.Count);
+                            log.Trace("Storage service returned {0} ids for {1} data entries", ids.Length, ret.OutputFiles.Count);
 
                             for (int i = 0; i < ret.OutputFiles.Count; i++)
                             {
                                 ret.OutputFiles.ToArray()[i].StorageId = ids[i];
                             }
-                            _log.Trace("Registered new files in storage");
+                            log.Trace("Registered new files in storage");
                         }
                         catch (Exception ex)
                         {
-                            _log.ErrorException("Couldn't register file in storage", ex);
+                            log.ErrorException("Couldn't register file in storage", ex);
                         }
                     }
                     else
                     {
-                        _log.Trace("No need to register files");
+                        log.Trace("No need to register files");
                     }
 
                     break;
@@ -320,7 +324,7 @@ namespace Easis.Wfs.FlowSystemService
             // Выбираем из события песовский ID
             ulong sequenceId = ulong.Parse(wfStateUpdatedEvent.WFStepCode);
 
-            _log.Trace("Found event from Execution for StepId {0}. Trying to find accordance in id dict..", sequenceId);
+            _slog.Trace("Found event from Execution for StepId {0}. Trying to find accordance in id dict..", sequenceId);
             try
             {
                 Utils.Pair<Guid, long> ids = IdAccordanceDict.Instance.GetWfAndStepId(sequenceId);
@@ -328,6 +332,7 @@ namespace Easis.Wfs.FlowSystemService
                 Guid WfId = ids.First;
                 long StepId = ids.Second;
 
+                WfLog log = new WfLog(LogManager.GetCurrentClassLogger(), WfId);
 
                 switch (wfStateUpdatedEvent.WFStateUpdatedType)
                 {
@@ -335,8 +340,8 @@ namespace Easis.Wfs.FlowSystemService
                         try
                         {
                             // find out where it runs
-                            StepRunInfo sri = GetInfo(sequenceId);
-                            _log.Trace("RunInfo has been successfully fetched");
+                            StepRunInfo sri = GetInfo(sequenceId, log);
+                            log.Trace("RunInfo has been successfully fetched");
                             ret = new FlowEvent(FlowEvent.RUN_STARTED, WfId, StepId, sri);
                         }
                         catch (InterpretionException ex)
@@ -348,8 +353,8 @@ namespace Easis.Wfs.FlowSystemService
                     case WFStateUpdatedTypeEnum.WFStepError:
                         try
                         {
-                            StepRunResult result = GetResult(sequenceId);
-                            _log.Trace("StepResult has been successfully fetched");
+                            StepRunResult result = GetResult(sequenceId, log);
+                            log.Trace("StepResult has been successfully fetched");
                             result.ErrorComment = wfStateUpdatedEvent.Comment;
                             ret = new FlowEvent(FlowEvent.RUN_FINISHED, WfId, StepId, result);
                         }
@@ -368,11 +373,11 @@ namespace Easis.Wfs.FlowSystemService
             }
             catch (KeyNotFoundException ex)
             {
-                _log.Error("Can't convert PES event. May be it is not for me. Rethrown.");
+                _slog.Error("Can't convert PES event. May be it is not for me. Rethrown.");
                 throw ex;
             }
 
-            _log.Trace("Event {0} converted with {1} to {2}", eventReport, this.GetType(), ret);
+            _slog.Trace("Event {0} converted with {1} to {2}", eventReport, this.GetType(), ret);
 
             return ret;
         }

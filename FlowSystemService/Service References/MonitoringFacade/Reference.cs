@@ -8,564 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Easis.Wfs.FlowSystemService.MonitoringFacade {
+namespace MongoDB.Bson
+{
     using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ResourceDescription", Namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class ResourceDescription : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="JobDescription", Namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class JobDescription : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CommentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ErrorCommentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ErrorExceptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Easis.Wfs.FlowSystemService.MonitoringFacade.ExecutionContext ExecutionContextField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> FinishedAtField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string InterpreterStateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Easis.Wfs.FlowSystemService.MonitoringFacade.JobRequest JobRequestField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Easis.Wfs.FlowSystemService.MonitoringFacade.NodeDescription[] NodesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Easis.Wfs.FlowSystemService.MonitoringFacade.FileDescription[] OutputsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> PushedAtField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> StartedAtField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Easis.Wfs.FlowSystemService.MonitoringFacade.JobState StateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime TimestampField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string VerboseErrorCommentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid WfIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Easis.Wfs.FlowSystemService.MonitoringFacade.JobDescription.JobResultStatus WorkflowStatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Easis.Wfs.FlowSystemService.MonitoringFacade.ObjectId _idField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Comment {
-            get {
-                return this.CommentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CommentField, value) != true)) {
-                    this.CommentField = value;
-                    this.RaisePropertyChanged("Comment");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ErrorComment {
-            get {
-                return this.ErrorCommentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ErrorCommentField, value) != true)) {
-                    this.ErrorCommentField = value;
-                    this.RaisePropertyChanged("ErrorComment");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ErrorException {
-            get {
-                return this.ErrorExceptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ErrorExceptionField, value) != true)) {
-                    this.ErrorExceptionField = value;
-                    this.RaisePropertyChanged("ErrorException");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.ExecutionContext ExecutionContext {
-            get {
-                return this.ExecutionContextField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ExecutionContextField, value) != true)) {
-                    this.ExecutionContextField = value;
-                    this.RaisePropertyChanged("ExecutionContext");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> FinishedAt {
-            get {
-                return this.FinishedAtField;
-            }
-            set {
-                if ((this.FinishedAtField.Equals(value) != true)) {
-                    this.FinishedAtField = value;
-                    this.RaisePropertyChanged("FinishedAt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string InterpreterState {
-            get {
-                return this.InterpreterStateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.InterpreterStateField, value) != true)) {
-                    this.InterpreterStateField = value;
-                    this.RaisePropertyChanged("InterpreterState");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.JobRequest JobRequest {
-            get {
-                return this.JobRequestField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.JobRequestField, value) != true)) {
-                    this.JobRequestField = value;
-                    this.RaisePropertyChanged("JobRequest");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.NodeDescription[] Nodes {
-            get {
-                return this.NodesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NodesField, value) != true)) {
-                    this.NodesField = value;
-                    this.RaisePropertyChanged("Nodes");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.FileDescription[] Outputs {
-            get {
-                return this.OutputsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OutputsField, value) != true)) {
-                    this.OutputsField = value;
-                    this.RaisePropertyChanged("Outputs");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> PushedAt {
-            get {
-                return this.PushedAtField;
-            }
-            set {
-                if ((this.PushedAtField.Equals(value) != true)) {
-                    this.PushedAtField = value;
-                    this.RaisePropertyChanged("PushedAt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> StartedAt {
-            get {
-                return this.StartedAtField;
-            }
-            set {
-                if ((this.StartedAtField.Equals(value) != true)) {
-                    this.StartedAtField = value;
-                    this.RaisePropertyChanged("StartedAt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.JobState State {
-            get {
-                return this.StateField;
-            }
-            set {
-                if ((this.StateField.Equals(value) != true)) {
-                    this.StateField = value;
-                    this.RaisePropertyChanged("State");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Timestamp {
-            get {
-                return this.TimestampField;
-            }
-            set {
-                if ((this.TimestampField.Equals(value) != true)) {
-                    this.TimestampField = value;
-                    this.RaisePropertyChanged("Timestamp");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string VerboseErrorComment {
-            get {
-                return this.VerboseErrorCommentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.VerboseErrorCommentField, value) != true)) {
-                    this.VerboseErrorCommentField = value;
-                    this.RaisePropertyChanged("VerboseErrorComment");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid WfId {
-            get {
-                return this.WfIdField;
-            }
-            set {
-                if ((this.WfIdField.Equals(value) != true)) {
-                    this.WfIdField = value;
-                    this.RaisePropertyChanged("WfId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.JobDescription.JobResultStatus WorkflowStatus {
-            get {
-                return this.WorkflowStatusField;
-            }
-            set {
-                if ((this.WorkflowStatusField.Equals(value) != true)) {
-                    this.WorkflowStatusField = value;
-                    this.RaisePropertyChanged("WorkflowStatus");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.ObjectId _id {
-            get {
-                return this._idField;
-            }
-            set {
-                if ((this._idField.Equals(value) != true)) {
-                    this._idField = value;
-                    this.RaisePropertyChanged("_id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="JobDescription.JobResultStatus", Namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts")]
-        public enum JobResultStatus : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            completed = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            partially_completed = 1,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            failed = 2,
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ExecutionContext", Namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class ExecutionContext : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.Dictionary<string, string> ExtraElementsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PriorityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TempUserCertField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserIdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.Dictionary<string, string> ExtraElements {
-            get {
-                return this.ExtraElementsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ExtraElementsField, value) != true)) {
-                    this.ExtraElementsField = value;
-                    this.RaisePropertyChanged("ExtraElements");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Priority {
-            get {
-                return this.PriorityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PriorityField, value) != true)) {
-                    this.PriorityField = value;
-                    this.RaisePropertyChanged("Priority");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TempUserCert {
-            get {
-                return this.TempUserCertField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TempUserCertField, value) != true)) {
-                    this.TempUserCertField = value;
-                    this.RaisePropertyChanged("TempUserCert");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserId {
-            get {
-                return this.UserIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserIdField, value) != true)) {
-                    this.UserIdField = value;
-                    this.RaisePropertyChanged("UserId");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="JobRequest", Namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class JobRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.Dictionary<string, string> ExecutionPropertiesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FlowExecutionPropertiesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ScriptField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ScriptDataContextField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.Dictionary<string, string> ExecutionProperties {
-            get {
-                return this.ExecutionPropertiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ExecutionPropertiesField, value) != true)) {
-                    this.ExecutionPropertiesField = value;
-                    this.RaisePropertyChanged("ExecutionProperties");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FlowExecutionProperties {
-            get {
-                return this.FlowExecutionPropertiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FlowExecutionPropertiesField, value) != true)) {
-                    this.FlowExecutionPropertiesField = value;
-                    this.RaisePropertyChanged("FlowExecutionProperties");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Script {
-            get {
-                return this.ScriptField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ScriptField, value) != true)) {
-                    this.ScriptField = value;
-                    this.RaisePropertyChanged("Script");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ScriptDataContext {
-            get {
-                return this.ScriptDataContextField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ScriptDataContextField, value) != true)) {
-                    this.ScriptDataContextField = value;
-                    this.RaisePropertyChanged("ScriptDataContext");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ObjectId", Namespace="http://schemas.datacontract.org/2004/07/MongoDB.Bson")]
-    [System.SerializableAttribute()]
-    public partial struct ObjectId : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial struct ObjectId : System.Runtime.Serialization.IExtensibleDataObject
+    {
         
-        [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         private int _incrementField;
@@ -576,934 +29,175 @@ namespace Easis.Wfs.FlowSystemService.MonitoringFacade {
         
         private int _timestampField;
         
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
                 return this.extensionDataField;
             }
-            set {
+            set
+            {
                 this.extensionDataField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int _increment {
-            get {
+        public int _increment
+        {
+            get
+            {
                 return this._incrementField;
             }
-            set {
-                if ((this._incrementField.Equals(value) != true)) {
-                    this._incrementField = value;
-                    this.RaisePropertyChanged("_increment");
-                }
+            set
+            {
+                this._incrementField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int _machine {
-            get {
+        public int _machine
+        {
+            get
+            {
                 return this._machineField;
             }
-            set {
-                if ((this._machineField.Equals(value) != true)) {
-                    this._machineField = value;
-                    this.RaisePropertyChanged("_machine");
-                }
+            set
+            {
+                this._machineField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short _pid {
-            get {
+        public short _pid
+        {
+            get
+            {
                 return this._pidField;
             }
-            set {
-                if ((this._pidField.Equals(value) != true)) {
-                    this._pidField = value;
-                    this.RaisePropertyChanged("_pid");
-                }
+            set
+            {
+                this._pidField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int _timestamp {
-            get {
+        public int _timestamp
+        {
+            get
+            {
                 return this._timestampField;
             }
-            set {
-                if ((this._timestampField.Equals(value) != true)) {
-                    this._timestampField = value;
-                    this.RaisePropertyChanged("_timestamp");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            set
+            {
+                this._timestampField = value;
             }
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="NodeDescription", Namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class NodeDescription : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint[] ChildrenField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ErrorCommentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ErrorExceptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ExternalIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Easis.Wfs.FlowSystemService.MonitoringFacade.FileDescription[] InFilesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MethodNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Easis.Wfs.FlowSystemService.MonitoringFacade.FileDescription[] OutFilesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PackageNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint[] ParentsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Easis.Wfs.FlowSystemService.MonitoringFacade.RunInfo RunInfoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint StepIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string VerboseErrorCommentField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public uint[] Children {
-            get {
-                return this.ChildrenField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ChildrenField, value) != true)) {
-                    this.ChildrenField = value;
-                    this.RaisePropertyChanged("Children");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ErrorComment {
-            get {
-                return this.ErrorCommentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ErrorCommentField, value) != true)) {
-                    this.ErrorCommentField = value;
-                    this.RaisePropertyChanged("ErrorComment");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ErrorException {
-            get {
-                return this.ErrorExceptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ErrorExceptionField, value) != true)) {
-                    this.ErrorExceptionField = value;
-                    this.RaisePropertyChanged("ErrorException");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ExternalId {
-            get {
-                return this.ExternalIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ExternalIdField, value) != true)) {
-                    this.ExternalIdField = value;
-                    this.RaisePropertyChanged("ExternalId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.FileDescription[] InFiles {
-            get {
-                return this.InFilesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.InFilesField, value) != true)) {
-                    this.InFilesField = value;
-                    this.RaisePropertyChanged("InFiles");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MethodName {
-            get {
-                return this.MethodNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MethodNameField, value) != true)) {
-                    this.MethodNameField = value;
-                    this.RaisePropertyChanged("MethodName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.FileDescription[] OutFiles {
-            get {
-                return this.OutFilesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OutFilesField, value) != true)) {
-                    this.OutFilesField = value;
-                    this.RaisePropertyChanged("OutFiles");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PackageName {
-            get {
-                return this.PackageNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PackageNameField, value) != true)) {
-                    this.PackageNameField = value;
-                    this.RaisePropertyChanged("PackageName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public uint[] Parents {
-            get {
-                return this.ParentsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ParentsField, value) != true)) {
-                    this.ParentsField = value;
-                    this.RaisePropertyChanged("Parents");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.RunInfo RunInfo {
-            get {
-                return this.RunInfoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RunInfoField, value) != true)) {
-                    this.RunInfoField = value;
-                    this.RaisePropertyChanged("RunInfo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string State {
-            get {
-                return this.StateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StateField, value) != true)) {
-                    this.StateField = value;
-                    this.RaisePropertyChanged("State");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public uint StepId {
-            get {
-                return this.StepIdField;
-            }
-            set {
-                if ((this.StepIdField.Equals(value) != true)) {
-                    this.StepIdField = value;
-                    this.RaisePropertyChanged("StepId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Type {
-            get {
-                return this.TypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
-                    this.TypeField = value;
-                    this.RaisePropertyChanged("Type");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string VerboseErrorComment {
-            get {
-                return this.VerboseErrorCommentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.VerboseErrorCommentField, value) != true)) {
-                    this.VerboseErrorCommentField = value;
-                    this.RaisePropertyChanged("VerboseErrorComment");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FileDescription", Namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class FileDescription : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FileIdentifierField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NStorageIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StorageIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TypeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FileIdentifier {
-            get {
-                return this.FileIdentifierField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FileIdentifierField, value) != true)) {
-                    this.FileIdentifierField = value;
-                    this.RaisePropertyChanged("FileIdentifier");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdField, value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string NStorageId {
-            get {
-                return this.NStorageIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NStorageIdField, value) != true)) {
-                    this.NStorageIdField = value;
-                    this.RaisePropertyChanged("NStorageId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StorageId {
-            get {
-                return this.StorageIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StorageIdField, value) != true)) {
-                    this.StorageIdField = value;
-                    this.RaisePropertyChanged("StorageId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Type {
-            get {
-                return this.TypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
-                    this.TypeField = value;
-                    this.RaisePropertyChanged("Type");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="JobState", Namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts")]
-    public enum JobState : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Created = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Parsing = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Parsed = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Validating = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Validated = 4,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        DryRun = 5,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        DryRunFinished = 6,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Active = 7,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Finished = 8,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Error = 9,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RunInfo", Namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class RunInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> EndedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.TimeSpan> EstimatedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ExternalIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Easis.Wfs.FlowSystemService.MonitoringFacade.NodeRunInfo[] NodeInfoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Easis.Wfs.FlowSystemService.MonitoringFacade.ResourceRunInfo ResourceInfoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> StartedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StateField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Ended {
-            get {
-                return this.EndedField;
-            }
-            set {
-                if ((this.EndedField.Equals(value) != true)) {
-                    this.EndedField = value;
-                    this.RaisePropertyChanged("Ended");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.TimeSpan> Estimated {
-            get {
-                return this.EstimatedField;
-            }
-            set {
-                if ((this.EstimatedField.Equals(value) != true)) {
-                    this.EstimatedField = value;
-                    this.RaisePropertyChanged("Estimated");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ExternalId {
-            get {
-                return this.ExternalIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ExternalIdField, value) != true)) {
-                    this.ExternalIdField = value;
-                    this.RaisePropertyChanged("ExternalId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.NodeRunInfo[] NodeInfo {
-            get {
-                return this.NodeInfoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NodeInfoField, value) != true)) {
-                    this.NodeInfoField = value;
-                    this.RaisePropertyChanged("NodeInfo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.ResourceRunInfo ResourceInfo {
-            get {
-                return this.ResourceInfoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResourceInfoField, value) != true)) {
-                    this.ResourceInfoField = value;
-                    this.RaisePropertyChanged("ResourceInfo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Started {
-            get {
-                return this.StartedField;
-            }
-            set {
-                if ((this.StartedField.Equals(value) != true)) {
-                    this.StartedField = value;
-                    this.RaisePropertyChanged("Started");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string State {
-            get {
-                return this.StateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StateField, value) != true)) {
-                    this.StateField = value;
-                    this.RaisePropertyChanged("State");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ResourceRunInfo", Namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class ResourceRunInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CoresCountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string GeoCoordinatesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int NodesTotalField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ResourceDescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ResourceNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ResourceTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] SupportedArchitecturesField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CoresCount {
-            get {
-                return this.CoresCountField;
-            }
-            set {
-                if ((this.CoresCountField.Equals(value) != true)) {
-                    this.CoresCountField = value;
-                    this.RaisePropertyChanged("CoresCount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string GeoCoordinates {
-            get {
-                return this.GeoCoordinatesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GeoCoordinatesField, value) != true)) {
-                    this.GeoCoordinatesField = value;
-                    this.RaisePropertyChanged("GeoCoordinates");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int NodesTotal {
-            get {
-                return this.NodesTotalField;
-            }
-            set {
-                if ((this.NodesTotalField.Equals(value) != true)) {
-                    this.NodesTotalField = value;
-                    this.RaisePropertyChanged("NodesTotal");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ResourceDescription {
-            get {
-                return this.ResourceDescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResourceDescriptionField, value) != true)) {
-                    this.ResourceDescriptionField = value;
-                    this.RaisePropertyChanged("ResourceDescription");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ResourceName {
-            get {
-                return this.ResourceNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResourceNameField, value) != true)) {
-                    this.ResourceNameField = value;
-                    this.RaisePropertyChanged("ResourceName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ResourceType {
-            get {
-                return this.ResourceTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResourceTypeField, value) != true)) {
-                    this.ResourceTypeField = value;
-                    this.RaisePropertyChanged("ResourceType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] SupportedArchitectures {
-            get {
-                return this.SupportedArchitecturesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SupportedArchitecturesField, value) != true)) {
-                    this.SupportedArchitecturesField = value;
-                    this.RaisePropertyChanged("SupportedArchitectures");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="NodeRunInfo", Namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class NodeRunInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CoresUsedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NodeNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] SupportedArchitecturesField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CoresUsed {
-            get {
-                return this.CoresUsedField;
-            }
-            set {
-                if ((this.CoresUsedField.Equals(value) != true)) {
-                    this.CoresUsedField = value;
-                    this.RaisePropertyChanged("CoresUsed");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string NodeName {
-            get {
-                return this.NodeNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NodeNameField, value) != true)) {
-                    this.NodeNameField = value;
-                    this.RaisePropertyChanged("NodeName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] SupportedArchitectures {
-            get {
-                return this.SupportedArchitecturesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SupportedArchitecturesField, value) != true)) {
-                    this.SupportedArchitecturesField = value;
-                    this.RaisePropertyChanged("SupportedArchitectures");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
+}
+
+namespace MonitoringFacade
+{
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MonitoringFacade.IMonitoringService")]
-    public interface IMonitoringService {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMonitoringService/GetActualDataInJson", ReplyAction="http://tempuri.org/IMonitoringService/GetActualDataInJsonResponse")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName = "IMonitoringService")]
+    public interface IMonitoringService
+    {
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMonitoringService/GetActualDataInJson", ReplyAction = "http://tempuri.org/IMonitoringService/GetActualDataInJsonResponse")]
         string GetActualDataInJson(string infoPath);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMonitoringService/GetJobInfoInJson", ReplyAction="http://tempuri.org/IMonitoringService/GetJobInfoInJsonResponse")]
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMonitoringService/GetJobInfoInJson", ReplyAction = "http://tempuri.org/IMonitoringService/GetJobInfoInJsonResponse")]
         string GetJobInfoInJson(System.Guid jid);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMonitoringService/GetResourcesInfoInJson", ReplyAction="http://tempuri.org/IMonitoringService/GetResourcesInfoInJsonResponse")]
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMonitoringService/GetResourcesInfoInJson", ReplyAction = "http://tempuri.org/IMonitoringService/GetResourcesInfoInJsonResponse")]
         string GetResourcesInfoInJson();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMonitoringService/GetResourcesInfo", ReplyAction="http://tempuri.org/IMonitoringService/GetResourcesInfoResponse")]
-        Easis.Wfs.FlowSystemService.MonitoringFacade.ResourceDescription GetResourcesInfo();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMonitoringService/GetJobInfo", ReplyAction="http://tempuri.org/IMonitoringService/GetJobInfoResponse")]
-        Easis.Wfs.FlowSystemService.MonitoringFacade.JobDescription GetJobInfo(System.Guid jid);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMonitoringService/PutJobResultInBson", ReplyAction="http://tempuri.org/IMonitoringService/PutJobResultInBsonResponse")]
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMonitoringService/GetResourcesInfo", ReplyAction = "http://tempuri.org/IMonitoringService/GetResourcesInfoResponse")]
+        Easis.Common.DataContracts.ResourceDescription GetResourcesInfo();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMonitoringService/GetJobInfo", ReplyAction = "http://tempuri.org/IMonitoringService/GetJobInfoResponse")]
+        Easis.Common.DataContracts.JobDescription GetJobInfo(System.Guid jid);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMonitoringService/PutJobResultInBson", ReplyAction = "http://tempuri.org/IMonitoringService/PutJobResultInBsonResponse")]
         void PutJobResultInBson(byte[] jr);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMonitoringService/PutJobResult", ReplyAction="http://tempuri.org/IMonitoringService/PutJobResultResponse")]
-        void PutJobResult(Easis.Wfs.FlowSystemService.MonitoringFacade.JobDescription jd);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMonitoringService/GetHistoryInJson", ReplyAction="http://tempuri.org/IMonitoringService/GetHistoryInJsonResponse")]
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMonitoringService/PutJobResult", ReplyAction = "http://tempuri.org/IMonitoringService/PutJobResultResponse")]
+        void PutJobResult(Easis.Common.DataContracts.JobDescription jd);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMonitoringService/GetHistoryInJson", ReplyAction = "http://tempuri.org/IMonitoringService/GetHistoryInJsonResponse")]
         string GetHistoryInJson(string infoPath, System.DateTime from, System.DateTime to);
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IMonitoringServiceChannel : Easis.Wfs.FlowSystemService.MonitoringFacade.IMonitoringService, System.ServiceModel.IClientChannel {
+    public interface IMonitoringServiceChannel : IMonitoringService, System.ServiceModel.IClientChannel
+    {
     }
-    
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class MonitoringServiceClient : System.ServiceModel.ClientBase<Easis.Wfs.FlowSystemService.MonitoringFacade.IMonitoringService>, Easis.Wfs.FlowSystemService.MonitoringFacade.IMonitoringService {
-        
-        public MonitoringServiceClient() {
+    public partial class MonitoringServiceClient : System.ServiceModel.ClientBase<IMonitoringService>, IMonitoringService
+    {
+
+        public MonitoringServiceClient()
+        {
         }
-        
-        public MonitoringServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+
+        public MonitoringServiceClient(string endpointConfigurationName) :
+            base(endpointConfigurationName)
+        {
         }
-        
-        public MonitoringServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+
+        public MonitoringServiceClient(string endpointConfigurationName, string remoteAddress) :
+            base(endpointConfigurationName, remoteAddress)
+        {
         }
-        
-        public MonitoringServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+
+        public MonitoringServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) :
+            base(endpointConfigurationName, remoteAddress)
+        {
         }
-        
-        public MonitoringServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+
+        public MonitoringServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) :
+            base(binding, remoteAddress)
+        {
         }
-        
-        public string GetActualDataInJson(string infoPath) {
+
+        public string GetActualDataInJson(string infoPath)
+        {
             return base.Channel.GetActualDataInJson(infoPath);
         }
-        
-        public string GetJobInfoInJson(System.Guid jid) {
+
+        public string GetJobInfoInJson(System.Guid jid)
+        {
             return base.Channel.GetJobInfoInJson(jid);
         }
-        
-        public string GetResourcesInfoInJson() {
+
+        public string GetResourcesInfoInJson()
+        {
             return base.Channel.GetResourcesInfoInJson();
         }
-        
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.ResourceDescription GetResourcesInfo() {
+
+        public Easis.Common.DataContracts.ResourceDescription GetResourcesInfo()
+        {
             return base.Channel.GetResourcesInfo();
         }
-        
-        public Easis.Wfs.FlowSystemService.MonitoringFacade.JobDescription GetJobInfo(System.Guid jid) {
+
+        public Easis.Common.DataContracts.JobDescription GetJobInfo(System.Guid jid)
+        {
             return base.Channel.GetJobInfo(jid);
         }
-        
-        public void PutJobResultInBson(byte[] jr) {
+
+        public void PutJobResultInBson(byte[] jr)
+        {
             base.Channel.PutJobResultInBson(jr);
         }
-        
-        public void PutJobResult(Easis.Wfs.FlowSystemService.MonitoringFacade.JobDescription jd) {
+
+        public void PutJobResult(Easis.Common.DataContracts.JobDescription jd)
+        {
             base.Channel.PutJobResult(jd);
         }
-        
-        public string GetHistoryInJson(string infoPath, System.DateTime from, System.DateTime to) {
+
+        public string GetHistoryInJson(string infoPath, System.DateTime from, System.DateTime to)
+        {
             return base.Channel.GetHistoryInJson(infoPath, from, to);
         }
     }

@@ -248,6 +248,9 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
         private Easis.Wfs.FlowSystemService.ExecutionService.ResourceTotals AssignedResourceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Easis.Wfs.FlowSystemService.ExecutionService.TaskSchedule CurrentScheduleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.Dictionary<string, string> OutputParamsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -278,6 +281,19 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
                 if ((object.ReferenceEquals(this.AssignedResourceField, value) != true)) {
                     this.AssignedResourceField = value;
                     this.RaisePropertyChanged("AssignedResource");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Easis.Wfs.FlowSystemService.ExecutionService.TaskSchedule CurrentSchedule {
+            get {
+                return this.CurrentScheduleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CurrentScheduleField, value) != true)) {
+                    this.CurrentScheduleField = value;
+                    this.RaisePropertyChanged("CurrentSchedule");
                 }
             }
         }
@@ -547,6 +563,99 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TaskSchedule", Namespace="http://schemas.datacontract.org/2004/07/MITP")]
+    [System.SerializableAttribute()]
+    public partial class TaskSchedule : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Easis.Wfs.FlowSystemService.ExecutionService.ScheduledAction ActionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Easis.Wfs.FlowSystemService.ExecutionService.Estimation EstimationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Easis.Wfs.FlowSystemService.ExecutionService.NodeConfig[] NodesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResourceNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Easis.Wfs.FlowSystemService.ExecutionService.ScheduledAction Action {
+            get {
+                return this.ActionField;
+            }
+            set {
+                if ((this.ActionField.Equals(value) != true)) {
+                    this.ActionField = value;
+                    this.RaisePropertyChanged("Action");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Easis.Wfs.FlowSystemService.ExecutionService.Estimation Estimation {
+            get {
+                return this.EstimationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstimationField, value) != true)) {
+                    this.EstimationField = value;
+                    this.RaisePropertyChanged("Estimation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Easis.Wfs.FlowSystemService.ExecutionService.NodeConfig[] Nodes {
+            get {
+                return this.NodesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NodesField, value) != true)) {
+                    this.NodesField = value;
+                    this.RaisePropertyChanged("Nodes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ResourceName {
+            get {
+                return this.ResourceNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResourceNameField, value) != true)) {
+                    this.ResourceNameField = value;
+                    this.RaisePropertyChanged("ResourceName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="TaskTimeMeasurement", Namespace="http://schemas.datacontract.org/2004/07/MITP")]
     [System.SerializableAttribute()]
     public partial class TaskTimeMeasurement : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -558,19 +667,13 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
         private System.Collections.Generic.Dictionary<Easis.Wfs.FlowSystemService.ExecutionService.TaskTimeMetric, System.TimeSpan> DurationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> EstimatedFinishField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> EstimatedStartField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.TimeSpan> LeftField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.Dictionary<Easis.Wfs.FlowSystemService.ExecutionService.TaskTimeOverheads, System.TimeSpan> OverheadAveragesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.Dictionary<Easis.Wfs.FlowSystemService.ExecutionService.TaskTimeOverheads, System.TimeSpan> OverheadTotalsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.Dictionary<string, System.TimeSpan> OverheadsSpecialField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.Dictionary<Easis.Wfs.FlowSystemService.ExecutionService.TaskTimeMetric, System.DateTime> WhenFinishedField;
@@ -602,45 +705,6 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> EstimatedFinish {
-            get {
-                return this.EstimatedFinishField;
-            }
-            set {
-                if ((this.EstimatedFinishField.Equals(value) != true)) {
-                    this.EstimatedFinishField = value;
-                    this.RaisePropertyChanged("EstimatedFinish");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> EstimatedStart {
-            get {
-                return this.EstimatedStartField;
-            }
-            set {
-                if ((this.EstimatedStartField.Equals(value) != true)) {
-                    this.EstimatedStartField = value;
-                    this.RaisePropertyChanged("EstimatedStart");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.TimeSpan> Left {
-            get {
-                return this.LeftField;
-            }
-            set {
-                if ((this.LeftField.Equals(value) != true)) {
-                    this.LeftField = value;
-                    this.RaisePropertyChanged("Left");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Collections.Generic.Dictionary<Easis.Wfs.FlowSystemService.ExecutionService.TaskTimeOverheads, System.TimeSpan> OverheadAverages {
             get {
                 return this.OverheadAveragesField;
@@ -662,6 +726,19 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
                 if ((object.ReferenceEquals(this.OverheadTotalsField, value) != true)) {
                     this.OverheadTotalsField = value;
                     this.RaisePropertyChanged("OverheadTotals");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.Dictionary<string, System.TimeSpan> OverheadsSpecial {
+            get {
+                return this.OverheadsSpecialField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OverheadsSpecialField, value) != true)) {
+                    this.OverheadsSpecialField = value;
+                    this.RaisePropertyChanged("OverheadsSpecial");
                 }
             }
         }
@@ -803,6 +880,388 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Failed = 6,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Estimation", Namespace="http://schemas.datacontract.org/2004/07/MITP")]
+    [System.SerializableAttribute()]
+    public partial class Estimation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Easis.Wfs.FlowSystemService.ExecutionService.ModelEstimation ByModelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Easis.Wfs.FlowSystemService.ExecutionService.HistoryEstimation FromHistoryField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Easis.Wfs.FlowSystemService.ExecutionService.ModelEstimation ByModel {
+            get {
+                return this.ByModelField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ByModelField, value) != true)) {
+                    this.ByModelField = value;
+                    this.RaisePropertyChanged("ByModel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Easis.Wfs.FlowSystemService.ExecutionService.HistoryEstimation FromHistory {
+            get {
+                return this.FromHistoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromHistoryField, value) != true)) {
+                    this.FromHistoryField = value;
+                    this.RaisePropertyChanged("FromHistory");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ScheduledAction", Namespace="http://schemas.datacontract.org/2004/07/MITP")]
+    public enum ScheduledAction : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        None = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Abort = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Run = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Fail = 3,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="NodeConfig", Namespace="http://schemas.datacontract.org/2004/07/MITP")]
+    [System.SerializableAttribute()]
+    public partial struct NodeConfig : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint CoresField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NodeNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResourceNameField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint Cores {
+            get {
+                return this.CoresField;
+            }
+            set {
+                if ((this.CoresField.Equals(value) != true)) {
+                    this.CoresField = value;
+                    this.RaisePropertyChanged("Cores");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NodeName {
+            get {
+                return this.NodeNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NodeNameField, value) != true)) {
+                    this.NodeNameField = value;
+                    this.RaisePropertyChanged("NodeName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ResourceName {
+            get {
+                return this.ResourceNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResourceNameField, value) != true)) {
+                    this.ResourceNameField = value;
+                    this.RaisePropertyChanged("ResourceName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ModelEstimation", Namespace="http://schemas.datacontract.org/2004/07/Easis.PackageBase.Definition")]
+    [System.SerializableAttribute()]
+    public partial class ModelEstimation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Easis.Wfs.FlowSystemService.ExecutionService.ValueWithDispersionOfdouble CalculationTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Easis.Wfs.FlowSystemService.ExecutionService.ValueWithDispersionOfunsignedLong TotalOutputFileSizeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Easis.Wfs.FlowSystemService.ExecutionService.ValueWithDispersionOfdouble CalculationTime {
+            get {
+                return this.CalculationTimeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CalculationTimeField, value) != true)) {
+                    this.CalculationTimeField = value;
+                    this.RaisePropertyChanged("CalculationTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Easis.Wfs.FlowSystemService.ExecutionService.ValueWithDispersionOfunsignedLong TotalOutputFileSize {
+            get {
+                return this.TotalOutputFileSizeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TotalOutputFileSizeField, value) != true)) {
+                    this.TotalOutputFileSizeField = value;
+                    this.RaisePropertyChanged("TotalOutputFileSize");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HistoryEstimation", Namespace="http://schemas.datacontract.org/2004/07/MITP")]
+    [System.SerializableAttribute()]
+    public partial class HistoryEstimation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double CalcDurationInSecondsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double CalcDurationInSeconds {
+            get {
+                return this.CalcDurationInSecondsField;
+            }
+            set {
+                if ((this.CalcDurationInSecondsField.Equals(value) != true)) {
+                    this.CalcDurationInSecondsField = value;
+                    this.RaisePropertyChanged("CalcDurationInSeconds");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ValueWithDispersionOfdouble", Namespace="http://schemas.datacontract.org/2004/07/Easis.PackageBase.Definition")]
+    [System.SerializableAttribute()]
+    public partial class ValueWithDispersionOfdouble : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double DispersionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double ValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Dispersion {
+            get {
+                return this.DispersionField;
+            }
+            set {
+                if ((this.DispersionField.Equals(value) != true)) {
+                    this.DispersionField = value;
+                    this.RaisePropertyChanged("Dispersion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ValueWithDispersionOfunsignedLong", Namespace="http://schemas.datacontract.org/2004/07/Easis.PackageBase.Definition")]
+    [System.SerializableAttribute()]
+    public partial class ValueWithDispersionOfunsignedLong : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double DispersionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ulong ValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Dispersion {
+            get {
+                return this.DispersionField;
+            }
+            set {
+                if ((this.DispersionField.Equals(value) != true)) {
+                    this.DispersionField = value;
+                    this.RaisePropertyChanged("Dispersion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ulong Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]

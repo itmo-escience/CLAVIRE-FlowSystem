@@ -26,7 +26,8 @@ namespace Easis.Wfs.Interpreting
 
         public Nullable<DateTime> Started { get; set; }
         public Nullable<DateTime> Ended { get; set; }
-        public Nullable<TimeSpan> Estimated { get; set; }
+        public double Estimation { get; set; }
+        public double EstimationDispersion { get; set; }
     }
 
     public class LongRunningStepRunInfo : StepRunInfo

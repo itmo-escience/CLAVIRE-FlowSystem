@@ -56,9 +56,6 @@
     <Reference Include="clrzmq-ext">
       <HintPath>..\Libs\clrzmq-ext.dll</HintPath>
     </Reference>
-    <Reference Include="DataContracts">
-      <HintPath>..\Libs\DataContracts.dll</HintPath>
-    </Reference>
     <Reference Include="Eventing">
       <HintPath>..\Libs\Eventing.dll</HintPath>
     </Reference>
@@ -134,6 +131,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ExecutionService\ExecutionBrokerService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExecutionService\ExecutionBrokerService4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MonitoringFacade\Easis.Wfs.FlowSystemService.MonitoringFacade.JobDescription.datasource">
@@ -368,6 +368,10 @@
     <ProjectReference Include="..\Common.Desktop\Common.Desktop.csproj">
       <Project>{FD2D188C-6EFB-48BA-8F8B-E0E4A9CD5F0C}</Project>
       <Name>Common.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataContracts\DataContracts.csproj">
+      <Project>{21EBFA07-8242-41DE-9A5D-C4583344BB3B}</Project>
+      <Name>DataContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\EasyFlowParser.Desktop\EasyFlowParser.Desktop.csproj">
       <Project>{6A61B835-2584-4386-B305-2A5DA87AD6D6}</Project>

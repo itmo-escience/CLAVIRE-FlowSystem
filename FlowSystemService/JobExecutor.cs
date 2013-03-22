@@ -41,8 +41,11 @@ namespace Easis.Wfs.FlowSystemService
             lock (SyncObject)
             {
                 var ret = JobsReadyness.FirstOrDefault(pair => pair.Second == true);
-                if (ret!=null)
+                if (ret != null)
+                {
+                    JobsReadyness.Remove(ret);
                     return ret.First;
+                }
                 else
                     return null;
             }
@@ -246,8 +249,8 @@ namespace Easis.Wfs.FlowSystemService
                 }
                 catch (ThreadDisconnectedException)
                 {
-                    _log.Trace("The job has been added to disconnected. Thread is free.");
-                    _wflog.Trace("The job has been added to disconnected. Thread is free.");
+                    _log.Trace("The job has been added to disconnected list. Thread is free.");
+                    _wflog.Trace("The job has been added to disconnected list. Thread is free.");
                     _disconnectedJobs.AddDisconnectedJob(job);
                 }
                 catch (Exception ex)
@@ -478,6 +481,10 @@ namespace Easis.Wfs.FlowSystemService
             {
                 _log.Error("Got PushEvent command for not active WF#{0}. Ignoring. {1}", flowEvent.WfId, flowEvent.ToString());
             }
+
+            // mark readyness of disconnected job
+            _disconnectedJobs.PushEvent(flowEvent);
+
         }
         /// <summary>
         /// Команда паузы. Маршрутизируется к WF или конкретному узлу.

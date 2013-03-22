@@ -247,7 +247,7 @@ namespace Easis.Wfs.Interpreting.Nodes
             {
                 if (Context.ExecutionContext.ExtraElements.ContainsKey("SweepMode"))
                 {
-                    if (Context.ExecutionContext.ExtraElements["SweepMode"].ToLower() == "zip")
+                    if (((string)Context.ExecutionContext.ExtraElements["SweepMode"]).ToLower() == "zip")
                     {
                         // соответствие
                         outp = ZipIt(inp);
