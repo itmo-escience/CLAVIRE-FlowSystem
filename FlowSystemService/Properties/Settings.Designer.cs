@@ -50,5 +50,14 @@ namespace Easis.Wfs.FlowSystemService.Properties {
                 return ((global::System.TimeSpan)(this["ThreadWaitEventTimeout"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int ThreadCount {
+            get {
+                return ((int)(this["ThreadCount"]));
+            }
+        }
     }
 }

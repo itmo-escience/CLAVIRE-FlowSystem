@@ -137,7 +137,7 @@ namespace Easis.Wfs.FlowSystemService
             _log.Info("[thread: {0}] Worker thread started", Thread.CurrentThread.ManagedThreadId);
             while (true)
             {
-                _log.Debug("[thread: {0}] Waiting for job", Thread.CurrentThread.ManagedThreadId);
+//                _log.Debug("[thread: {0}] Waiting for job", Thread.CurrentThread.ManagedThreadId);
 
                 bool isNewJob;
                 Job job = null;
@@ -390,7 +390,7 @@ namespace Easis.Wfs.FlowSystemService
 
         #region configuration
         /// <summary>
-        /// Конфигурация сервиса, создание потоков обработки, привязка механизмов работы с CLAVRE.
+        /// Конфигурация сервиса, создание потоков обработки, привязка механизмов работы с CLAVIRE.
         /// </summary>
         private void Initialize()
         {
@@ -413,7 +413,7 @@ namespace Easis.Wfs.FlowSystemService
             _flowSystemContext = new FlowSystemContext();
 
             //Threadpool initialization
-            _threadCount = 10;
+            _threadCount = Properties.Settings.Default.ThreadCount;
             _workerThreads = new Thread[_threadCount];
 
             // ThreadPool start workers

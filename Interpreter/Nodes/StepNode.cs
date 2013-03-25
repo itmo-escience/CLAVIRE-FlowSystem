@@ -101,7 +101,11 @@ namespace Easis.Wfs.Interpreting
             {
                 _log.ErrorException("Error while investigating runmode", ex);
             }
+
             stepRunDescriptor.RunMode = runMode;
+
+            // Set StepName for Executor. Is needed to create beautiful folder names.
+            stepRunDescriptor.ExecutionContext.ExtraElements["StepName"] = Name;
         }
         /// <summary>
         /// Заполнение информации о параметрах для запуска пакета
