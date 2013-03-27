@@ -403,8 +403,7 @@ namespace Easis.Wfs.FlowSystemService
             ////_stepStarter = new PesStepStarter();
 
             // Execution
-            _stepStarter = new DryExecutionStepStarter(null); // new ExecutionStepStarter();
-            _stepStarter.IsDry = false;
+            _stepStarter = new NormalExecutionStepStarter();
 
             _storage = new FedorStorage((string)Properties.Settings.Default["StorageUri"]);
 

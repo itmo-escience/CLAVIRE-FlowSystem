@@ -10,7 +10,7 @@ namespace Easis.Wfs.Interpreting
         /// <param name="stepRunDescriptor">Дескриптор шага</param>
         void StartStep(StepRunDescriptor stepRunDescriptor);
 
-        bool IsDry { get; set; }
+        bool IsDry { get; }
         void SetEventConsumer(IEventConsumer eventConsumer);
 
     }

@@ -104,7 +104,9 @@ namespace Easis.Wfs.Interpreting
 
             stepRunDescriptor.RunMode = runMode;
 
+            //----------------------------------------------------------------------
             // Set StepName for Executor. Is needed to create beautiful folder names.
+            //----------------------------------------------------------------------
             stepRunDescriptor.ExecutionContext.ExtraElements["StepName"] = Name;
         }
         /// <summary>

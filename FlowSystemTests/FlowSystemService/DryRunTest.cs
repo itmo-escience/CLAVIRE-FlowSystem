@@ -31,7 +31,7 @@ step step2 runs Testp.arithm ( A = step1.Result.outs[""33""], B  = 3, C = step1.
 step step3 runs Testp.arithm ( A = sweep [1,2,3], B = step2.Result.outs );"
 
             }, Guid.NewGuid());
-            job.Execute(new FlowSystemContext(), new DryExecutionStepStarter(null),new DruRunStorage(), new DryRunLongRunningController() );
+            job.Execute(new FlowSystemContext(), new NormalExecutionStepStarter(),new DruRunStorage(), new DryRunLongRunningController() );
             //job.DryRun();
         }
     }

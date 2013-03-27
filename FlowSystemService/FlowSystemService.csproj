@@ -269,8 +269,11 @@
     <Compile Include="GuidGenerator.cs" />
     <Compile Include="IFlowSystemService.cs" />
     <Compile Include="InfrastructureLevel\Execution\DryExecutionStepStarter.cs" />
+    <Compile Include="InfrastructureLevel\Execution\NormalExecutionStepStarter.cs" />
+    <Compile Include="InfrastructureLevel\Execution\DryRunDefinerStepStarter.cs" />
     <Compile Include="InfrastructureLevel\Execution\ExecutionEventConverter.cs" />
     <Compile Include="InfrastructureLevel\Execution\ExecutionStepStarter.cs" />
+    <Compile Include="InfrastructureLevel\Execution\PreBillingStepStarter.cs" />
     <Compile Include="InfrastructureLevel\LongRunning\DryRunLongRunningController.cs" />
     <Compile Include="InfrastructureLevel\LongRunning\ZMQLongRunningController.cs" />
     <Compile Include="InfrastructureLevel\Storage\DruRunStorage.cs" />

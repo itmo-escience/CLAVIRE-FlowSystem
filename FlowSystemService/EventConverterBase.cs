@@ -29,9 +29,9 @@ namespace Easis.Wfs.FlowSystemService
         }
 
         protected abstract bool InternalCanConvert(EventReport eventReport);
-        protected abstract FlowEvent Convert(EventReport eventReport);
-        
-        public bool TryConvertEvent(EventReport eventReport, out FlowEvent res)
+        protected abstract IEnumerable<FlowEvent> Convert(EventReport eventReport);
+
+        public bool TryConvertEvent(EventReport eventReport, out IEnumerable<FlowEvent> res)
         {
             if(eventReport == null)
                 throw new ArgumentNullException();

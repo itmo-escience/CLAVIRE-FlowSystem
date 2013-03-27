@@ -29,10 +29,15 @@ namespace Easis.Wfs.FlowSystemService
         {
             try
             {
-                FlowEvent fevent = null;
+                IEnumerable<FlowEvent> fevent = null;
                 bool res = _convertersChain.TryConvertEvent(notification.Event, out fevent);
-                if(res)
-                    _eventConsumer.PushEvent(fevent);
+                if (res)
+                {
+                    foreach (var flowEvent in fevent)
+                    {
+                        _eventConsumer.PushEvent(flowEvent);
+                    }
+                }
                 else
                     _log.Warn(String.Format("There is no compatible event handler in chain. Event was not handled. Event: {0} from {1}", notification.Event.Topic, notification.Event.Source));
             }

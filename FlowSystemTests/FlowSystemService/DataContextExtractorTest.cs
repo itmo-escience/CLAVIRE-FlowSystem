@@ -2,9 +2,11 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using Easis.Wfs;
 using Easis.Wfs.FlowSystemService;
 using Easis.Wfs.Interpreting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NLog;
 
 namespace FlowSystemTests.FlowSystemService
 {
@@ -16,7 +18,7 @@ namespace FlowSystemTests.FlowSystemService
         [Test]
         public void CreateDataContextTest()
         {
-            DataContextExtractor target = new DataContextExtractor(); // TODO: Initialize to an appropriate value
+            DataContextExtractor target = new DataContextExtractor(null); // TODO: Initialize to an appropriate value
             string scriptDataContext = "file1 = FSID#0000000001-00012930\nasd =4\ndsa=0";
             FlowDataContext expected = new FlowDataContext();
             expected.InputFiles.Add("file1","0000000001-00012930");

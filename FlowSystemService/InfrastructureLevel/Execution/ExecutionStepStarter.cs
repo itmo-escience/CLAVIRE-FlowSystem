@@ -15,8 +15,6 @@ namespace Easis.Wfs.FlowSystemService
 {
     public class ExecutionStepStarter : IStepStarter
     {
-        //static readonly Logger _log = LogManager.GetCurrentClassLogger();
-
         protected object _syncRoot = new object();
 
         public TaskDescription FormTaskDescription(StepRunDescriptor stepRunDescriptor)
@@ -149,15 +147,17 @@ namespace Easis.Wfs.FlowSystemService
             ec.ExecuteAsync(new ulong[] { tid });
         }
 
+        private bool _isDry = false;
         public virtual bool IsDry
         {
-            get { return false; }
-            set { throw new NotSupportedException(); }
+            get { return _isDry; }
+            private set { _isDry = value; }
         }
 
+        private IEventConsumer _eventConsumer;
         public virtual void SetEventConsumer(IEventConsumer eventConsumer)
         {
-            throw new NotSupportedException();
+            _eventConsumer = eventConsumer;
         }
     }
 }

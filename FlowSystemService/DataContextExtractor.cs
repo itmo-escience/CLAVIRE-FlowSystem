@@ -24,7 +24,12 @@ namespace Easis.Wfs.FlowSystemService
     /// </summary>
     public class DataContextExtractor : IDataContextExtractor
     {
-        static readonly Logger _log = LogManager.GetCurrentClassLogger();
+        WfLog _log = null;
+
+        public DataContextExtractor(WfLog log)
+        {
+            _log = log;
+        }
 
         public FlowDataContext CreateDataContext(string scriptDataContext)
         {
@@ -46,7 +51,8 @@ namespace Easis.Wfs.FlowSystemService
                     string key = m.Groups[1].Value;
                     string val = m.Groups[2].Value;
 
-                    _log.Trace("Parsed: {0} -> {1}", key, val);
+                    if(_log != null)
+                        _log.Trace("Parsed: {0} -> {1}", key, val);
 
                     // проверяем, файл или параметер
                     if (val.ToUpper().StartsWith("FSID#"))
@@ -60,7 +66,8 @@ namespace Easis.Wfs.FlowSystemService
                 }
                 else
                 {
-                    _log.Trace("Parsing of {0} failed. Throwing exception.", str);
+                    if (_log != null)
+                        _log.Trace("Parsing of {0} failed. Throwing exception.", str);
                     throw new InvalidFormatException();
                 }
             }
@@ -91,7 +98,8 @@ namespace Easis.Wfs.FlowSystemService
 
             foreach (var el in scriptEC)
             {
-                _log.Trace("Extracting exec param {0} {1}",el.Key, el.Value);
+                if (_log != null)
+                    _log.Trace("Extracting exec param {0} {1}", el.Key, el.Value);
                 if (el.Key != null && el.Value != null)
                 switch (el.Key.ToLower())
                 {
@@ -104,8 +112,12 @@ namespace Easis.Wfs.FlowSystemService
                     case "userid":
                         ret.UserId = el.Value;
                         break;
+                    case "runmode":
+                        ret.ExtraElements["RunMode"] = el.Value;
+                        break;
                     default:
-                        _log.Warn("Unknown execution property {0}", el.Key);
+                        if (_log != null)
+                            _log.Warn("Unknown execution property {0}", el.Key);
                         break;
                 }
             }

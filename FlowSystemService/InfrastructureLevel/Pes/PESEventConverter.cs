@@ -132,9 +132,9 @@ namespace Easis.Wfs.FlowSystemService
             return ret;
         }
 
-        protected override FlowEvent Convert(EventReport eventReport)
+        protected override IEnumerable<FlowEvent> Convert(EventReport eventReport)
         {
-            FlowEvent ret = null;
+            List<FlowEvent> ret = new List<FlowEvent>();
 
             EventReportSerializer eventReportSerializer = new EventReportSerializer();
             WFStateUpdatedEvent wfStateUpdatedEvent = (WFStateUpdatedEvent)eventReportSerializer.DeserializeObject(eventReport.Body, typeof(WFStateUpdatedEvent));
@@ -155,12 +155,12 @@ namespace Easis.Wfs.FlowSystemService
                 switch (wfStateUpdatedEvent.WFStateUpdatedType)
                 {
                     case WFStateUpdatedTypeEnum.WFStepStarted:
-                        ret = new FlowEvent(FlowEvent.RUN_STARTED, WfId, StepId);
+                        ret.Add(new FlowEvent(FlowEvent.RUN_STARTED, WfId, StepId));
                         break;
                     case WFStateUpdatedTypeEnum.WFStepFinished:
                     case WFStateUpdatedTypeEnum.WFStepError:
                         StepRunResult result = GetResult(sequenceId);
-                        ret = new FlowEvent(FlowEvent.RUN_FINISHED, WfId, StepId, result);
+                        ret.Add(new FlowEvent(FlowEvent.RUN_FINISHED, WfId, StepId, result));
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

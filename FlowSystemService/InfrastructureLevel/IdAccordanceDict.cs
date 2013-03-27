@@ -4,20 +4,27 @@ using System.Linq;
 using System.Web;
 using Easis.Wfs.FlowSystemService.Utils;
 using Easis.Wfs.Interpreting;
+using NLog;
 
 namespace Easis.Wfs.FlowSystemService
 {
+    public class TaskAccordance
+    {
+        public ulong TaskId { get; set; }
+        public Pair<Guid, long> WfStepId { get; set; }
+        public StepRunDescriptor Descriptor { get; set; }
+        public JobRunMode RunMode { get; set; }
+    }
+
     public class IdAccordanceDict
     {
         #region Singleton
         private static volatile IdAccordanceDict _instance;
         private static readonly object _syncRoot = new Object();
-        
+
         private IdAccordanceDict()
         {
-            _idArchieve = new Dictionary<ulong, Pair<Guid,long>>();
-            _descriptors = new Dictionary<ulong, StepRunDescriptor>();
-
+            _Archieve = new Dictionary<ulong, TaskAccordance>();
         }
 
         public static IdAccordanceDict Instance
@@ -41,20 +48,26 @@ namespace Easis.Wfs.FlowSystemService
         #endregion
 
         // thread safe dict
-        private IDictionary<ulong, Pair<Guid,long>> _idArchieve;
-        private IDictionary<ulong, StepRunDescriptor> _descriptors; 
 
-        public Pair<Guid,long> GetWfAndStepId(ulong PesId)
+        private IDictionary<ulong, TaskAccordance> _Archieve;
+
+        public TaskAccordance GetAccordanceObject(ulong PesId)
         {
             lock (_syncRoot)
-                return _idArchieve[PesId];
+                return _Archieve[PesId];
         }
 
-        public ulong GetRealId(Guid wfid, long stepid)
+        public Pair<Guid, long> GetWfAndStepId(ulong PesId)
+        {
+            lock (_syncRoot)
+                return _Archieve[PesId].WfStepId;
+        }
+
+        public ulong GetRealTaskId(Guid wfid, long stepid)
         {
             lock (_syncRoot)
             {
-                ulong ret = _idArchieve.Where(pair => pair.Value.First == wfid && pair.Value.Second == stepid).Single().Key;
+                ulong ret = _Archieve.Where(pair => pair.Value.WfStepId.First == wfid && pair.Value.WfStepId.Second == stepid).Single().Key;
                 return ret;
             }
         }
@@ -63,7 +76,12 @@ namespace Easis.Wfs.FlowSystemService
         {
             lock (_syncRoot)
             {
-                _descriptors.Add(PesId, descriptor);
+                if (!_Archieve.ContainsKey(PesId))
+                {
+                    _Archieve[PesId] = new TaskAccordance();
+                    _Archieve[PesId].TaskId = PesId;
+                }
+                _Archieve[PesId].Descriptor = descriptor;
             }
         }
 
@@ -71,8 +89,8 @@ namespace Easis.Wfs.FlowSystemService
         {
             lock (_syncRoot)
             {
-                StepRunDescriptor ret = _descriptors[PesId];
-                _descriptors.Remove(PesId);
+                StepRunDescriptor ret = _Archieve[PesId].Descriptor;
+                //_Archieve.Remove(PesId);
                 return ret;
             }
         }
@@ -81,14 +99,32 @@ namespace Easis.Wfs.FlowSystemService
         {
             lock (_syncRoot)
             {
-                return _descriptors[PesId];
+                return _Archieve[PesId].Descriptor;
             }
         }
 
         public void AddIdTriplet(Guid WfId, long StepId, ulong PesStepId)
         {
             lock (_syncRoot)
-                _idArchieve.Add(PesStepId, new Pair<Guid, long>(WfId,StepId));
+            {
+                _Archieve[PesStepId] = new TaskAccordance();
+                _Archieve[PesStepId].TaskId = PesStepId;
+                _Archieve[PesStepId].WfStepId = new Pair<Guid, long>(WfId, StepId);
+            }
+        }
+
+        public void RemoveAllEntriesForWf(Guid wfid)
+        {
+            lock (_syncRoot)
+            {
+                var toRemove = _Archieve.Where(pair => pair.Value.WfStepId.First == wfid).ToArray();
+                foreach (var pair in toRemove)
+                {
+                    _Archieve.Remove(pair.Key);
+                }
+                WfLog log = new WfLog(LogManager.GetCurrentClassLogger(), wfid);
+                log.Trace("Information about the following tasks of workflow {0} were removed from dict: {1}", wfid, String.Join(",", toRemove.Select(valuePair => valuePair.Key)));
+            }
         }
     }
 }

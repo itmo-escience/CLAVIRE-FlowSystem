@@ -21,6 +21,7 @@ namespace Easis.Wfs.FlowSystemService
     class ExecutionEventConverter : EventConverterBase
     {
         static readonly Logger _slog = LogManager.GetCurrentClassLogger();
+
         protected override bool InternalCanConvert(EventReport eventReport)
         {
             return String.Equals(eventReport.Source, "Execution", StringComparison.CurrentCultureIgnoreCase) &&
@@ -314,9 +315,9 @@ namespace Easis.Wfs.FlowSystemService
             return ret;
         }
 
-        protected override FlowEvent Convert(EventReport eventReport)
+        protected override IEnumerable<FlowEvent> Convert(EventReport eventReport)
         {
-            FlowEvent ret = null;
+            List<FlowEvent> ret = new List<FlowEvent>();
 
             EventReportSerializer eventReportSerializer = new EventReportSerializer();
             WFStateUpdatedEvent wfStateUpdatedEvent = (WFStateUpdatedEvent)eventReportSerializer.DeserializeObject(eventReport.Body, typeof(WFStateUpdatedEvent));
@@ -334,33 +335,81 @@ namespace Easis.Wfs.FlowSystemService
 
                 WfLog log = new WfLog(LogManager.GetCurrentClassLogger(), WfId);
 
+
+                //--------------------------------------
+                // Prebilling behaviour #prebilling
+                //--------------------------------------
+                bool isPrebillingModeOn = false;
+                if (IdAccordanceDict.Instance.GetAccordanceObject(sequenceId).RunMode == JobRunMode.PreBilling)
+                {
+                    isPrebillingModeOn = true;
+                }
+
                 switch (wfStateUpdatedEvent.WFStateUpdatedType)
                 {
                     case WFStateUpdatedTypeEnum.WFStepStarted:
-                        try
+                        if (isPrebillingModeOn)
                         {
-                            // find out where it runs
-                            StepRunInfo sri = GetInfo(sequenceId, log);
-                            log.Trace("RunInfo has been successfully fetched");
-                            ret = new FlowEvent(FlowEvent.RUN_STARTED, WfId, StepId, sri);
+                            log.Error("Executor have sent the StepStarted event in prebilling mode. Ignored.");
                         }
-                        catch (InterpretionException ex)
+                        else
                         {
-                            ret = new FlowEvent(FlowEvent.ERROR, WfId, StepId, ex.Message);
+                            try
+                            {
+                                // find out where it runs
+                                StepRunInfo sri = GetInfo(sequenceId, log);
+                                log.Trace("RunInfo has been successfully fetched");
+                                ret.Add(new FlowEvent(FlowEvent.RUN_STARTED, WfId, StepId, sri));
+                            }
+                            catch (InterpretionException ex)
+                            {
+                                ret.Add(new FlowEvent(FlowEvent.ERROR, WfId, StepId, ex.Message));
+                            }
                         }
                         break;
                     case WFStateUpdatedTypeEnum.WFStepFinished:
                     case WFStateUpdatedTypeEnum.WFStepError:
-                        try
+                        
+                        //--------------------------------------
+                        // Prebilling behaviour #prebilling
+                        //--------------------------------------
+                        if (isPrebillingModeOn)
                         {
-                            StepRunResult result = GetResult(sequenceId, log);
-                            log.Trace("StepResult has been successfully fetched");
-                            result.ErrorComment = wfStateUpdatedEvent.Comment;
-                            ret = new FlowEvent(FlowEvent.RUN_FINISHED, WfId, StepId, result);
+                            try
+                            {
+                                // find out where it runs
+                                StepRunInfo sri = GetInfo(sequenceId, log);
+                                log.Trace("RunInfo has been successfully fetched");
+                                ret.Add(new FlowEvent(FlowEvent.RUN_STARTED, WfId, StepId, sri));
+
+                                StepRunResult result = GetResult(sequenceId, log);
+                                log.Trace("StepResult has been successfully fetched");
+                                result.ErrorComment = wfStateUpdatedEvent.Comment;
+
+                                // Changing of result status for dry run. Error stays error.
+                                if(result.Status == StepRunResult.ResultStatus.Completed)
+                                    result.Status = StepRunResult.ResultStatus.Unknown;
+                                
+                                ret.Add(new FlowEvent(FlowEvent.RUN_FINISHED, WfId, StepId, result));
+                            }
+                            catch (InterpretionException ex)
+                            {
+                                ret.Add(new FlowEvent(FlowEvent.ERROR, WfId, StepId, ex.Message));
+                            }
                         }
-                        catch (InterpretionException ex)
+                        else
                         {
-                            ret = new FlowEvent(FlowEvent.ERROR, WfId, StepId, ex.Message);
+                            try
+                            {
+                                StepRunResult result = GetResult(sequenceId, log);
+                                log.Trace("StepResult has been successfully fetched");
+                                result.ErrorComment = wfStateUpdatedEvent.Comment;
+                                ret.Add(new FlowEvent(FlowEvent.RUN_FINISHED, WfId, StepId, result));
+                            }
+                            catch (InterpretionException ex)
+                            {
+                                ret.Add(new FlowEvent(FlowEvent.ERROR, WfId, StepId, ex.Message));
+                            }
                         }
                         break;
                     case WFStateUpdatedTypeEnum.WFStarted:
