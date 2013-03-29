@@ -103,13 +103,14 @@ namespace Easis.Wfs.FlowSystemService
             }
         }
 
-        public void AddIdTriplet(Guid WfId, long StepId, ulong PesStepId)
+        public void AddIdAccordance(Guid WfId, long StepId, ulong PesStepId, JobRunMode mode = JobRunMode.Normal)
         {
             lock (_syncRoot)
             {
                 _Archieve[PesStepId] = new TaskAccordance();
                 _Archieve[PesStepId].TaskId = PesStepId;
                 _Archieve[PesStepId].WfStepId = new Pair<Guid, long>(WfId, StepId);
+                _Archieve[PesStepId].RunMode = mode;
             }
         }
 

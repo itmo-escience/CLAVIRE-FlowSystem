@@ -72,7 +72,7 @@ namespace Easis.Wfs.FlowSystemService.InfrastructureLevel.Execution
                 {
                     _log.Trace("Adding triplet ({0}, {1}, {2}) to Id dict", stepRunDescriptor.WfId,
                                stepRunDescriptor.StepId, tid);
-                    IdAccordanceDict.Instance.AddIdTriplet(stepRunDescriptor.WfId, stepRunDescriptor.StepId, tid);
+                    IdAccordanceDict.Instance.AddIdAccordance(stepRunDescriptor.WfId, stepRunDescriptor.StepId, tid);
                 }
 
                 if (!IsDry)

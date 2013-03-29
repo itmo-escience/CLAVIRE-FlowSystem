@@ -3,73 +3,74 @@
     <string />
     <integer />
     <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
       <setting name="SolutionAnalysisEnabled">False</setting>
     </boolean>
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:FlowSinkNode.cs" caret="460" fromTop="12" />
-      <File id="BC95E95A-D02E-4EB0-8750-9A321B5C201F/d:FlowSystemService/f:ScriptInterpreterTest.cs" caret="317" fromTop="11" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:DataContextExtractor.cs" caret="195" fromTop="6" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:IFlowSystemService.cs" caret="587" fromTop="14" />
-      <File id="6A61B835-2584-4386-B305-2A5DA87AD6D6/d:Model/d:Expressions/f:ListValue.cs" caret="321" fromTop="12" />
-      <File id="21EBFA07-8242-41DE-9A5D-C4583344BB3B/f:JobRequest.cs" caret="0" fromTop="0" />
-      <File id="21EBFA07-8242-41DE-9A5D-C4583344BB3B/f:NodeDescription.cs" caret="862" fromTop="31" />
-      <File id="21EBFA07-8242-41DE-9A5D-C4583344BB3B/f:ResourceDescription.cs" caret="0" fromTop="0" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:StepRunInfo.cs" caret="668" fromTop="25" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/f:FlowGraph.cs" caret="6803" fromTop="17" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:EventConverterBase.cs" caret="467" fromTop="14" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Packages/f:PackageNameResolver.cs" caret="458" fromTop="12" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:FlowSystemService.svc.cs" caret="1708" fromTop="11" />
-      <File id="21EBFA07-8242-41DE-9A5D-C4583344BB3B/f:JobDescription.cs" caret="588" fromTop="17" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:Service References/d:MonitoringFacade/f:Reference.cs" caret="1156" fromTop="28" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:SweepStepNode.cs" caret="9602" fromTop="24" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/f:DeclarativeInterpreter.cs" caret="13594" fromTop="22" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="15057" fromTop="29" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/f:WfLog.cs" caret="209" fromTop="5" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:IStepStarter.cs" caret="386" fromTop="9" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Web.config" caret="0" fromTop="0" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:NLog.config" caret="407" fromTop="6" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:NodeBase.cs" caret="14850" fromTop="21" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/f:IdAccordanceDict.cs" caret="1476" fromTop="22" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:DryExecutionStepStarter.cs" caret="1178" fromTop="17" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionStepStarter.cs" caret="1175" fromTop="12" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:StepNode.cs" caret="2255" fromTop="11" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:LongRunningStepNode.cs" caret="1624" fromTop="21" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="4838" fromTop="21" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionEventConverter.cs" caret="15405" fromTop="18" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:Utils/f:IIdGenerator.cs" caret="0" fromTop="0" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:DryRunDefinerStepStarter.cs" caret="3842" fromTop="26" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:ExtEventListener.cs" caret="891" fromTop="23" />
+      <File id="BC95E95A-D02E-4EB0-8750-9A321B5C201F/d:FlowSystemService/f:DataContextExtractorTest.cs" caret="910" fromTop="24" />
+      <File id="BC95E95A-D02E-4EB0-8750-9A321B5C201F/d:FlowSystemService/f:DryRunTest.cs" caret="1060" fromTop="27" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:FlowSystemService.svc.cs" caret="1708" fromTop="20" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:LongRunning/f:ZMQLongRunningController.cs" caret="0" fromTop="0" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:LongRunning/f:DryRunLongRunningController.cs" caret="0" fromTop="0" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Storage/f:DruRunStorage.cs" caret="350" fromTop="10" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Context/f:ILongRunningStepNodeContext.cs" caret="252" fromTop="7" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:LongRunningStepNode.cs" caret="7237" fromTop="142" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Storage/f:FedorDataServiceClient.cs" caret="1355" fromTop="28" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Web.config" caret="8172" fromTop="47" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Storage/f:FedorStorage.cs" caret="125" fromTop="4" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:StepRunInfo.cs" caret="898" fromTop="30" />
+      <File id="21EBFA07-8242-41DE-9A5D-C4583344BB3B/f:JobDescription.cs" caret="3644" fromTop="32" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionStepStarter.cs" caret="4308" fromTop="68" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:Service References/d:MonitoringFacade/f:Reference.cs" caret="7632" fromTop="53" />
+      <File id="21EBFA07-8242-41DE-9A5D-C4583344BB3B/f:JobRequest.cs" caret="968" fromTop="28" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:DataContextExtractor.cs" caret="3325" fromTop="16" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/f:DeclarativeInterpreter.cs" caret="23027" fromTop="26" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/f:FlowGraph.cs" caret="10796" fromTop="30" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:NodeBase.cs" caret="21549" fromTop="134" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/f:IdAccordanceDict.cs" caret="2076" fromTop="15" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:NormalExecutionStepStarter.cs" caret="1936" fromTop="30" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="14251" fromTop="17" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:PreBillingStepStarter.cs" caret="1573" fromTop="27" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionEventConverter.cs" caret="3062" fromTop="23" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:StepNode.cs" caret="20783" fromTop="18" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="9970" fromTop="21" />
     </RecentFiles>
     <RecentEdits>
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionEventConverter.cs" caret="3309" fromTop="32" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionEventConverter.cs" caret="10035" fromTop="27" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="1455" fromTop="27" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="13672" fromTop="13" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="14350" fromTop="24" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="2138" fromTop="27" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="18374" fromTop="20" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="18886" fromTop="30" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="24035" fromTop="37" />
-      <File id="21EBFA07-8242-41DE-9A5D-C4583344BB3B/f:JobDescription.cs" caret="588" fromTop="17" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:SweepStepNode.cs" caret="9602" fromTop="24" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionStepStarter.cs" caret="2090" fromTop="27" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="10401" fromTop="21" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:Service References/d:MonitoringFacade/f:Reference.cs" caret="7702" fromTop="24" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:Service References/d:MonitoringFacade/f:Reference.cs" caret="7706" fromTop="53" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="9452" fromTop="30" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/f:DeclarativeInterpreter.cs" caret="13799" fromTop="25" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionStepStarter.cs" caret="1177" fromTop="16" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionStepStarter.cs" caret="1352" fromTop="20" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionStepStarter.cs" caret="2318" fromTop="11" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionStepStarter.cs" caret="5805" fromTop="37" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:StepNode.cs" caret="9042" fromTop="29" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:NodeBase.cs" caret="14723" fromTop="19" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionStepStarter.cs" caret="989" fromTop="17" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:StepNode.cs" caret="10649" fromTop="26" />
-      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:StepNode.cs" caret="4031" fromTop="31" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="16051" fromTop="18" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="16295" fromTop="25" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="15494" fromTop="8" />
-      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:JobExecutor.cs" caret="4379" fromTop="11" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="14251" fromTop="14" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="13995" fromTop="8" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="16779" fromTop="37" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="15899" fromTop="16" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="9351" fromTop="19" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="13821" fromTop="18" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="18044" fromTop="23" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="23459" fromTop="17" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="23838" fromTop="7" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="25797" fromTop="12" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="25800" fromTop="31" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="25051" fromTop="12" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="15623" fromTop="34" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="34248" fromTop="25" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="19614" fromTop="30" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="15331" fromTop="23" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="23253" fromTop="10" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/f:Job.cs" caret="24239" fromTop="31" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Storage/f:FedorStorage.cs" caret="904" fromTop="4" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionStepStarter.cs" caret="5124" fromTop="33" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:StepRunInfo.cs" caret="898" fromTop="30" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionEventConverter.cs" caret="3317" fromTop="28" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:ExecutionEventConverter.cs" caret="5671" fromTop="35" />
+      <File id="21EBFA07-8242-41DE-9A5D-C4583344BB3B/f:JobDescription.cs" caret="3562" fromTop="30" />
+      <File id="086B15B9-DE2E-4A70-AF51-F33ACFF94CDA/d:Nodes/f:StepNode.cs" caret="33067" fromTop="32" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:Service References/d:MonitoringFacade/f:Reference.cs" caret="7631" fromTop="60" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:Service References/d:MonitoringFacade/f:Reference.cs" caret="7632" fromTop="53" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/f:IdAccordanceDict.cs" caret="3384" fromTop="33" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/f:IdAccordanceDict.cs" caret="2993" fromTop="26" />
+      <File id="C44972A4-01A1-4896-9931-E088BF557340/d:InfrastructureLevel/d:Execution/f:PreBillingStepStarter.cs" caret="1559" fromTop="23" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -90,25 +91,25 @@
       <Item value="int" priority="0" />
       <Item value="TimeSpan`0" priority="4" />
       <Item value="timeout" priority="2" />
-      <Item value="else" priority="5" />
+      <Item value="else" priority="9" />
       <Item value="throw" priority="5" />
-      <Item value="new" priority="13" />
+      <Item value="new" priority="19" />
       <Item value="TimeoutException" priority="0" />
       <Item value="catch" priority="6" />
       <Item value="TimeoutException`0" priority="1" />
       <Item value="private" priority="4" />
-      <Item value="void" priority="4" />
-      <Item value="bool" priority="5" />
-      <Item value="false" priority="6" />
+      <Item value="void" priority="6" />
+      <Item value="bool" priority="7" />
+      <Item value="false" priority="7" />
       <Item value="isThreadConnected" priority="0" />
-      <Item value="true" priority="5" />
-      <Item value="_log" priority="17" />
-      <Item value="WfId" priority="4" />
+      <Item value="true" priority="6" />
+      <Item value="_log" priority="19" />
+      <Item value="WfId" priority="5" />
       <Item value="ThreadConnect`0" priority="1" />
       <Item value="finished" priority="3" />
-      <Item value="return" priority="8" />
-      <Item value="null" priority="3" />
-      <Item value="if" priority="10" />
+      <Item value="return" priority="9" />
+      <Item value="null" priority="4" />
+      <Item value="if" priority="17" />
       <Item value="Exception" priority="0" />
       <Item value="_state" priority="0" />
       <Item value="sinkNode" priority="0" />
@@ -121,24 +122,24 @@
       <Item value="TimeSpan" priority="1" />
       <Item value="try" priority="1" />
       <Item value="DisconnectedJobCollection" priority="0" />
-      <Item value="Dictionary" priority="0" />
+      <Item value="Dictionary" priority="2" />
       <Item value="Job`0" priority="1" />
       <Item value="Dictionary&lt;Job,bool&gt;" priority="0" />
       <Item value="object" priority="1" />
-      <Item value="public" priority="8" />
-      <Item value="lock" priority="2" />
+      <Item value="public" priority="17" />
+      <Item value="lock" priority="3" />
       <Item value="JobsReadyness" priority="3" />
       <Item value="job" priority="2" />
       <Item value="IEventConsumer`0" priority="0" />
       <Item value="Pair&lt;Job,bool&gt;" priority="0" />
-      <Item value="CreateLambda" priority="1" />
-      <Item value="pair" priority="1" />
+      <Item value="CreateLambda" priority="4" />
+      <Item value="pair" priority="3" />
       <Item value="flowEvent" priority="1" />
       <Item value="readyJob" priority="5" />
       <Item value="_second" priority="0" />
       <Item value="value" priority="1" />
       <Item value="_first" priority="0" />
-      <Item value="ret" priority="3" />
+      <Item value="ret" priority="6" />
       <Item value="wasFinished" priority="0" />
       <Item value="_disconnectedJobs" priority="1" />
       <Item value="interface" priority="0" />
@@ -159,29 +160,61 @@
       <Item value="Logger`0" priority="3" />
       <Item value="Logger" priority="0" />
       <Item value="LogManager`0" priority="0" />
-      <Item value="class" priority="0" />
-      <Item value="Guid`0" priority="4" />
+      <Item value="class" priority="1" />
+      <Item value="Guid`0" priority="5" />
       <Item value="message" priority="0" />
       <Item value="_wfId" priority="1" />
       <Item value="theEvent" priority="0" />
       <Item value="CultureInfo" priority="0" />
       <Item value="exception" priority="0" />
-      <Item value="WfLog" priority="7" />
+      <Item value="WfLog" priority="9" />
       <Item value="wfId" priority="1" />
-      <Item value="WfLog`0" priority="14" />
+      <Item value="WfLog`0" priority="15" />
       <Item value="context" priority="1" />
       <Item value="this" priority="0" />
       <Item value="from" priority="0" />
       <Item value="newlog" priority="0" />
       <Item value="Log" priority="0" />
-      <Item value="log" priority="1" />
+      <Item value="log" priority="3" />
       <Item value="NLog" priority="0" />
-      <Item value="task" priority="2" />
+      <Item value="task" priority="5" />
       <Item value="double" priority="0" />
       <Item value="sinkBlockBase" priority="0" />
-      <Item value="namespace" priority="0" />
-      <Item value="td" priority="4" />
+      <Item value="namespace" priority="1" />
+      <Item value="td" priority="5" />
       <Item value="Name" priority="0" />
+      <Item value="isPrebillingMode" priority="0" />
+      <Item value="isPrebillingModeOn" priority="0" />
+      <Item value="List&lt;FlowEvent&gt;" priority="0" />
+      <Item value="result" priority="0" />
+      <Item value="Completed" priority="0" />
+      <Item value="foreach" priority="1" />
+      <Item value="case" priority="0" />
+      <Item value="el" priority="0" />
+      <Item value="break" priority="0" />
+      <Item value="RunMode" priority="2" />
+      <Item value="PreBilling" priority="4" />
+      <Item value="ulong" priority="1" />
+      <Item value="StepRunDescriptor`0" priority="0" />
+      <Item value="StepRunMode`0" priority="0" />
+      <Item value="Dictionary&lt;ulong,TaskAccordance&gt;" priority="0" />
+      <Item value="PesId" priority="2" />
+      <Item value="TaskAccordance" priority="0" />
+      <Item value="descriptor" priority="0" />
+      <Item value="_Archieve" priority="2" />
+      <Item value="wfid" priority="0" />
+      <Item value="toRemove" priority="0" />
+      <Item value="Select`2" priority="0" />
+      <Item value="valuePair" priority="0" />
+      <Item value="IdAccordanceDict`0" priority="1" />
+      <Item value="sequenceId" priority="0" />
+      <Item value="stepStarter" priority="0" />
+      <Item value="PreBillingStepStarter`0" priority="0" />
+      <Item value="PrebillingDryRun`0" priority="0" />
+      <Item value="string" priority="1" />
+      <Item value="JobRunMode`0" priority="1" />
+      <Item value="mode" priority="1" />
+      <Item value="PesStepId" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:NLog.Logger">
       <Item value="Trace`0" priority="2" />
@@ -194,9 +227,10 @@
     <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
       <Item value="First`1" priority="1" />
       <Item value="Remove`0" priority="1" />
+      <Item value="Add`0" priority="7" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Easis.Wfs.FlowSystemService.Utils.Pair`2">
-      <Item value="First" priority="1" />
+      <Item value="First" priority="2" />
       <Item value="Second" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Easis.Wfs.FlowSystemService.Job">
@@ -214,6 +248,7 @@
     <ItemStatistics item="Qualified:@Easis.Common.DataContracts.JobState">
       <Item value="DryRun" priority="0" />
       <Item value="Validated" priority="0" />
+      <Item value="Active" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Easis.Wfs.Interpreting.DeclarativeInterpreter">
       <Item value="Context" priority="0" />
@@ -242,16 +277,18 @@
     <ItemStatistics item="Qualified:Easis.Wfs.WfLog">
       <Item value="_wfId" priority="0" />
       <Item value="WfId" priority="0" />
-      <Item value="Trace`0" priority="0" />
+      <Item value="Trace`0" priority="2" />
+      <Item value="Error`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@NLog.LogManager">
-      <Item value="GetCurrentClassLogger`0" priority="0" />
+      <Item value="GetCurrentClassLogger`0" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Guid">
       <Item value="Empty" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Easis.Wfs.FlowSystemService.ExecutionService.Task">
       <Item value="CurrentSchedule" priority="2" />
+      <Item value="Estimations" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Easis.Wfs.FlowSystemService.ExecutionService.TaskSchedule">
       <Item value="Estimation" priority="1" />
@@ -270,6 +307,7 @@
       <Item value="Estimated" priority="0" />
       <Item value="Estimation" priority="0" />
       <Item value="EstimationDispersion" priority="0" />
+      <Item value="Estimations" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Easis.Wfs.Interpreting.StepRunDescriptor">
       <Item value="WfId" priority="0" />
@@ -282,7 +320,57 @@
       <Item value="TaskId" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Easis.Common.DataContracts.ExecutionContext">
-      <Item value="ExtraElements" priority="0" />
+      <Item value="ExtraElements" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:WFStateUpdatedEvent">
+      <Item value="SystemInfo" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="ToLower`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="IsNullOrEmpty`0" priority="0" />
+      <Item value="Join`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Easis.Wfs.Interpreting.StepRunResult">
+      <Item value="Status" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.KeyValuePair`2">
+      <Item value="Value" priority="1" />
+      <Item value="Key" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Easis.Wfs.FlowSystemService.TaskAccordance">
+      <Item value="WfStepId" priority="4" />
+      <Item value="TaskId" priority="0" />
+      <Item value="Descriptor" priority="2" />
+      <Item value="RunMode" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IDictionary`2">
+      <Item value="ContainsKey`0" priority="0" />
+      <Item value="Where`1" priority="0" />
+      <Item value="Remove`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="ToArray`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Easis.Wfs.FlowSystemService.IdAccordanceDict">
+      <Item value="Instance" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Easis.Wfs.FlowSystemService.IdAccordanceDict">
+      <Item value="RemoveAllEntriesForWf`0" priority="0" />
+      <Item value="GetAccordanceObject`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Easis.Wfs.FlowSystemService.ExecutionService.ExecutionBrokerServiceClient">
+      <Item value="DefineTask`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Easis.Common.DataContracts.NodeDescription">
+      <Item value="RunInfo" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Easis.Common.DataContracts.RunInfo">
+      <Item value="EstimationsOnResources" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Easis.Wfs.FlowSystemService.JobRunMode">
+      <Item value="Normal" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>

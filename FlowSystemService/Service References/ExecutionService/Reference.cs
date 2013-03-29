@@ -251,6 +251,9 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
         private Easis.Wfs.FlowSystemService.ExecutionService.TaskSchedule CurrentScheduleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.Dictionary<string, double> EstimationsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.Dictionary<string, string> OutputParamsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -294,6 +297,19 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
                 if ((object.ReferenceEquals(this.CurrentScheduleField, value) != true)) {
                     this.CurrentScheduleField = value;
                     this.RaisePropertyChanged("CurrentSchedule");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.Dictionary<string, double> Estimations {
+            get {
+                return this.EstimationsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstimationsField, value) != true)) {
+                    this.EstimationsField = value;
+                    this.RaisePropertyChanged("Estimations");
                 }
             }
         }
@@ -1542,14 +1558,6 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
         
         bool EndMagicHappens(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IExecutionBrokerService/Define", ReplyAction="http://tempuri.org/IExecutionBrokerService/DefineResponse")]
-        void Define(Easis.Wfs.FlowSystemService.ExecutionService.TaskDescription[] tasks, Easis.Wfs.FlowSystemService.ExecutionService.TaskDependency[] dependencies);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IExecutionBrokerService/Define", ReplyAction="http://tempuri.org/IExecutionBrokerService/DefineResponse")]
-        System.IAsyncResult BeginDefine(Easis.Wfs.FlowSystemService.ExecutionService.TaskDescription[] tasks, Easis.Wfs.FlowSystemService.ExecutionService.TaskDependency[] dependencies, System.AsyncCallback callback, object asyncState);
-        
-        void EndDefine(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IExecutionBrokerService/DefineTask", ReplyAction="http://tempuri.org/IExecutionBrokerService/DefineTaskResponse")]
         void DefineTask(Easis.Wfs.FlowSystemService.ExecutionService.TaskDescription task);
         
@@ -1705,12 +1713,6 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
         
         private System.Threading.SendOrPostCallback onMagicHappensCompletedDelegate;
         
-        private BeginOperationDelegate onBeginDefineDelegate;
-        
-        private EndOperationDelegate onEndDefineDelegate;
-        
-        private System.Threading.SendOrPostCallback onDefineCompletedDelegate;
-        
         private BeginOperationDelegate onBeginDefineTaskDelegate;
         
         private EndOperationDelegate onEndDefineTaskDelegate;
@@ -1780,8 +1782,6 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
         
         public event System.EventHandler<MagicHappensCompletedEventArgs> MagicHappensCompleted;
         
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DefineCompleted;
-        
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DefineTaskCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DefineDependenciesCompleted;
@@ -1844,57 +1844,6 @@ namespace Easis.Wfs.FlowSystemService.ExecutionService {
                 this.onMagicHappensCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnMagicHappensCompleted);
             }
             base.InvokeAsync(this.onBeginMagicHappensDelegate, null, this.onEndMagicHappensDelegate, this.onMagicHappensCompletedDelegate, userState);
-        }
-        
-        public void Define(Easis.Wfs.FlowSystemService.ExecutionService.TaskDescription[] tasks, Easis.Wfs.FlowSystemService.ExecutionService.TaskDependency[] dependencies) {
-            base.Channel.Define(tasks, dependencies);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginDefine(Easis.Wfs.FlowSystemService.ExecutionService.TaskDescription[] tasks, Easis.Wfs.FlowSystemService.ExecutionService.TaskDependency[] dependencies, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginDefine(tasks, dependencies, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public void EndDefine(System.IAsyncResult result) {
-            base.Channel.EndDefine(result);
-        }
-        
-        private System.IAsyncResult OnBeginDefine(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            Easis.Wfs.FlowSystemService.ExecutionService.TaskDescription[] tasks = ((Easis.Wfs.FlowSystemService.ExecutionService.TaskDescription[])(inValues[0]));
-            Easis.Wfs.FlowSystemService.ExecutionService.TaskDependency[] dependencies = ((Easis.Wfs.FlowSystemService.ExecutionService.TaskDependency[])(inValues[1]));
-            return this.BeginDefine(tasks, dependencies, callback, asyncState);
-        }
-        
-        private object[] OnEndDefine(System.IAsyncResult result) {
-            this.EndDefine(result);
-            return null;
-        }
-        
-        private void OnDefineCompleted(object state) {
-            if ((this.DefineCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.DefineCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void DefineAsync(Easis.Wfs.FlowSystemService.ExecutionService.TaskDescription[] tasks, Easis.Wfs.FlowSystemService.ExecutionService.TaskDependency[] dependencies) {
-            this.DefineAsync(tasks, dependencies, null);
-        }
-        
-        public void DefineAsync(Easis.Wfs.FlowSystemService.ExecutionService.TaskDescription[] tasks, Easis.Wfs.FlowSystemService.ExecutionService.TaskDependency[] dependencies, object userState) {
-            if ((this.onBeginDefineDelegate == null)) {
-                this.onBeginDefineDelegate = new BeginOperationDelegate(this.OnBeginDefine);
-            }
-            if ((this.onEndDefineDelegate == null)) {
-                this.onEndDefineDelegate = new EndOperationDelegate(this.OnEndDefine);
-            }
-            if ((this.onDefineCompletedDelegate == null)) {
-                this.onDefineCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDefineCompleted);
-            }
-            base.InvokeAsync(this.onBeginDefineDelegate, new object[] {
-                        tasks,
-                        dependencies}, this.onEndDefineDelegate, this.onDefineCompletedDelegate, userState);
         }
         
         public void DefineTask(Easis.Wfs.FlowSystemService.ExecutionService.TaskDescription task) {

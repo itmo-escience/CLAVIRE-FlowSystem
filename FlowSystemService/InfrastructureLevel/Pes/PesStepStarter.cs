@@ -100,7 +100,7 @@ namespace Easis.Wfs.FlowSystemService
             lock (_syncRoot)
             {
                 _log.Trace("Adding triplet ({0}, {1}, {2}) to Id dict", stepRunDescriptor.WfId, stepRunDescriptor.StepId, sequenceRun.id);
-                IdAccordanceDict.Instance.AddIdTriplet(stepRunDescriptor.WfId, stepRunDescriptor.StepId, sequenceRun.id);
+                IdAccordanceDict.Instance.AddIdAccordance(stepRunDescriptor.WfId, stepRunDescriptor.StepId, sequenceRun.id);
             }
 
             ss.SequenceRunAsync(text);

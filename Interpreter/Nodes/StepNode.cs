@@ -736,6 +736,7 @@ namespace Easis.Wfs.Interpreting
                 ret.RunInfo.NodeInfo = _info.NodeInfos;
                 ret.RunInfo.Estimation = _info.Estimation;
                 ret.RunInfo.EstimationDispersion = _info.EstimationDispersion;
+                ret.RunInfo.EstimationsOnResources = _info.Estimations;
                 ret.RunInfo.Started = _info.Started;
             }
 

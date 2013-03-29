@@ -36,7 +36,9 @@ namespace Easis.Wfs.FlowSystemService.InfrastructureLevel.Execution
             lock (_syncRoot)
             {
                 _log.Trace("Adding triplet ({0}, {1}, {2}) to Id dict", stepRunDescriptor.WfId, stepRunDescriptor.StepId, tid);
-                IdAccordanceDict.Instance.AddIdTriplet(stepRunDescriptor.WfId, stepRunDescriptor.StepId, tid);
+                IdAccordanceDict.Instance.AddIdAccordance(stepRunDescriptor.WfId, stepRunDescriptor.StepId, tid, JobRunMode.PreBilling);
+
+                IdAccordanceDict.Instance.SaveDescriptor(tid, stepRunDescriptor);
             }
 
             // 2. define

@@ -11,24 +11,24 @@
 namespace MongoDB.Bson
 {
     using System.Runtime.Serialization;
-    
-    
+
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ObjectId", Namespace="http://schemas.datacontract.org/2004/07/MongoDB.Bson")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "ObjectId", Namespace = "http://schemas.datacontract.org/2004/07/MongoDB.Bson")]
     public partial struct ObjectId : System.Runtime.Serialization.IExtensibleDataObject
     {
-        
+
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
+
         private int _incrementField;
-        
+
         private int _machineField;
-        
+
         private short _pidField;
-        
+
         private int _timestampField;
-        
+
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
             get
@@ -40,8 +40,8 @@ namespace MongoDB.Bson
                 this.extensionDataField = value;
             }
         }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired = true)]
         public int _increment
         {
             get
@@ -53,8 +53,8 @@ namespace MongoDB.Bson
                 this._incrementField = value;
             }
         }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired = true)]
         public int _machine
         {
             get
@@ -66,8 +66,8 @@ namespace MongoDB.Bson
                 this._machineField = value;
             }
         }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired = true)]
         public short _pid
         {
             get
@@ -79,8 +79,8 @@ namespace MongoDB.Bson
                 this._pidField = value;
             }
         }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired = true)]
         public int _timestamp
         {
             get
@@ -97,6 +97,7 @@ namespace MongoDB.Bson
 
 namespace MonitoringFacade
 {
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName = "IMonitoringService")]
     public interface IMonitoringService

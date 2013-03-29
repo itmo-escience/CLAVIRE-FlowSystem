@@ -138,6 +138,11 @@ namespace Easis.Wfs.FlowSystemService
                 }
             }
 
+            //---------------------------------
+            // Prebilling logic #prebilling
+            //---------------------------------
+            ret.Estimations = task.Estimations;
+
             if (task.AssignedNodes != null)
             {
                 var l = new List<NodeRunInfo>();

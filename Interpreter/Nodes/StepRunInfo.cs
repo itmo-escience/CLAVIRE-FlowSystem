@@ -28,6 +28,8 @@ namespace Easis.Wfs.Interpreting
         public Nullable<DateTime> Ended { get; set; }
         public double Estimation { get; set; }
         public double EstimationDispersion { get; set; }
+
+        public Dictionary<string, double> Estimations { get; set; }
     }
 
     public class LongRunningStepRunInfo : StepRunInfo

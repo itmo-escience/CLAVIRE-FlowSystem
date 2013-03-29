@@ -130,14 +130,14 @@ namespace Easis.Wfs.FlowSystemService
             _log.Trace(td.ToJsonString());
 
             // 2. define
-            ec.Define(new TaskDescription[] { td }, null);
+            ec.DefineTask(td);
 
             // Важно соответствие ставить до вызова запускатора
             // иначе обработчик события срабатывает раньше и необходимого ключа не находится
             lock (_syncRoot)
             {
                 _log.Trace("Adding triplet ({0}, {1}, {2}) to Id dict", stepRunDescriptor.WfId, stepRunDescriptor.StepId, tid);
-                IdAccordanceDict.Instance.AddIdTriplet(stepRunDescriptor.WfId, stepRunDescriptor.StepId, tid);
+                IdAccordanceDict.Instance.AddIdAccordance(stepRunDescriptor.WfId, stepRunDescriptor.StepId, tid);
 
                 IdAccordanceDict.Instance.SaveDescriptor(tid, stepRunDescriptor);
             }

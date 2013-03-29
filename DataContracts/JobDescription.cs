@@ -138,6 +138,9 @@ namespace Easis.Common.DataContracts
         public double EstimationDispersion { get; set; }
 
         [DataMember]
+        public Dictionary<string, double> EstimationsOnResources { get; set; }
+
+        [DataMember]
         public string State { get; set; }
     }
 
