@@ -150,7 +150,7 @@ namespace Easis.Wfs.FlowSystemService
 
                 if (readyJob != null)
                 {
-                    _log.Info("[thread: {0}] WF#{1} was taken from disconnected jobs", Thread.CurrentThread.ManagedThreadId, readyJob.WfId);
+                    _log.Info("WF#{1} was taken from disconnected jobs", readyJob.WfId);
                     job = readyJob;
                     isNewJob = false;
                 }
@@ -183,8 +183,7 @@ namespace Easis.Wfs.FlowSystemService
                     // TODO: проверить дубликат
                     _startedJobs.Add(job.WfId, job);
 
-                    _log.Info("[thread: {0}] new job WF#{1} was dequeued", Thread.CurrentThread.ManagedThreadId,
-                              job.WfId);
+                    _log.Info("new job WF#{1} was dequeued", job.WfId);
 
                     EventingService.EventingBrokerServiceClient proxy = null;
                     WFStateUpdatedEvent ev = null;
@@ -280,9 +279,24 @@ namespace Easis.Wfs.FlowSystemService
                         catch (Exception ex)
                         {
                             // переносим в список завершенных заданий
-                            _finishedJobs.Add(job);
-                            _log.ErrorException("Error while constructing result. Ignoring. Alarm! Job has been transmited to _finishedJobs. It smels like memory leaking.", ex);
-                            _wflog.ErrorException("Error while constructing result. Ignoring. Alarm! Job has been transmited to _finishedJobs. It smels like memory leaking.", ex);
+                            //_finishedJobs.Add(job);
+
+                            string dumpPath = Path.Combine(Properties.Settings.Default.WfDumpsDir,
+                                                           job.WfId.ToString() + ".json");
+
+                            _log.ErrorException(String.Format("Error while constructing result or commiting it to provenance. Dumping JobDescription to '{0}'...", dumpPath), ex);
+                            _wflog.ErrorException(String.Format("Error while constructing result or commiting it to provenance. Dumping JobDescription to '{0}'...", dumpPath), ex);
+
+                            try
+                            {
+                                File.WriteAllText(dumpPath, job.ToJson());
+                                _wflog.Debug("JobDescription has been dumped to {0}", dumpPath);
+                            }
+                            catch (Exception ex0)
+                            {
+                                _log.ErrorException(String.Format("Error while dumping JobDescription to {0}", dumpPath), ex0);
+                                _wflog.ErrorException(String.Format("Error while dumping JobDescription to {0}", dumpPath), ex0);
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -341,8 +355,8 @@ namespace Easis.Wfs.FlowSystemService
                     // TODO: проверить наличие
                     _startedJobs.Remove(job.WfId);
 
-                    _log.Info("[thread: {0}] Finished execution of WF#{1}", Thread.CurrentThread.ManagedThreadId, job.WfId);
-                    _wflog.Info("[thread: {0}] Finished execution of WF#{1}", Thread.CurrentThread.ManagedThreadId, job.WfId);
+                    _log.Info("Finished execution of WF#{1}", job.WfId);
+                    _wflog.Info("Finished execution of WF#{1}", job.WfId);
                 }
             }
         }

@@ -14,5 +14,8 @@
     <Setting Name="ThreadCount" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">10</Value>
     </Setting>
+    <Setting Name="WfDumpsDir" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">dumps</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

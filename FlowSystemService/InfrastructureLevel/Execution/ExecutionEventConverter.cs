@@ -8,7 +8,6 @@ using Easis.Wfs.EasyFlow.Model;
 using Easis.Wfs.FlowSystemService.ExecutionService;
 using Easis.Wfs.FlowSystemService.PES;
 using Easis.Wfs.FlowSystemService.ResourceBaseService;
-using Easis.Wfs.FlowSystemService.StorageService;
 using Easis.Wfs.FlowSystemService.Utils;
 using Easis.Wfs.Interpreting;
 using Eventing;
@@ -128,9 +127,9 @@ namespace Easis.Wfs.FlowSystemService
                             ret.Ended = task.Time.WhenFinished[TaskTimeMetric.Calculation];
                 }
 
-                if(task.CurrentSchedule != null && task.CurrentSchedule.Estimation != null)
+                if (task.CurrentSchedule != null && task.CurrentSchedule.Estimation != null)
                 {
-                    if(task.CurrentSchedule.Estimation.ByModel != null && task.CurrentSchedule.Estimation.ByModel.CalculationTime != null)
+                    if (task.CurrentSchedule.Estimation.ByModel != null && task.CurrentSchedule.Estimation.ByModel.CalculationTime != null)
                     {
                         ret.Estimation = task.CurrentSchedule.Estimation.ByModel.CalculationTime.Value;
                         ret.EstimationDispersion = task.CurrentSchedule.Estimation.ByModel.CalculationTime.Dispersion;
@@ -263,48 +262,50 @@ namespace Easis.Wfs.FlowSystemService
                         log.Error("Exception while fetching output params. Ignoring.", ex);
                     }
 
+                    #region Obsolete File Registering
                     // registering data -------------------------------------------
                     // TODO: fix new file registry logic [AL] durty hack
-                    IList<DataEntry> des = new List<DataEntry>();
-                    foreach (var of in ret.OutputFiles)
-                    {
+                    
+//                    IList<DataEntry> des = new List<DataEntry>();
+//                    foreach (var of in ret.OutputFiles)
+//                    {
                         // form new pretty name
-                        Utils.Pair<Guid, long> ids0 = IdAccordanceDict.Instance.GetWfAndStepId(sequenceId);
-                        Guid WfId = ids0.First;
-                        long StepId = ids0.Second;
-                        string name = of.FileIdentifier;
-
-                        DataEntry de = new DataEntry();
+//                        Utils.Pair<Guid, long> ids0 = IdAccordanceDict.Instance.GetWfAndStepId(sequenceId);
+//                        Guid WfId = ids0.First;
+//                        long StepId = ids0.Second;
+//                        string name = of.FileIdentifier;
+//
+//                        DataEntry de = new DataEntry();
                         // durty hack nulls in name
-                        de.Name = StepId + "_" + name;
-                        de.Locator = of.NStorageId;
-                        des.Add(de);
-                    }
-                    if (des.Count > 0)
-                    {
-                        try
-                        {
-                            StorageService.StorageServiceClient scli = new StorageServiceClient();
-                            string[] ids = scli.RegisterDataBatch(des.ToArray());
-
-                            log.Trace("Storage service returned {0} ids for {1} data entries", ids.Length, ret.OutputFiles.Count);
-
-                            for (int i = 0; i < ret.OutputFiles.Count; i++)
-                            {
-                                ret.OutputFiles.ToArray()[i].StorageId = ids[i];
-                            }
-                            log.Trace("Registered new files in storage");
-                        }
-                        catch (Exception ex)
-                        {
-                            log.ErrorException("Couldn't register file in storage", ex);
-                        }
-                    }
-                    else
-                    {
-                        log.Trace("No need to register files");
-                    }
-
+//                        de.Name = StepId + "_" + name;
+//                        de.Locator = of.NStorageId;
+//                        des.Add(de);
+//                    }
+//                    if (des.Count > 0)
+//                    {
+//                        try
+//                        {
+//                            StorageService.StorageServiceClient scli = new StorageServiceClient();
+//                            string[] ids = scli.RegisterDataBatch(des.ToArray());
+//
+//                            log.Trace("Storage service returned {0} ids for {1} data entries", ids.Length, ret.OutputFiles.Count);
+//
+//                            for (int i = 0; i < ret.OutputFiles.Count; i++)
+//                            {
+//                                ret.OutputFiles.ToArray()[i].StorageId = ids[i];
+//                            }
+//                            log.Trace("Registered new files in storage");
+//                        }
+//                        catch (Exception ex)
+//                        {
+//                            log.ErrorException("Couldn't register file in storage", ex);
+//                        }
+//                    }
+//                    else
+//                    {
+//                        log.Trace("No need to register files");
+//                    }
+                    #endregion
                     break;
                 case TaskState.Defined:
                 case TaskState.Scheduled:
@@ -374,7 +375,7 @@ namespace Easis.Wfs.FlowSystemService
                         break;
                     case WFStateUpdatedTypeEnum.WFStepFinished:
                     case WFStateUpdatedTypeEnum.WFStepError:
-                        
+
                         //--------------------------------------
                         // Prebilling behaviour #prebilling
                         //--------------------------------------
@@ -392,9 +393,9 @@ namespace Easis.Wfs.FlowSystemService
                                 result.ErrorComment = wfStateUpdatedEvent.Comment;
 
                                 // Changing of result status for dry run. Error stays error.
-                                if(result.Status == StepRunResult.ResultStatus.Completed)
+                                if (result.Status == StepRunResult.ResultStatus.Completed)
                                     result.Status = StepRunResult.ResultStatus.Unknown;
-                                
+
                                 ret.Add(new FlowEvent(FlowEvent.RUN_FINISHED, WfId, StepId, result));
                             }
                             catch (InterpretionException ex)

@@ -59,5 +59,14 @@ namespace Easis.Wfs.FlowSystemService.Properties {
                 return ((int)(this["ThreadCount"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("dumps")]
+        public string WfDumpsDir {
+            get {
+                return ((string)(this["WfDumpsDir"]));
+            }
+        }
     }
 }
