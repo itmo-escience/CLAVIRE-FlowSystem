@@ -49,12 +49,16 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'fdgd|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'fdgd|x64'">
+    <OutputPath>bin\x64\fdgd\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="clrzmq">
-      <HintPath>..\Libs\clrzmq.dll</HintPath>
-    </Reference>
-    <Reference Include="clrzmq-ext">
-      <HintPath>..\Libs\clrzmq-ext.dll</HintPath>
+    <Reference Include="clrzmq, Version=2.1.1.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\clrzmq2.2.1.0.2011121800\lib\clrzmq.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Eventing">
       <HintPath>..\Libs\Eventing.dll</HintPath>
@@ -136,26 +140,26 @@
     <None Include="Service References\ExecutionService\ExecutionBrokerService54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MonitoringFacade\Easis.Wfs.FlowSystemService.MonitoringFacade.JobDescription.datasource">
+    <None Include="Service References\MonitoringFacade\Easis.Wfs.FlowSystemService.MonitoringFacade.JobSubset.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\MonitoringFacade\Easis.Wfs.FlowSystemService.MonitoringFacade.ResourceDescription.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\MonitoringFacade\MonitoringFacade.wsdl" />
-    <None Include="Service References\MonitoringFacade\MonitoringFacade.xsd">
+    <None Include="Service References\MonitoringFacade\MonitoringFacade1.wsdl" />
+    <None Include="Service References\MonitoringFacade\MonitoringFacade5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MonitoringFacade\MonitoringFacade1.xsd">
+    <None Include="Service References\MonitoringFacade\MonitoringFacade51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MonitoringFacade\MonitoringFacade2.xsd">
+    <None Include="Service References\MonitoringFacade\MonitoringFacade52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MonitoringFacade\MonitoringFacade3.xsd">
+    <None Include="Service References\MonitoringFacade\MonitoringFacade53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MonitoringFacade\MonitoringFacade4.xsd">
+    <None Include="Service References\MonitoringFacade\MonitoringFacade54.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MonitoringFacade\MonitoringFacade55.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ResourceBaseService\Easis.Wfs.FlowSystemService.ResourceBaseService.Resource.datasource">
@@ -206,7 +210,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\MonitoringFacade\MonitoringFacade.disco" />
     <None Include="Service References\ResourceBaseService\ResourceBaseService.disco" />
     <None Include="Service References\ResourceBaseService\configuration91.svcinfo" />
     <None Include="Service References\ResourceBaseService\configuration.svcinfo" />
@@ -214,11 +217,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\EventingService\EventingBrokerService1.disco" />
+    <None Include="Service References\ExecutionService\ExecutionBrokerService1.disco" />
     <None Include="libzmq.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Service References\EventingService\EventingBrokerService1.disco" />
-    <None Include="Service References\ExecutionService\ExecutionBrokerService1.disco" />
+    <None Include="Service References\MonitoringFacade\MonitoringFacade1.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

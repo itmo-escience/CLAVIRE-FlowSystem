@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Easis.Monitoring.MonitoringService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Easis.Monitoring.MonitoringService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.4.2/MonitoringFacadeService_deploy/MonitoringFacade.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://192.168.4.2/MonitoringFacadeService_deploy/MonitoringFacade.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts" />
+  <xs:complexType name="ArrayOfWhereStatement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WhereStatement" nillable="true" type="tns:WhereStatement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWhereStatement" nillable="true" type="tns:ArrayOfWhereStatement" />
+  <xs:complexType name="WhereStatement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Column" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="operators" nillable="true" type="tns:ArrayOfWhereOperator" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WhereStatement" nillable="true" type="tns:WhereStatement" />
+  <xs:complexType name="ArrayOfWhereOperator">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WhereOperator" nillable="true" type="tns:WhereOperator" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWhereOperator" nillable="true" type="tns:ArrayOfWhereOperator" />
+  <xs:complexType name="WhereOperator">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Operation" type="tns:WhereOperation" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Values" nillable="true" type="q1:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WhereOperator" nillable="true" type="tns:WhereOperator" />
+  <xs:simpleType name="WhereOperation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GREATER" />
+      <xs:enumeration value="GREATEREQUAL" />
+      <xs:enumeration value="LOWER" />
+      <xs:enumeration value="LOWEREQUAL" />
+      <xs:enumeration value="EQUAL" />
+      <xs:enumeration value="IN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="WhereOperation" nillable="true" type="tns:WhereOperation" />
+  <xs:complexType name="ArrayOfOrderStatement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderStatement" nillable="true" type="tns:OrderStatement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderStatement" nillable="true" type="tns:ArrayOfOrderStatement" />
+  <xs:complexType name="OrderStatement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Column" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direction" type="tns:DirectionOperation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderStatement" nillable="true" type="tns:OrderStatement" />
+  <xs:simpleType name="DirectionOperation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ASC" />
+      <xs:enumeration value="DESC" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DirectionOperation" nillable="true" type="tns:DirectionOperation" />
+  <xs:complexType name="JobSubset">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Jobs" nillable="true" type="tns:ArrayOfShortJobDescription" />
+      <xs:element minOccurs="0" name="TotalCount" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JobSubset" nillable="true" type="tns:JobSubset" />
+  <xs:complexType name="ArrayOfShortJobDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShortJobDescription" nillable="true" type="tns:ShortJobDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShortJobDescription" nillable="true" type="tns:ArrayOfShortJobDescription" />
+  <xs:complexType name="ShortJobDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DurationInSec" type="xs:double" />
+      <xs:element minOccurs="0" name="ErrorComment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorException" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FinishedAt" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumberOfSteps" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PackagesUsed" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="PushedAt" nillable="true" type="xs:dateTime" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ResourcesUsed" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element minOccurs="0" name="StartedAt" nillable="true" type="xs:dateTime" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Easis.Common.DataContracts" minOccurs="0" name="State" type="q4:JobState" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VerboseErrorComment" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ShortJobDescription" nillable="true" type="tns:ShortJobDescription" />
+</xs:schema>
